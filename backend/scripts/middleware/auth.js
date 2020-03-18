@@ -7,7 +7,7 @@ module.exports = (admin = false, secret = process.env.LOGIN_TOKEN_SECRET) =>
     async (req, res, next) => {
         try {
             const token = req.headers.authorization.split(" ")[1];
-            const result = verifyToken(token, secret);
+            const result = await verifyToken(token, secret);
             if (admin === false || result.admin === true) {
                 req.tokenData = result;
                 return next()
