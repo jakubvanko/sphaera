@@ -22,7 +22,7 @@ router.post("/", auth(true), async (req, res) => {
         areas: req.body.areas
     });
     const result = await event.save();
-    res.status(201).json(result);
+    return res.status(201).json(result);
 });
 
 // GET one event by ID

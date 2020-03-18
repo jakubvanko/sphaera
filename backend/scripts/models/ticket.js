@@ -18,10 +18,12 @@ const ticketSchema = mongoose.Schema({
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true
     },
     bought: {
-        type: Date
+        type: Date,
+        required: true
     }
 });
 

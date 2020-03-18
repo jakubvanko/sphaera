@@ -30,6 +30,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    funds: {
+        type: Number,
+        default: 0
+    },
     tickets: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Ticket"
