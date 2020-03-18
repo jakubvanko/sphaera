@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
+const auth = require("../middleware/auth");
 
 const Event = require("../models/event");
 
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST (create) a new event
-router.post("/", async (req, res) => {
+router.post("/", auth(true), async (req, res) => {
     const event = new Event({
         _id: new mongoose.Types.ObjectId(),
         artist: req.body.artist,
@@ -37,7 +38,7 @@ router.get("/:eventId", async (req, res) => {
 });
 
 // Update one event by ID
-router.patch("/:eventId", async (req, res) => {
+router.patch("/:eventId", auth(true), async (req, res) => {
     const eventId = req.params.eventId;
     const updatedProperties = {};
     for (const value of ["artist", "date", "image", "areas"]) {
@@ -53,7 +54,7 @@ router.patch("/:eventId", async (req, res) => {
 });
 
 // Delete one event by ID
-router.delete("/:eventId", async (req, res) => {
+router.delete("/:eventId", auth(true), async (req, res) => {
     const eventId = req.params.eventId;
     await Event.deleteOne({_id: eventId})
         .exec();

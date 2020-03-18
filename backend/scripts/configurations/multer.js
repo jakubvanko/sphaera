@@ -16,8 +16,6 @@ const fileFilter = (req, file, cb) => {
         error.status = 403;
         return cb(error, false);
     }
-    // TODO: validate token 401 error
-    const token = req.body.token;
     return cb(null, true);
 };
 

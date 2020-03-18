@@ -26,6 +26,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    admin: {
+        type: Boolean,
+        default: false
+    },
     tickets: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Ticket"
