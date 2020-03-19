@@ -6,11 +6,13 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
+const helmet = require("helmet");
 
 mongoose.connect(process.env.DATABASE_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 // Middleware
 app.use(morgan("dev"));
+app.use(helmet());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());

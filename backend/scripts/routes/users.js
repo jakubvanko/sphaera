@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const util = require("util");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
+const sendMail = require("../configurations/nodemailer");
 
 const User = require("../models/user");
 
@@ -78,6 +79,47 @@ router.post("/login", async (req, res) => {
     const error = new Error("Auth failed");
     error.status = 401;
     throw error;
+});
+
+router.post("/resetpassword", async (req, res) => {
+    const email = req.body.email;
+    const foundUser = await User.findOne({email: req.body.email})
+        .exec();
+    if (foundUser !== null) {
+        const token = await generateToken({
+            _id: foundUser._id
+        }, process.env.RESET_TOKEN_SECRET, {
+            expiresIn: process.env.RESET_TOKEN_EXPIRATION
+        });
+        const result = await sendMail(email, "Password Change Request", `<p>${token}</p>`);
+        if (result.messageId === undefined) {
+            const error = new Error("Mail error");
+            error.status = 500;
+            throw error;
+        }
+    }
+    return res.status(204).json()
+});
+
+router.patch("/password", auth(false, process.env.RESET_TOKEN_SECRET), async (req, res) => {
+    const userId = req.tokenData._id;
+    if (req.body.password.length < 6) {
+        throw new Error("Password too short");
+    }
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = await generateHash(req.body.password,
+        salt + process.env.HASH_PEPPER,
+        parseInt(process.env.HASH_ITERATIONS),
+        parseInt(process.env.HASH_LENGTH),
+        process.env.HASH_ALGORITHM);
+    await User.updateOne({_id: userId}, {
+        $set: {
+            password: hash.toString("hex"),
+            salt
+        }
+    })
+        .exec();
+    return res.status(204).json();
 });
 
 module.exports = router;
