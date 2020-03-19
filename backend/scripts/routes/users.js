@@ -122,4 +122,15 @@ router.patch("/password", auth(false, process.env.RESET_TOKEN_SECRET), async (re
     return res.status(204).json();
 });
 
+// Get a user data if logged in
+router.get("/current", auth(), async (req, res) => {
+    const user = await User.findById(tokenData._id)
+        .select("_id firstName lastName email admin funds tickets")
+        .exec();
+    if (user !== null) {
+        return res.status(200).json(user);
+    }
+    return res.status(404).json({})
+});
+
 module.exports = router;

@@ -4,7 +4,8 @@ const ticketSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     event: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Event"
+        ref: "Event",
+        required: true
     },
     area: {
         type: String,

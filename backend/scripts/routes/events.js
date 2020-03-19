@@ -31,7 +31,7 @@ router.get("/:eventId", async (req, res) => {
     const result = await Event.findById(eventId)
         .select("_id artist date image areas")
         .exec();
-    if (result == null) {
+    if (result !== null) {
         return res.status(200).json(result);
     }
     return res.status(404).json({})

@@ -62,6 +62,7 @@ router.post("/", auth(), async (req, res) => {
     user.tickets.push(ticketResult._id);
     await user.save();
     // Return created ticket
+    // TODO: send the ticket to email in PDF
     return res.status(200).json(ticketResult);
 });
 
