@@ -11,7 +11,7 @@ const typeDefs = gql`
         capacity: Int!
         reserved: Int!
     }
-    
+
     type Event {
         _id: ID!
         artist: String!
@@ -69,14 +69,14 @@ const typeDefs = gql`
     input CreateTicketInput {
         event: ID!
     }
-    
+
     input CreateUserInput {
         firstName: String!
         lastName: String!
         email: String!
         password: String!
     }
-    
+
     input UpdateUserInput {
         _id: ID!
         firstName: String
@@ -84,16 +84,16 @@ const typeDefs = gql`
         email: String
         password: String
     }
-    
+
     input DeleteUserInput {
         _id: ID!
     }
-    
+
     input LoginUserInput {
         email: String!
         password: String!
     }
-    
+
     input ResetPasswordInput {
         email: String!
     }
@@ -101,49 +101,49 @@ const typeDefs = gql`
     input UpdatePasswordInput {
         password: String!
     }
-    
+
     # Payloads    
     type CreateEventPayload {
         success: Boolean!
         event: Event
     }
-    
+
     type UpdateEventPayload {
         success: Boolean!
         event: Event
     }
-    
+
     type DeleteEventPayload {
         success: Boolean!
     }
-    
+
     type CreateUserPayload {
         success: Boolean!
         user: User
     }
-    
+
     type UpdateUserPayload {
         success: Boolean!
         user: User
     }
-    
+
     type DeleteUserPayload {
         success: Boolean!
     }
-    
+
     type LoginUserPayload {
         success: Boolean!
         token: String
     }
-    
+
     type ResetPasswordPayload {
         success: Boolean!
     }
-    
+
     type UpdatePasswordPayload {
         success: Boolean!
     }
-    
+
     type CreateTicketPayload {
         success: Boolean!
         ticket: Ticket
@@ -168,3 +168,5 @@ const typeDefs = gql`
         createTicket(input: CreateTicketInput!): CreateTicketPayload!
     }
 `;
+
+module.exports = typeDefs;

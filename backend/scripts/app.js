@@ -2,20 +2,30 @@ const express = require("express");
 // Handle async errors without try and catch blocks
 require("express-async-errors");
 const app = express();
-const morgan = require("morgan");
-const cors = require("cors");
-const mongoose = require("mongoose");
 const path = require("path");
-const helmet = require("helmet");
 
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
+
+const auth = require("./middleware/auth");
+
+const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
-// Middleware
-app.use(morgan("dev"));
+// Middleware for GraphQL and REST
 app.use(helmet());
+app.use(cors());
+app.use(auth.loadAuthData({tokenSecret: process.env.TOKEN_SECRET}));
+
+// GraphQL
+const apolloServer = require("./graphql/apollo");
+apolloServer.applyMiddleware({app});
+
+// Middleware for REST
+app.use(morgan("dev"));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
 
 // Routes
 app.use("/uploads", require("./routes/uploads"));
