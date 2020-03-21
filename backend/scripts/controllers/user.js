@@ -58,7 +58,7 @@ exports.getUser = async (id) => {
 };
 
 exports.deleteUser = (id) => {
-    return User.deleteOne({_id: id})
+    return User.findByIdAndDelete(id)
         .exec();
 };
 

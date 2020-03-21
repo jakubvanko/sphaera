@@ -98,33 +98,15 @@ const typeDefs = gql`
         email: String!
     }
 
-    # Payloads    
-    type CreateEventPayload {
+    # Payloads
+    type EventPayload {
         success: Boolean!
         event: Event
     }
-
-    type UpdateEventPayload {
-        success: Boolean!
-        event: Event
-    }
-
-    type DeleteEventPayload {
-        success: Boolean!
-    }
-
-    type CreateUserPayload {
+    
+    type UserPayload {
         success: Boolean!
         user: User
-    }
-
-    type UpdateUserPayload {
-        success: Boolean!
-        user: User
-    }
-
-    type DeleteUserPayload {
-        success: Boolean!
     }
 
     type LoginUserPayload {
@@ -148,12 +130,12 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        createEvent(input: CreateEventInput!): CreateEventPayload!
-        updateEvent(input: UpdateEventInput!): UpdateEventPayload!
-        deleteEvent(input: DeleteEventInput!): DeleteEventPayload!
-        createUser(input: CreateUserInput!): CreateUserPayload!
-        updateUser(input: UpdateUserInput!): UpdateUserPayload!
-        deleteUser(input: DeleteUserInput!): DeleteUserPayload!
+        createEvent(input: CreateEventInput!): EventPayload!
+        updateEvent(input: UpdateEventInput!): EventPayload!
+        deleteEvent(input: DeleteEventInput!): EventPayload!
+        createUser(input: CreateUserInput!): UserPayload!
+        updateUser(input: UpdateUserInput!): UserPayload!
+        deleteUser(input: DeleteUserInput!): UserPayload!
         loginUser(input: LoginUserInput!): LoginUserPayload!
         resetPassword(input: ResetPasswordInput!): ResetPasswordPayload!
         buyTicket(input: BuyTicketInput!): BuyTicketPayload!

@@ -3,7 +3,17 @@ const userController = require("../controllers/user");
 const authController = require("../controllers/auth");
 const ticketController = require("../controllers/ticket");
 
-const resolvers = {
+const createResponse = async (toTry) => {
+    const result = {success: true};
+    try {
+        await toTry(result);
+    } catch (e) {
+        result.success = false;
+    }
+    return result;
+};
+
+module.exports = {
     Query: {
         events: () => eventController.getEvents(),
         event: (obj, args) => eventController.getEvent(args._id),
@@ -13,41 +23,39 @@ const resolvers = {
         }
     },
     Mutation: {
-        createEvent: async (obj, args, context) => {
+        createEvent: (obj, args, context) => createResponse(async result => {
             authController.checkAuthorized(context.auth, true);
-            await eventController.createEvent(args.artist, args.date, args.image, args.areas);
-        },
-        updateEvent: async (obj, args, context) => {
+            result.event = await eventController.createEvent(args.artist, args.date, args.image, args.areas);
+        }),
+        updateEvent: (obj, args, context) => createResponse(async result => {
             authController.checkAuthorized(context.auth, true);
-            await eventController.updateEvent(args._id, args);
-        },
-        deleteEvent: async (obj, args, context) => {
+            result.event = await eventController.updateEvent(args._id, args);
+        }),
+        deleteEvent: (obj, args, context) => createResponse(async result => {
             authController.checkAuthorized(context.auth, true);
-            await eventController.deleteEvent(args._id);
-        },
-        createUser: async (obj, args) => {
+            result.event = await eventController.deleteEvent(args._id);
+        }),
+        createUser: (obj, args) => createResponse(async result => {
             const {firstName, lastName, email, password} = args;
-            await userController.createUser(firstName, lastName, email, password);
-        },
-        updateUser: async (obj, args, context) => {
+            result.user = await userController.createUser(firstName, lastName, email, password);
+        }),
+        updateUser: (obj, args, context) => createResponse(async result => {
             authController.currentOrAdmin(context.auth, args._id);
-            await userController.updateUser(args._id, args);
-        },
-        deleteUser: async (obj, args, context) => {
+            result.user = await userController.updateUser(args._id, args);
+        }),
+        deleteUser: (obj, args, context) => createResponse(async result => {
             authController.currentOrAdmin(context.auth, args._id);
-            await userController.deleteUser(args._id);
-        },
-        loginUser: async (obj, args) => {
-            const token = await userController.loginUser(args.email, args.password);
-        },
-        resetPassword: async (obj, args) => {
+            result.user = await userController.deleteUser(args._id);
+        }),
+        loginUser: (obj, args) => createResponse(async result => {
+            result.token = await userController.loginUser(args.email, args.password);
+        }),
+        resetPassword: (obj, args) => createResponse(async () => {
             await userController.resetPassword(args.email);
-        },
-        buyTicket: async (obj, args, context) => {
+        }),
+        buyTicket: (obj, args, context) => createResponse(async result => {
             authController.checkAuthorized(context.auth);
-            await ticketController.buyTicket(context.auth.user, args.event, args.area);
-        }
+            result.ticket = await ticketController.buyTicket(context.auth.user, args.event, args.area);
+        })
     }
 };
-
-module.exports = resolvers;

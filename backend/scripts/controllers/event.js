@@ -38,13 +38,15 @@ exports.updateEvent = (id, properties) => {
             updatedProperties[value] = properties[value]
         }
     }
-    return Event.updateOne({_id: id}, {
+    return Event.findByIdAndUpdate(id, {
         $set: updatedProperties
+    }, {
+        new: true
     })
-        .exec();
+        .save();
 };
 
 exports.deleteEvent = (id) => {
-    return Event.deleteOne({_id: id})
+    return Event.findByIdAndDelete(id)
         .exec();
 };
