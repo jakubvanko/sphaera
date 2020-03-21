@@ -1,12 +1,21 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
 const util = require("util");
+const jwt = require("jsonwebtoken");
 
 const sendMail = require("../configurations/nodemailer");
+const generateHash = require("../configurations/crypto");
 const User = require("../models/user");
 
-const generateHash = util.promisify(crypto.pbkdf2);
 const generateToken = util.promisify(jwt.sign);
+
+const validatePassword = (password) => {
+    if (password.length < 6) {
+        const error = new Error("Password too short");
+        error.status = 400;
+        throw error;
+    }
+    return true;
+};
 
 exports.createUser = async (firstName, lastName, email, password) => {
     const foundUsers = await User.find({email})
@@ -16,20 +25,11 @@ exports.createUser = async (firstName, lastName, email, password) => {
         error.status = 409;
         throw error;
     }
-    if (password.length < 6) {
-        const error = new Error("Password too short");
-        error.status = 400;
-        throw error;
-    }
-    const salt = crypto.randomBytes(16).toString("hex");
-    const hash = await generateHash(password,
-        salt + process.env.HASH_PEPPER,
-        parseInt(process.env.HASH_ITERATIONS),
-        parseInt(process.env.HASH_LENGTH),
-        process.env.HASH_ALGORITHM);
+    validatePassword(password);
+    const {hash, salt} = await generateHash(password);
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
-        password: hash.toString("hex"),
+        password: hash,
         salt,
         firstName,
         lastName,
@@ -67,12 +67,8 @@ exports.loginUser = async (email, password) => {
         .select("_id password salt")
         .exec();
     if (user !== null && user !== undefined) {
-        const validationHash = await generateHash(password,
-            user.salt + process.env.HASH_PEPPER,
-            parseInt(process.env.HASH_ITERATIONS),
-            parseInt(process.env.HASH_LENGTH),
-            process.env.HASH_ALGORITHM);
-        if (validationHash.toString("hex") === user.password) {
+        const {hash} = await generateHash(password, user.salt);
+        if (hash === user.password) {
             return generateToken({_id: user._id}, process.env.TOKEN_SECRET, {
                 expiresIn: process.env.LOGIN_TOKEN_EXPIRATION
             });
@@ -101,20 +97,11 @@ exports.resetPassword = async (email) => {
 };
 
 exports.updatePassword = async (id, password) => {
-    if (password.length < 6) {
-        const error = new Error("Password too short");
-        error.status = 400;
-        throw error;
-    }
-    const salt = crypto.randomBytes(16).toString("hex");
-    const hash = await generateHash(password,
-        salt + process.env.HASH_PEPPER,
-        parseInt(process.env.HASH_ITERATIONS),
-        parseInt(process.env.HASH_LENGTH),
-        process.env.HASH_ALGORITHM);
+    validatePassword(password);
+    const {hash, salt} = await generateHash(password);
     await User.updateOne({_id: id}, {
         $set: {
-            password: hash.toString("hex"),
+            password: hash,
             salt
         }
     })
