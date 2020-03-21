@@ -3,7 +3,7 @@ const util = require("util");
 
 const createHash = util.promisify(crypto.pbkdf2);
 
-module.exports = async (password, salt) => {
+const hashAndSalt = async (password, salt) => {
     const usedSalt = salt === undefined ? crypto.randomBytes(16).toString("hex") : salt;
     const hash = (await createHash(password,
         salt + process.env.HASH_PEPPER,
@@ -12,3 +12,5 @@ module.exports = async (password, salt) => {
         process.env.HASH_ALGORITHM)).toString("hex");
     return {hash, salt: usedSalt};
 };
+
+module.exports = hashAndSalt;

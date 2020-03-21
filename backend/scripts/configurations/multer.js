@@ -2,7 +2,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        // First argument is error
+        // The first argument is a possible error
         cb(null, "uploads/");
     },
     filename: (req, file, cb) => {
