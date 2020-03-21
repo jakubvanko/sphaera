@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 
-const Event = require("../models/event");
 const Ticket = require("../models/ticket");
+const eventController = require("./event");
 
 exports.buyTicket = async (user, eventId, areaName) => {
-    const event = await Event.findById(eventId)
-        .select("_id date areas")
-        .exec();
+    const event = await eventController.getEvent(eventId);
     // Check event date
     if (event.date < Date.now()) {
         const error = new Error("Event has ended");

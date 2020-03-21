@@ -66,7 +66,7 @@ const typeDefs = gql`
         _id: ID!
     }
 
-    input CreateTicketInput {
+    input BuyTicketInput {
         event: ID!
     }
 
@@ -96,10 +96,6 @@ const typeDefs = gql`
 
     input ResetPasswordInput {
         email: String!
-    }
-
-    input UpdatePasswordInput {
-        password: String!
     }
 
     # Payloads    
@@ -140,11 +136,7 @@ const typeDefs = gql`
         success: Boolean!
     }
 
-    type UpdatePasswordPayload {
-        success: Boolean!
-    }
-
-    type CreateTicketPayload {
+    type BuyTicketPayload {
         success: Boolean!
         ticket: Ticket
     }
@@ -164,8 +156,7 @@ const typeDefs = gql`
         deleteUser(input: DeleteUserInput!): DeleteUserPayload!
         loginUser(input: LoginUserInput!): LoginUserPayload!
         resetPassword(input: ResetPasswordInput!): ResetPasswordPayload!
-        updatePassword(input: UpdatePasswordInput!): UpdatePasswordPayload!
-        createTicket(input: CreateTicketInput!): CreateTicketPayload!
+        buyTicket(input: BuyTicketInput!): BuyTicketPayload!
     }
 `;
 

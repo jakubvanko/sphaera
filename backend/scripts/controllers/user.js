@@ -96,14 +96,21 @@ exports.resetPassword = async (email) => {
     }
 };
 
-exports.updatePassword = async (id, password) => {
-    validatePassword(password);
-    const {hash, salt} = await generateHash(password);
-    await User.updateOne({_id: id}, {
-        $set: {
-            password: hash,
-            salt
+exports.updateUser = async (id, properties) => {
+    const updatedProperties = {};
+    for (const value of ["firstName", "lastName", "email"]) {
+        if (properties[value] !== null && properties[value] !== undefined) {
+            updatedProperties[value] = properties[value]
         }
+    }
+    if (properties.password !== null && properties.password !== undefined) {
+        validatePassword(properties.password);
+        const {hash, salt} = await generateHash(password);
+        updatedProperties.password = hash;
+        updatedProperties.salt = salt;
+    }
+    return await User.updateOne({_id: id}, {
+        $set: updatedProperties
     })
         .exec();
 };

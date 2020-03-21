@@ -21,13 +21,7 @@ router.post("/", auth.authorized(true), async (req, res) => {
 
 // Update one event by ID
 router.patch("/:eventId", auth.authorized(true), async (req, res) => {
-    const updatedProperties = {};
-    for (const value of ["artist", "date", "image", "areas"]) {
-        if (req.body[value] !== null && req.body[value] !== undefined) {
-            updatedProperties[value] = req.body[value]
-        }
-    }
-    await eventController.updateEvent(req.params.eventId, updatedProperties);
+    await eventController.updateEvent(req.params.eventId, req.body);
     return res.status(204).json();
 });
 

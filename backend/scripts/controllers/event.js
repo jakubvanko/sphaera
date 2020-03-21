@@ -32,8 +32,14 @@ exports.createEvent = (artist, date, image, areas) => {
 };
 
 exports.updateEvent = (id, properties) => {
+    const updatedProperties = {};
+    for (const value of ["artist", "date", "image", "areas"]) {
+        if (properties[value] !== null && properties[value] !== undefined) {
+            updatedProperties[value] = properties[value]
+        }
+    }
     return Event.updateOne({_id: id}, {
-        $set: properties
+        $set: updatedProperties
     })
         .exec();
 };
