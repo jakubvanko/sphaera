@@ -3,27 +3,30 @@ const auth = require("../middleware/auth");
 
 const userController = require("../controllers/user");
 
-// Register a new user
+/*
+    Route to register a new user
+ */
 router.post("/", async (req, res) => {
     const {firstName, lastName, email, password} = req.body;
-    const result = await userController.createUser(firstName, lastName, email, password);
-    return res.status(201).json(result);
+    const user = await userController.createUser(firstName, lastName, email, password);
+    return res.status(201).json(user);
 });
 
-// User login
+/*
+    Routes for user authentication
+ */
 router.post("/login", async (req, res) => {
     const token = await userController.loginUser(req.body.email, req.body.password);
     return res.status(200).json({token});
 });
 
-// Reset user password
 router.post("/resetpassword", async (req, res) => {
     await userController.resetPassword(req.body.email);
     return res.status(204).json()
 });
 
 /*
-    Routes for the logged in user:
+    Routes to get, modify, or delete the logged in user
  */
 router.get("/current", auth.authorized(), async (req, res) => {
     const user = await userController.getUser(req.auth.user._id);
@@ -31,17 +34,17 @@ router.get("/current", auth.authorized(), async (req, res) => {
 });
 
 router.patch("/current", auth.authorized(), async (req, res) => {
-    await userController.updateUser(req.auth.user._id, req.body);
-    return res.status(204).json();
+    const user = await userController.updateUser(req.auth.user._id, req.body);
+    return res.status(200).json(user);
 });
 
 router.delete("/current", auth.authorized(), async (req, res) => {
-    await userController.deleteUser(req.auth.user._id);
-    return res.status(204).json();
+    const user = await userController.deleteUser(req.auth.user._id);
+    return res.status(200).json(user);
 });
 
 /*
-    User routes for admins:
+    Routes for admins to get, modify, or delete a user by id
  */
 router.get("/:userId", auth.authorized(true), async (req, res) => {
     const user = await userController.getUser(req.params.userId);
@@ -49,13 +52,13 @@ router.get("/:userId", auth.authorized(true), async (req, res) => {
 });
 
 router.patch("/:userId", auth.authorized(true), async (req, res) => {
-    await userController.updateUser(req.params.userId, req.body);
-    return res.status(204).json();
+    const user = await userController.updateUser(req.params.userId, req.body);
+    return res.status(200).json(user);
 });
 
 router.delete("/:userId", auth.authorized(true), async (req, res) => {
-    await userController.deleteUser(req.params.userId);
-    return res.status(204).json();
+    const user = await userController.deleteUser(req.params.userId);
+    return res.status(200).json(user);
 });
 
 module.exports = router;
