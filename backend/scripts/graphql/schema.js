@@ -97,6 +97,10 @@ const typeDefs = gql`
     input ResetPasswordInput {
         email: String!
     }
+    
+    input SingleUploadInput {
+        file: Upload!
+    }
 
     # Payloads
     type EventsPayload {
@@ -127,6 +131,11 @@ const typeDefs = gql`
         success: Boolean!
         ticket: Ticket
     }
+    
+    type SingleUploadPayload {
+        success: Boolean!
+        name: String
+    }
 
     type Query {
         events: EventsPayload!
@@ -144,6 +153,7 @@ const typeDefs = gql`
         loginUser(input: LoginUserInput!): LoginUserPayload!
         resetPassword(input: ResetPasswordInput!): ResetPasswordPayload!
         buyTicket(input: BuyTicketInput!): BuyTicketPayload!
+        singleUpload(input: SingleUploadInput!): SingleUploadPayload!
     }
 `;
 

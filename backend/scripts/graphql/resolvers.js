@@ -2,6 +2,7 @@ const eventController = require("../controllers/event");
 const userController = require("../controllers/user");
 const authController = require("../controllers/auth");
 const ticketController = require("../controllers/ticket");
+const uploadController = require("../controllers/upload");
 
 const createResponse = async (toTry) => {
     const result = {success: true};
@@ -60,6 +61,10 @@ module.exports = {
         buyTicket: (obj, args, context) => createResponse(async result => {
             authController.checkAuthorized(context.auth);
             result.ticket = await ticketController.buyTicket(context.auth.user, args.event, args.area);
+        }),
+        singleUpload: (obj, args, context) => createResponse(async result => {
+            authController.checkAuthorized(context.auth, true);
+            result.name = await uploadController.uploadImage(args.file);
         })
     }
 };
