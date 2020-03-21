@@ -99,6 +99,11 @@ const typeDefs = gql`
     }
 
     # Payloads
+    type EventsPayload {
+        success: Boolean!
+        events: [Event]!
+    }
+    
     type EventPayload {
         success: Boolean!
         event: Event
@@ -124,9 +129,9 @@ const typeDefs = gql`
     }
 
     type Query {
-        events: [Event]
-        event(_id: ID!): Event
-        user(_id: ID!): User
+        events: EventsPayload!
+        event(_id: ID!): EventPayload!
+        user(_id: ID!): UserPayload!
     }
 
     type Mutation {

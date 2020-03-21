@@ -15,12 +15,16 @@ const createResponse = async (toTry) => {
 
 module.exports = {
     Query: {
-        events: () => eventController.getEvents(),
-        event: (obj, args) => eventController.getEvent(args._id),
-        user: (obj, args, context) => {
+        events: () => createResponse(async result => {
+            result.events = await eventController.getEvents();
+        }),
+        event: (obj, args) => createResponse(async result => {
+            result.event = eventController.getEvent(args._id);
+        }),
+        user: (obj, args, context) => createResponse(async result => {
             authController.currentOrAdmin(context.auth, args._id);
-            return userController.getUser(args._id);
-        }
+            result.user = await userController.getUser(args._id);
+        })
     },
     Mutation: {
         createEvent: (obj, args, context) => createResponse(async result => {
