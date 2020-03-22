@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const upload = require("../configurations/multer");
+const upload = require("../middleware/multer");
 const auth = require("../middleware/auth");
 
 /*
