@@ -25,11 +25,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // Routes
-app.use("/uploads", require("./routes/uploads"));
-app.use('/uploads', express.static(path.join(__dirname, "../uploads")));
-app.use("/events", require("./routes/events"));
-app.use("/users", require("./routes/users"));
-app.use("/tickets", require("./routes/tickets"));
+app.use("/api/uploads", require("./routes/uploads"));
+app.use('/api/uploads', express.static(path.join(__dirname, "../uploads")));
+app.use("/api/events", require("./routes/events"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/tickets", require("./routes/tickets"));
 
 // Default route
 app.use(() => {
