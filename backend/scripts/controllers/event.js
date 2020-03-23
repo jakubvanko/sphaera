@@ -42,8 +42,7 @@ exports.updateEvent = (id, properties) => {
         $set: updatedProperties
     }, {
         new: true
-    })
-        .save();
+    });
 };
 
 exports.deleteEvent = (id) => {

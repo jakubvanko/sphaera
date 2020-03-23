@@ -10,9 +10,6 @@ const morgan = require("morgan");
 
 const auth = require("./middleware/auth");
 
-const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
-
 // Middleware for GraphQL and REST
 app.use(helmet());
 app.use(cors());
