@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../configurations/nodemailer");
 const generateHash = require("../configurations/crypto");
 const User = require("../models/user");
+// Ticket should be imported because it is used in populate
+const Ticket = require("../models/ticket");
 
 const generateToken = util.promisify(jwt.sign);
 
@@ -105,12 +107,13 @@ exports.updateUser = async (id, properties) => {
     }
     if (properties.password !== null && properties.password !== undefined) {
         validatePassword(properties.password);
-        const {hash, salt} = await generateHash(password);
+        const {hash, salt} = await generateHash(properties.password);
         updatedProperties.password = hash;
         updatedProperties.salt = salt;
     }
     return await User.findByIdAndUpdate(id, {
         $set: updatedProperties
-    })
-        .exec();
+    }, {
+        new: true
+    }).exec();
 };
