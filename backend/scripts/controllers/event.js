@@ -12,7 +12,7 @@ exports.getEvent = async (id) => {
     const event = await Event.findById(id)
         .select("_id artist date image areas")
         .exec();
-    if (event === null) {
+    if (event === null || event === undefined) {
         const error = new Error("Event not found");
         error.status = 404;
         throw error;

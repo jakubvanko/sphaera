@@ -109,7 +109,7 @@ exports.updateUser = async (id, properties) => {
         updatedProperties.password = hash;
         updatedProperties.salt = salt;
     }
-    return await User.updateOne({_id: id}, {
+    return await User.findByIdAndUpdate(id, {
         $set: updatedProperties
     })
         .exec();
