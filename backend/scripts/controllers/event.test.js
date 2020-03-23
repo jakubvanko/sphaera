@@ -44,12 +44,12 @@ describe("Event controller test", () => {
     };
 
     describe("createEvent(artist, date, image, areas)", () => {
-        test("throws an error with no arguments", async () => {
+        test("throws an error due to no arguments", async () => {
             await expect(eventController.createEvent())
                 .rejects
                 .toThrow();
         });
-        test("throws an error with invalid arguments", async () => {
+        test("throws an error due to invalid arguments", async () => {
             await expect(eventController.createEvent(87, "7.Sep.2002", {}, "cat"))
                 .rejects
                 .toThrow();
@@ -61,12 +61,12 @@ describe("Event controller test", () => {
     });
 
     describe("getEvent(id)", () => {
-        test("throws an error with no arguments", async () => {
+        test("throws an error due to no arguments", async () => {
             await expect(eventController.getEvent())
                 .rejects
                 .toThrow();
         });
-        test("throws an error with invalid ID", async () => {
+        test("throws an error due to invalid ID", async () => {
             await expect(eventController.getEvent("fasbasiofb"))
                 .rejects
                 .toThrow();
