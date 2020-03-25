@@ -10,9 +10,9 @@ const Header = () => {
 
     return (
         <Container>
-            <Icon name={"logo"} width={25} $hoverFill={"#77bdbf"}/>
+            <Icon name={"logo"} width={25} $hoverFill={"#77bdbf"} aria-label={"home"}/>
             <List $mobileActive={isMobileActive}>
-                <CloseButton onClick={() => setMobileActive(false)}/>
+                <CloseButton onClick={() => setMobileActive(false)} aria-label={"close navigation"}/>
                 <LinkContainer><Link>Home</Link></LinkContainer>
                 <LinkContainer><Link>Tickets</Link></LinkContainer>
                 <LinkContainer><Link>Contact</Link></LinkContainer>
@@ -21,7 +21,7 @@ const Header = () => {
             </List>
             <Link $display={width < 992 && "none"}>Log In</Link>
             <Icon name={"hamburger"} width={20} onClick={() => setMobileActive(!isMobileActive)}
-                  $display={width >= 992 && "none"} $hoverStroke={"#77bdbf"}/>
+                  $display={width >= 992 && "none"} $hoverStroke={"#77bdbf"} aria-label={"open navigation"}/>
         </Container>
     )
 };

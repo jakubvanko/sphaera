@@ -4,7 +4,7 @@ export const Container = styled.header`
     background-color: #23282D;
     width: 100vw;
     max-width: 100%;
-    min-height: 60px;
+    height: 60px;
     display: flex;
     padding: 0 50px;
     justify-content: space-between;
@@ -47,6 +47,7 @@ export const List = styled.ul`
 export const LinkContainer = styled.li`
     padding: 10px 20px;
     border-bottom: 1px solid rgb(54, 54, 54);
+    user-select: none;
     
     @media only screen and (min-width: 992px) {
         border-bottom: none;
