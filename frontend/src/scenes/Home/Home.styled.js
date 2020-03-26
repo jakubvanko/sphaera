@@ -79,10 +79,21 @@ export const VideoTextContainer = styled.div`
 
 export const IconContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(8, 1fr);
   padding: 10vh 14vw;
   grid-row-gap: 8vh;
+  justify-items: center;
+  
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+  }
+  
+  @media only screen and (min-width: 992px) {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto auto;
+  }
 `;
 
 export const BlackBanner = styled.div`
@@ -104,7 +115,13 @@ export const BannerText = styled.div`
 `;
 
 export const IconText = styled(BannerText)`
-  grid-column: 1 / span 4;
   color: black;
   margin-bottom: 1vh;
+  @media only screen and (min-width: 600px) {
+    grid-column: 1 / span 2;
+  }
+  
+  @media only screen and (min-width: 992px) {
+    grid-column: 1 / span 4;
+  }
 `;
