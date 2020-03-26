@@ -76,3 +76,35 @@ export const VideoTextContainer = styled.div`
     line-height: 4em;
   }
 `;
+
+export const IconContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  padding: 10vh 14vw;
+  grid-row-gap: 8vh;
+`;
+
+export const BlackBanner = styled.div`
+  width: 100vw;
+  max-width: 100%;
+  min-height: 300px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 14vw;
+`;
+
+export const BannerText = styled.div`
+  color: white;
+  font-size: 1.6em;
+  font-weight: 600;
+  text-align: center;
+`;
+
+export const IconText = styled(BannerText)`
+  grid-column: 1 / span 4;
+  color: black;
+  margin-bottom: 1vh;
+`;
