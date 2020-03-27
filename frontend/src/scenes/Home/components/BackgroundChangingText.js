@@ -53,18 +53,6 @@ const TextContainer = styled.div`
   @media (max-width: 1180px){
     padding: 7.5% 10%;
   }
-  @media (max-width: 870px){
-    padding: 7.5% 9%;
-  }
-  @media (max-width: 595px){
-    padding: 7.5% 8%;
-  }
-  @media (max-width: 410px){
-    padding: 7.5% 7%;
-  }
-  @media (max-width: 320px){
-    padding: 7.5% 6%;
-  }
 `;
 
 const ImageContainer = styled.div`

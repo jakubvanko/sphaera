@@ -40,7 +40,7 @@ export const VideoText = styled.h1`
   user-select: none;
   letter-spacing: 1px;
   line-height: 1.2em;
-  padding: 100px 0 20px 0;
+  padding: 100px 0 10px 0;
   color: white;
   text-align: center;
   
@@ -68,7 +68,6 @@ export const VideoTextContainer = styled.div`
 
   @media only screen and (min-width: 600px) {
     padding: 50px 0 0 10vw;
-    line-height: 4em;
   }
   
   @media only screen and (min-width: 1000px) {
@@ -84,6 +83,7 @@ export const IconContainer = styled.div`
   padding: 10vh 14vw;
   grid-row-gap: 8vh;
   justify-items: center;
+  border-bottom: 1px solid rgb(198,198,198);
   
   @media only screen and (min-width: 600px) {
     grid-template-columns: auto auto;
@@ -93,6 +93,7 @@ export const IconContainer = styled.div`
   @media only screen and (min-width: 992px) {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto auto;
+    padding: 10vh 14vw 5vh 14vw;
   }
 `;
 
@@ -107,15 +108,18 @@ export const BlackBanner = styled.div`
   padding: 50px 14vw;
 `;
 
-export const BannerText = styled.div`
-  color: white;
+export const MainText = styled.div`
   font-size: 1.6em;
   font-weight: 600;
   text-align: center;
+  color: black;
 `;
 
-export const IconText = styled(BannerText)`
-  color: black;
+export const BannerText = styled(MainText)`
+  color: white;
+`;
+
+export const IconText = styled(MainText)`
   margin-bottom: 1vh;
   @media only screen and (min-width: 600px) {
     grid-column: 1 / span 2;
@@ -124,4 +128,14 @@ export const IconText = styled(BannerText)`
   @media only screen and (min-width: 992px) {
     grid-column: 1 / span 4;
   }
+`;
+
+export const CorporateContainer = styled.div`
+  padding: 7vh 10vw;
+`;
+
+export const CorporateLink = styled.a`
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
 `;

@@ -10,7 +10,10 @@ import {
     IconContainer,
     BlackBanner,
     BannerText,
-    IconText
+    IconText,
+    CorporateContainer,
+    CorporateLink,
+    MainText
 } from "./Home.styled";
 import source from "./assets/home.mp4";
 import BackgroundChangingText from "./components/BackgroundChangingText";
@@ -57,6 +60,12 @@ const Home = () => {
                 <Icon width={iconWidth} name={"sonata"}/>
                 <Icon width={iconWidth} name={"orphonic"}/>
             </IconContainer>
+            <CorporateContainer>
+                <MainText href={"#"}>
+                    Sphaera is forever grateful to its family of <CorporateLink>Corporate Partners</CorporateLink> for
+                    their support.
+                </MainText>
+            </CorporateContainer>
         </Container>
     )
 };
