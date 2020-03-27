@@ -131,7 +131,7 @@ export const IconText = styled(MainText)`
 `;
 
 export const CorporateContainer = styled.div`
-  padding: 7vh 10vw;
+  padding: 8vh 10vw;
 `;
 
 export const CorporateLink = styled.a`

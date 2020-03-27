@@ -11,6 +11,12 @@ import Arrangiatore from "./components/Arrangiatore";
 import Concordea from "./components/Concordea";
 import Sonata from "./components/Sonata";
 import Orphonic from "./components/Orphonic";
+import Facebook from "./components/Facebook";
+import Youtube from "./components/Youtube";
+import Twitter from "./components/Twitter";
+import Instagram from "./components/Instagram";
+import Tiktok from "./components/Tiktok";
+import Foursquare from "./components/Foursquare";
 
 const ICON_MAP = {
     hamburger: Hamburger,
@@ -22,7 +28,13 @@ const ICON_MAP = {
     arrangiatore: Arrangiatore,
     concordea: Concordea,
     sonata: Sonata,
-    orphonic: Orphonic
+    orphonic: Orphonic,
+    facebook: Facebook,
+    youtube: Youtube,
+    twitter: Twitter,
+    instagram: Instagram,
+    tiktok: Tiktok,
+    foursquare: Foursquare
 };
 
 const Icon = ({name, width, ...props}) => {
