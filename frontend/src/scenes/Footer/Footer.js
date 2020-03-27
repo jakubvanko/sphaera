@@ -2,6 +2,7 @@ import React from "react";
 
 import {Container, IconContainer, LinksContainer, SmallLink, AdditionalContainer, CopyrightText} from "./Footer.styled";
 import Icon from "../../components/Icon/Icon";
+import useWindowDimensions from "../../hooks/useWindowsDimensions";
 
 const LINKS = [
     "Career",
@@ -11,13 +12,14 @@ const LINKS = [
     "Membership",
     "Give",
     "Tickets",
-    "Reserve",
+    "Reservations",
     "Artists",
     "Gift Vouchers",
     "Authorities"
 ];
 
 const Footer = () => {
+    const [width] = useWindowDimensions();
     const iconWidth = 28;
 
     return (
@@ -31,15 +33,11 @@ const Footer = () => {
                 <Icon width={iconWidth} name={"foursquare"}/>
             </IconContainer>
             <LinksContainer>
-                {LINKS.map(value => <SmallLink>{value}</SmallLink>)}
+                {LINKS.map(value => <SmallLink key={value}>{value}</SmallLink>)}
             </LinksContainer>
             <AdditionalContainer>
-                <CopyrightText>
-                    Jakub Vanko
-                </CopyrightText>
-                <CopyrightText>
-                    © 2020, Slovakia
-                </CopyrightText>
+                {width > 991 ? <><CopyrightText>Jakub Vanko</CopyrightText><CopyrightText>© 2020,
+                    Slovakia</CopyrightText></> : <CopyrightText>© 2020 Jakub Vanko, Slovakia</CopyrightText>}
             </AdditionalContainer>
         </Container>
     )

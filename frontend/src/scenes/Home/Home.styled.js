@@ -109,9 +109,9 @@ export const BlackBanner = styled.div`
 `;
 
 export const MainText = styled.div`
+  text-align: center;
   font-size: 1.6em;
   font-weight: 600;
-  text-align: center;
   color: black;
 `;
 

@@ -1,5 +1,7 @@
 import React from "react";
 
+import poster from "./assets/placeholder.jpg"
+import source from "./assets/home.mp4";
 import {
     Container,
     Video,
@@ -15,7 +17,6 @@ import {
     CorporateLink,
     MainText
 } from "./Home.styled";
-import source from "./assets/home.mp4";
 import BackgroundChangingText from "./components/BackgroundChangingText";
 import Icon from "../../components/Icon/Icon";
 
@@ -25,7 +26,7 @@ const Home = () => {
     return (
         <Container>
             <VideoContainer>
-                <Video autoPlay loop muted>
+                <Video autoPlay loop muted poster={poster}>
                     <source src={source} type="video/mp4"/>
                     Your browser does not support the video tag.
                 </Video>
