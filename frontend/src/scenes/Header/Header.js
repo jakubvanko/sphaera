@@ -1,8 +1,16 @@
 import React, {useState} from "react";
 
-import {Container, Link, List, LinkContainer, CloseButton} from "./Header.styled";
-import Icon from "../../components/Icon/Icon";
 import useWindowDimensions from "../../hooks/useWindowsDimensions";
+import {
+    Container,
+    Link,
+    List,
+    LinkContainer,
+    CloseButton,
+    IconLinkContainer,
+    SearchContainer,} from "./Header.styled";
+import Icon from "../../components/Icon/Icon";
+import {BasicInput} from "../../components/Input/Input";
 
 const Header = () => {
     const [isMobileActive, setMobileActive] = useState(false);
@@ -10,7 +18,11 @@ const Header = () => {
 
     return (
         <Container>
-            <Icon name={"logo"} width={25} $hoverFill={"#77bdbf"} aria-label={"home"}/>
+            <Icon name={"logo"} width={100} $padding={"0 90px"} aria-label={"home"}/>
+            <SearchContainer>
+                <BasicInput $width={"180px"} placeholder={"Search for..."}/>
+                <Icon name={"search"} width={30}/>
+            </SearchContainer>
             <List $mobileActive={isMobileActive}>
                 <CloseButton onClick={() => setMobileActive(false)} aria-label={"close navigation"}/>
                 <LinkContainer><Link>Home</Link></LinkContainer>
@@ -19,7 +31,14 @@ const Header = () => {
                 <LinkContainer><Link>Visit Us</Link></LinkContainer>
                 <LinkContainer $display={width >= 992 && "none"}><Link>Log In</Link></LinkContainer>
             </List>
-            <Link $display={width < 992 && "none"}>Log In</Link>
+            <IconLinkContainer $border>
+                <Icon name={"user"} width={23}/>
+                <Link>Log In</Link>
+            </IconLinkContainer>
+            <IconLinkContainer>
+                <Icon name={"cart"} width={24}/>
+                <Link>Cart</Link>
+            </IconLinkContainer>
             <Icon name={"hamburger"} width={20} onClick={() => setMobileActive(!isMobileActive)}
                   $display={width >= 992 && "none"} $hoverStroke={"#77bdbf"} aria-label={"open navigation"}/>
         </Container>

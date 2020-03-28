@@ -17,6 +17,10 @@ import Twitter from "./components/Twitter";
 import Instagram from "./components/Instagram";
 import Tiktok from "./components/Tiktok";
 import Foursquare from "./components/Foursquare";
+import User from "./components/User";
+import Search from "./components/Search";
+import UserFilled from "./components/UserFilled";
+import Cart from "./components/Cart";
 
 const ICON_MAP = {
     hamburger: Hamburger,
@@ -34,7 +38,11 @@ const ICON_MAP = {
     twitter: Twitter,
     instagram: Instagram,
     tiktok: Tiktok,
-    foursquare: Foursquare
+    foursquare: Foursquare,
+    user: User,
+    userfilled: UserFilled,
+    search: Search,
+    cart: Cart
 };
 
 const Icon = ({name, width, ...props}) => {

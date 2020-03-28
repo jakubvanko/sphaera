@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background-color: #23282D;
+  background-color: white;
   width: 100vw;
   max-width: 100%;
   height: var(--nav-height);
   display: flex;
   padding: 0 50px;
-  justify-content: space-between;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
+  justify-content: space-evenly;
+  color: black;
+  font-weight: bolder;
+  border-bottom: 1px solid #eceae6;
   
   @media only screen and (min-width: 992px) {
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    padding: 0;
   }
 `;
 
@@ -26,21 +27,22 @@ export const List = styled.ul`
   left: 0;
   z-index: 1;
   height: 100vh;
-  background-color: inherit;
   width: ${props => props.$mobileActive ? "200px" : 0};
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   transition: 0.5s;
   white-space: nowrap;
+  background-color: inherit;
   
   @media only screen and (min-width: 992px) {
     position: static;
     flex-direction: row;
     width: auto;
-    height: auto;
+    height: 100%;
     align-items: center;
     justify-content: center;
+    padding: 0 6vw;
   }
 `;
 
@@ -59,7 +61,7 @@ export const CloseButton = styled.button`
   color: white;
   font-weight: 800;
   font-size: 17px;
-  background: #77bdbf;
+  background: black;
   cursor: pointer;
   outline: none;
   border: none;
@@ -80,11 +82,43 @@ export const CloseButton = styled.button`
 
 export const Link = styled.a`
   cursor: pointer;
-  display: ${props => props.$display && props.$display};
   border-bottom: transparent 2px solid;
   
   :hover {
-    color: #77bdbf;
-    border-bottom: #77bdbf 2px solid;
+    border-bottom: black 2px solid;
   }
+`;
+
+export const IconLinkContainer = styled.a`
+  display: none;
+  color: #9a9a9a;
+  font-weight: normal;
+  font-size: 14px;
+  height: 100%;
+  cursor: pointer;
+  a:hover {
+    border-bottom: transparent 2px solid;
+  }
+  
+  @media only screen and (min-width: 992px) {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-content: center;
+    grid-row-gap: 7px;
+    border-left: ${props => props.$border && "1px solid #eceae6"};
+    border-right: ${props => props.$border && "1px solid #eceae6"};
+    padding: 0 35px;
+  }
+`;
+
+export const SearchContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  height: 100%;
+  align-items: center;
+  padding: 0 35px;
+  border-left: 1px solid #eceae6;
+  border-right: 1px solid #eceae6;
 `;

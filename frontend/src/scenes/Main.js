@@ -3,8 +3,9 @@ import React from "react";
 import "./main.css"
 
 import Header from "./Header/Header";
-import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import Home from "./Home/Home";
+import Visit from "./Visit/Visit";
 
 const Main = () => (
     <>
