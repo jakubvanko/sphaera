@@ -4,11 +4,6 @@ import poster from "./assets/placeholder.jpg"
 import source from "./assets/home.mp4";
 import {
     Container,
-    Video,
-    VideoContainer,
-    VideoText,
-    VideoDescription,
-    VideoTextContainer,
     IconContainer,
     BlackBanner,
     BannerText,
@@ -19,26 +14,16 @@ import {
 } from "./Home.styled";
 import BackgroundChangingText from "./components/BackgroundChangingText";
 import Icon from "../../components/Icon/Icon";
+import Hero from "../../components/Hero/Hero";
 
 const Home = () => {
     const iconWidth = 150;
 
     return (
         <Container>
-            <VideoContainer>
-                <Video autoPlay loop muted poster={poster}>
-                    <source src={source} type="video/mp4"/>
-                    Your browser does not support the video tag.
-                </Video>
-                <VideoTextContainer>
-                    <VideoText>
-                        Welcome to Sphaera
-                    </VideoText>
-                    <VideoDescription>
-                        Choose from a wide range of shows
-                    </VideoDescription>
-                </VideoTextContainer>
-            </VideoContainer>
+            <Hero as={"video"} src={source} autoPlay loop muted poster={poster}
+                  mainText={"Welcome to Sphaera"}
+                  additionalText={"Choose from a wide range of shows"}/>
             <BackgroundChangingText/>
             <BlackBanner>
                 <BannerText>
