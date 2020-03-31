@@ -14,3 +14,11 @@ export const ContentContainer = styled.div`
     padding: 50px 180px;
   }
 `;
+
+export const SectionContainer = styled.section`
+  padding-top: 30px;
+`;
+
+export const Text = styled.span`
+  font-size: 1.2em;
+`;
