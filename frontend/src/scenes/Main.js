@@ -10,7 +10,7 @@ import Visit from "./Visit/Visit";
 const Main = () => (
     <>
         <Header/>
-        <Home/>
+        <Visit/>
         <Footer/>
     </>
 );

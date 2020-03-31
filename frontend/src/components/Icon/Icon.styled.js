@@ -12,5 +12,7 @@ export const Container = styled.button`
     
     svg {
         display: block;
+        fill: ${props => props.$fill && props.$fill};
+        stroke: ${props => props.$stroke && props.$stroke};
     }
 `;

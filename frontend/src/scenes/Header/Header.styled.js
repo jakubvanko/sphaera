@@ -6,7 +6,7 @@ export const Container = styled.header`
   max-width: 100%;
   height: var(--nav-height);
   display: flex;
-  padding: 0 50px;
+  padding: 0 30px;
   justify-content: space-between;
   color: black;
   font-weight: bolder;

@@ -25,15 +25,19 @@ export const GraphicContent = styled.div`
 
 export const TextContainer = styled.div`
   color: black;
-  padding: 25px 50px;
+  padding: 25px 30px;
   
   @media only screen and (min-width: 600px) {
     position: absolute;
     color: white;
   }
   
+  @media only screen and (min-width: 750px) {
+    padding: 50px 0 0 7vw;
+  }
+  
   @media only screen and (min-width: 1000px) {
-    padding: 50px 0 0 15vw;
+    padding: 50px 0 0 14vw;
     line-height: 4em;
   }
 `;
@@ -55,8 +59,10 @@ export const MainText = styled.div`
   
   @media only screen and (min-width: 800px) {
     font-size: 4em;
-    text-align: left;
-    padding-top: 0;
+  }
+  
+  @media only screen and (min-width: 1400px) {
+    font-size: ${props => props.$big && "7vw"};
   }
 `;
 
@@ -67,5 +73,6 @@ export const AdditionalText = styled.div`
   @media only screen and (min-width: 600px) {
     text-align: left;
     line-height: 1.4em;
+    font-size: ${props => props.$small && "1.1em"};
   }
 `;
