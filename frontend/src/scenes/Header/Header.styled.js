@@ -6,13 +6,16 @@ export const Container = styled.header`
   max-width: 100%;
   height: var(--nav-height);
   display: flex;
-  padding: 0 50px;
-  justify-content: space-evenly;
+  padding: 0 40px;
+  justify-content: space-between;
   color: black;
   font-weight: bolder;
   border-bottom: 1px solid #eceae6;
   
   @media only screen and (min-width: 992px) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(5, auto);
     align-items: center;
     justify-content: center;
     padding: 0;
@@ -42,12 +45,13 @@ export const List = styled.ul`
     height: 100%;
     align-items: center;
     justify-content: center;
-    padding: 0 6vw;
+    padding: 0 5.5vw;
   }
 `;
 
 export const LinkContainer = styled.li`
-  padding: 10px 20px;
+  padding: 10px 30px;
+  letter-spacing: 1px;
   border-bottom: 1px solid rgb(54, 54, 54);
   user-select: none;
   
@@ -113,12 +117,29 @@ export const IconLinkContainer = styled.a`
 `;
 
 export const SearchContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 10px;
+  display: none;
+  @media only screen and (min-width: 1250px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    height: 100%;
+    align-items: center;
+    padding: 0 35px;
+    border-left: 1px solid #eceae6;
+    border-right: 1px solid #eceae6;
+  }
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  align-content: center;
   height: 100%;
-  align-items: center;
-  padding: 0 35px;
-  border-left: 1px solid #eceae6;
-  border-right: 1px solid #eceae6;
+  
+  @media only screen and (min-width: 992px) {
+    border-right: 1px solid #eceae6;
+    padding: 0 80px;
+  }
+  @media only screen and (min-width: 1250px) {
+    border-right: none;
+  }
 `;

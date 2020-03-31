@@ -8,7 +8,9 @@ import {
     LinkContainer,
     CloseButton,
     IconLinkContainer,
-    SearchContainer,} from "./Header.styled";
+    SearchContainer,
+    LogoContainer
+} from "./Header.styled";
 import Icon from "../../components/Icon/Icon";
 import {BasicInput} from "../../components/Input/Input";
 
@@ -18,7 +20,9 @@ const Header = () => {
 
     return (
         <Container>
-            <Icon name={"logo"} width={100} $padding={"0 90px"} aria-label={"home"}/>
+            <LogoContainer>
+                <Icon name={"logo"} width={100} aria-label={"home"}/>
+            </LogoContainer>
             <SearchContainer>
                 <BasicInput $width={"180px"} placeholder={"Search for..."}/>
                 <Icon name={"search"} width={30}/>
@@ -33,11 +37,11 @@ const Header = () => {
             </List>
             <IconLinkContainer $border>
                 <Icon name={"user"} width={23}/>
-                <Link>Log In</Link>
+                <Link as={"span"}>Log In</Link>
             </IconLinkContainer>
             <IconLinkContainer>
                 <Icon name={"cart"} width={24}/>
-                <Link>Cart</Link>
+                <Link as={"span"}>Cart</Link>
             </IconLinkContainer>
             <Icon name={"hamburger"} width={20} onClick={() => setMobileActive(!isMobileActive)}
                   $display={width >= 992 && "none"} $hoverStroke={"#77bdbf"} aria-label={"open navigation"}/>

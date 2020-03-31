@@ -113,6 +113,11 @@ export const MainText = styled.div`
   font-size: 1.6em;
   font-weight: 600;
   color: black;
+  line-height: 1.4em;
+  
+  @media only screen and (min-width: 992px) {
+    line-height: normal;
+  }
 `;
 
 export const BannerText = styled(MainText)`
