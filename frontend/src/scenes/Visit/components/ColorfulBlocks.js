@@ -28,6 +28,7 @@ const ColorfulBlockContainer = styled.a`
   font-weight: bold;
   padding: 20px;
   cursor: pointer;
+  user-select: none;
   display: flex;
   align-items: center;
   justify-content: space-between;

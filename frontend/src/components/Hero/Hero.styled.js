@@ -26,6 +26,7 @@ export const GraphicContent = styled.div`
 export const TextContainer = styled.div`
   color: black;
   padding: 25px 30px;
+  user-select: none;
   
   @media only screen and (min-width: 600px) {
     position: absolute;
@@ -45,7 +46,6 @@ export const TextContainer = styled.div`
 export const MainText = styled.div`
   font-weight: 900;
   font-size: 2.8em;
-  user-select: none;
   letter-spacing: 1px;
   line-height: 1.3em;
   padding: 0 0 10px 0;
