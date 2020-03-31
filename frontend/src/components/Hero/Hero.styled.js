@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   max-width: 100%;
-  height: 53vw;
   position: relative;
   
-  @media only screen and (min-width: 700px) {
+  @media only screen and (min-width: 600px) {
     height: calc(100vh - var(--nav-height) + 5px);
     overflow: hidden;
     display: flex;
@@ -16,18 +15,21 @@ export const Container = styled.div`
 
 export const GraphicContent = styled.div`
   width: 100%;
-  height: 100%;
+  height: 69vw;
   object-fit: cover;
   object-position: center;
+  @media only screen and (min-width: 600px) {
+    height: 100%;
+  }
 `;
 
 export const TextContainer = styled.div`
-  color: white;
-  position: absolute;
-  padding: 0 40px;
-
+  color: black;
+  padding: 25px 50px;
+  
   @media only screen and (min-width: 600px) {
-    padding: 50px 0 0 10vw;
+    position: absolute;
+    color: white;
   }
   
   @media only screen and (min-width: 1000px) {
@@ -37,15 +39,21 @@ export const TextContainer = styled.div`
 `;
 
 export const MainText = styled.div`
-  font-weight: bolder;
-  font-size: 2.5em;
+  font-weight: 900;
+  font-size: 2.8em;
   user-select: none;
   letter-spacing: 1px;
-  line-height: 1.2em;
-  padding: 100px 0 10px 0;
-  text-align: center;
+  line-height: 1.3em;
+  padding: 0 0 10px 0;
   
   @media only screen and (min-width: 600px) {
+    font-size: 3.1em;
+    line-height: 1.2em;
+    text-align: left;
+    padding-top: 0;
+  }
+  
+  @media only screen and (min-width: 800px) {
     font-size: 4em;
     text-align: left;
     padding-top: 0;
@@ -53,11 +61,11 @@ export const MainText = styled.div`
 `;
 
 export const AdditionalText = styled.div`
-  font-size: 1.3em;
-  line-height: 1.4em;
+  font-size: 1.4em;
+  line-height: 1.6em;
   font-weight: 600;
-  text-align: center;
   @media only screen and (min-width: 600px) {
     text-align: left;
+    line-height: 1.4em;
   }
 `;
