@@ -2,11 +2,11 @@ import React from "react";
 
 import {Container, ContentContainer, SectionContainer, Text} from "./Visit.styled";
 import Hero from "../../components/Hero/Hero";
-
-import hero from "./assets/hero.jpg"
 import ColorfulBlocks from "./components/ColorfulBlocks";
 import Heading from "../../components/Heading/Heading";
 import Map from "./components/Map";
+
+import hero from "./assets/hero.jpg"
 
 const Visit = () => (
     <Container>

@@ -16,7 +16,10 @@ export const ContentContainer = styled.div`
 `;
 
 export const SectionContainer = styled.section`
-  padding-top: 30px;
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 18px;
 `;
 
 export const Text = styled.span`

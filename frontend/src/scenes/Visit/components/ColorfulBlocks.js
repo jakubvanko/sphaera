@@ -52,7 +52,7 @@ const ColorfulBlocks = () => (
         <ColorfulBlock $backgroundColor={"#000"} $color={"white"} text={"Maps"}/>
         <ColorfulBlock $backgroundColor={"#89c485"} text={"Transport"}/>
         <ColorfulBlock $backgroundColor={"#eceae6"} text={"Parking"}/>
-        <ColorfulBlock $backgroundColor={"#f4693d"} text={"Security"}/>
+        <ColorfulBlock $backgroundColor={"#f4693d"} text={"Food & Drinks"}/>
     </ColorfulBlocksContainer>
 );
 
