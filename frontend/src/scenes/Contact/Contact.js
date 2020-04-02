@@ -13,8 +13,6 @@ import {
     FlipCardFrontContainer,
     IconContainer,
     FlipCardBackContainer,
-    ContactTitle,
-    ContactDataContainer,
     ContactName
 } from "./Contact.styled";
 import Hero from "../../components/Hero/Hero";
@@ -96,7 +94,7 @@ const Contact = () => (
                             </IconContainer>
                         </FlipCardFrontContainer>
                         <FlipCardBackContainer $backgroundColor={value.$backBackgroundColor}>
-                            <ContactTitle>{value.title}</ContactTitle>
+                            <h5>{value.title}</h5>
                             {value.name && <ContactName>{value.name}</ContactName>}
                             <p>{value.email}</p>
                             <p>{value.phone}</p>

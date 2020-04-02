@@ -4,6 +4,7 @@ import styled from "styled-components";
 const FlipCardContainer = styled.div`
   perspective: 1000px;
   width: ${props => props.$width || "100%"};
+  max-width: 400px;
   height: 220px;
   cursor: pointer;
 `;

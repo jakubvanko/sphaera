@@ -11,8 +11,28 @@ export const ContentContainer = styled.div`
 export const FlipCardsContainer = styled.div`
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 0 80px
+  grid-template-columns: 1fr;
+  
+  @media(min-width: 580px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media(min-width: 730px) {
+    margin: 0 8vw;
+  }
+  
+  @media(min-width: 950px) {
+    margin: 0 10vw;
+  }
+  
+  @media(min-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+  }
+  
+  @media(min-width: 1500px) {
+    margin: 0 5vw;
+  }
 `;
 
 export const FlipCardFrontContainer = styled.div`
@@ -51,18 +71,8 @@ export const FlipCardBackContainer = styled.div`
   background-color: ${props => props.$backgroundColor && props.$backgroundColor};
 `;
 
-export const ContactTitle = styled.h5`
-`;
-
 export const ContactName = styled.div`
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5em;
-`;
-
-export const ContactDataContainer = styled.div`
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: auto;
-  grid-row-gap: 10px;
 `;
