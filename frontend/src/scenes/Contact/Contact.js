@@ -12,7 +12,10 @@ import {
     FlipCardsContainer,
     FlipCardFrontContainer,
     IconContainer,
-    FlipCardBackContainer
+    FlipCardBackContainer,
+    ContactTitle,
+    ContactDataContainer,
+    ContactName
 } from "./Contact.styled";
 import Hero from "../../components/Hero/Hero";
 import FlipCard from "../../components/FlipCard/FlipCard";
@@ -21,30 +24,58 @@ import Icon from "../../components/Icon/Icon";
 const CONTACTS = [
     {
         title: "General Enquiries",
-        $backgroundColor: "#eceae6",
+        $frontBackgroundColor: "rgba(236,234,230,0.61)",
+        $backBackgroundColor: "#ECFCE1",
+        email: "general@sphaera.con",
+        phone: "+421 255 000"
     }, {
         title: "Bookings",
         $backgroundImage: bookings,
+        $backBackgroundColor: "#FFFDDB",
+        email: "booking@sphaera.con",
+        phone: "+421 255 001"
     }, {
         title: "Chief Executive",
-        $backgroundColor: "#89c485",
-        name: "Dong Ch'en"
+        $frontBackgroundColor: "rgba(137,196,133,0.61)",
+        $backBackgroundColor: "#FFF0EB",
+        name: "Dong Ch'en",
+        email: "dongchen@sphaera.con",
+        phone: "+421 255 100"
     }, {
         title: "Business Manager",
         $backgroundImage: business,
-        name: ""
+        $backBackgroundColor: "#D9FFFC",
+        name: "Nathan Henry",
+        email: "nathanhenry@sphaera.con",
+        phone: "+421 255 200"
     }, {
         title: "PR Manager",
         $backgroundImage: pr,
+        $backBackgroundColor: "#F8E3FF",
+        name: "Jason V. Thomas",
+        email: "jasonthomas@sphaera.con",
+        phone: "+421 255 300"
     }, {
         title: "Social Media Manager",
-        $backgroundColor: "#50c1e0",
+        $frontBackgroundColor: "rgba(80,193,224,0.85)",
+        $backBackgroundColor: "#D9FFFC",
+        name: "Alisha Young",
+        email: "alishayoung@sphaera.con",
+        phone: "+421 255 400"
     }, {
         title: "Choreographer",
-        $backgroundColor: "#eceae6",
+        $frontBackgroundColor: "rgba(236,234,230,0.61)",
+        $backBackgroundColor: "#ECFCE1",
+        name: "Isaac Polyakov",
+        email: "isaacpolyakov@sphaera.con",
+        phone: "+421 255 502"
     }, {
         title: "Costume Designer",
         $backgroundImage: costume,
+        $backBackgroundColor: "#FFFDDB",
+        name: "Izabelle Holmberg",
+        email: "izabelleholmberg@sphaera.con",
+        phone: "+421 255 503"
     }
 ];
 
@@ -56,7 +87,7 @@ const Contact = () => (
             <FlipCardsContainer>
                 {CONTACTS.map(value =>
                     <FlipCard>
-                        <FlipCardFrontContainer $backgroundColor={value.$backgroundColor}
+                        <FlipCardFrontContainer $backgroundColor={value.$frontBackgroundColor}
                                                 $backgroundImage={value.$backgroundImage}
                                                 $color={value.$backgroundImage && "white"}>
                             {value.title}
@@ -64,13 +95,13 @@ const Contact = () => (
                                 <Icon name={"arrowright"} width={26} $fill={value.$backgroundImage && "white"}/>
                             </IconContainer>
                         </FlipCardFrontContainer>
-                        <FlipCardBackContainer>
-                            <h5>Test</h5>
-                            <p>ANother fasfa</p>
-                            <p>and email is here</p>
+                        <FlipCardBackContainer $backgroundColor={value.$backBackgroundColor}>
+                            <ContactTitle>{value.title}</ContactTitle>
+                            {value.name && <ContactName>{value.name}</ContactName>}
+                            <p>{value.email}</p>
+                            <p>{value.phone}</p>
                         </FlipCardBackContainer>
-                    </FlipCard>
-                )}
+                    </FlipCard>)}
             </FlipCardsContainer>
         </ContentContainer>
     </Container>

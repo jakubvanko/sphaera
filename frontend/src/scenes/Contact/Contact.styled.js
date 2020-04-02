@@ -41,7 +41,28 @@ export const IconContainer = styled.div`
 `;
 
 export const FlipCardBackContainer = styled.div`
+  padding: 30px;
   width: 100%;
   height: 100%;
-  background-color: red;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 15px;
+  background-color: ${props => props.$backgroundColor && props.$backgroundColor};
+`;
+
+export const ContactTitle = styled.h5`
+`;
+
+export const ContactName = styled.div`
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+`;
+
+export const ContactDataContainer = styled.div`
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 10px;
 `;
