@@ -7,11 +7,12 @@ import Footer from "./Footer/Footer";
 import Home from "./Home/Home";
 import Visit from "./Visit/Visit";
 import Contact from "./Contact/Contact";
+import Login from "./Login/Login";
 
 const Main = () => (
     <>
         <Header/>
-        <Contact/>
+        <Login/>
         <Footer/>
     </>
 );
