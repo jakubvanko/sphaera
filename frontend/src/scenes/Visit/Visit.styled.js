@@ -21,7 +21,3 @@ export const SectionContainer = styled.section`
   grid-template-columns: auto;
   grid-row-gap: 18px;
 `;
-
-export const Text = styled.span`
-  font-size: 1.2em;
-`;

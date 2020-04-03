@@ -101,7 +101,7 @@ export const IconLinkContainer = styled.a`
   height: 100%;
   cursor: pointer;
   user-select: none;
-  *:hover {
+  span:hover {
     border-bottom: transparent 2px solid;
   }
   

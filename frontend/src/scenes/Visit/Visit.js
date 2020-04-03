@@ -1,10 +1,11 @@
 import React from "react";
 
-import {Container, ContentContainer, SectionContainer, Text} from "./Visit.styled";
+import {Container, ContentContainer, SectionContainer} from "./Visit.styled";
 import Hero from "../../components/Hero/Hero";
 import ColorfulBlocks from "./components/ColorfulBlocks";
 import Heading from "../../components/Heading/Heading";
 import Map from "./components/Map";
+import Text from "../../components/Text/Text";
 
 import hero from "./assets/hero.jpg"
 
