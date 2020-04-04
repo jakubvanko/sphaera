@@ -6,12 +6,12 @@ import Input from "../../../components/Input/Input";
 const FormLogin = ({onFormChange}) => (
     <FormContainer>
         <FormHeader>
-            Login
+            Log In
         </FormHeader>
         <Form>
             <Input label={"Email address"}/>
             <Input label={"Password"} type={"password"}/>
-            <Button>Submit</Button>
+            <Button>Log in</Button>
             <AdditionalText onClick={onFormChange}>Forgotten your password?</AdditionalText>
         </Form>
     </FormContainer>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Text from "../../components/Text/Text";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -14,13 +15,13 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: auto;
   grid-row-gap: 20px;
-  padding: 25px 30px 30px 30px;
+  padding: 25px 40px 40px 40px;
 `;
 
 export const FormHeader = styled.h4`
   width: 100%;
   border-bottom: dashed 1px #b2b2b2;
-  padding: 30px;
+  padding: 30px 40px;
   font-size: 2rem;
 `;
 
@@ -54,4 +55,8 @@ export const AdditionalText = styled.div`
   user-select: none;
   color: gray;
   font-size: 16px;
+`;
+
+export const FormText = styled(Text)`
+  line-height: 1.6em;
 `;

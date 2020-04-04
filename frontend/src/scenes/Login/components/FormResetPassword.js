@@ -9,7 +9,7 @@ const FormResetPassword = ({onFormChange}) => (
         </FormHeader>
         <Form>
             <Input label={"Email address"}/>
-            <Button>Submit</Button>
+            <Button>Reset password</Button>
             <AdditionalText onClick={onFormChange}>Log in with your password instead.</AdditionalText>
         </Form>
     </FormContainer>

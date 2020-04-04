@@ -10,7 +10,7 @@ const FormUpdatePassword = () => (
         <Form>
             <Input label={"New password"}/>
             <Input label={"Confirm password"}/>
-            <Button>Submit</Button>
+            <Button>Update password</Button>
         </Form>
     </FormContainer>
 );

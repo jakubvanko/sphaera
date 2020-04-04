@@ -14,7 +14,7 @@ const FormRegister = () => (
             <Input label={"Email address"}/>
             <Input label={"Password"}/>
             <Input label={"Confirm password"}/>
-            <Button>Submit</Button>
+            <Button>Register</Button>
         </Form>
     </FormContainer>
 );
