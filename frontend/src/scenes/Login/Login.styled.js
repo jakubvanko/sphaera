@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Text from "../../components/Text/Text";
+import {Form as FormikFormNoStyle} from "formik";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -28,7 +29,37 @@ export const Container = styled.div`
   }
 `;
 
+
+
 export const Form = styled.form`
+  width: 80vw;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 20px;
+  padding: 15px 25px 25px 25px;
+  
+  @media (min-width: 500px){
+    padding: 25px 40px 40px 40px;
+  }
+  
+  @media (min-width: 890px){
+    width: 45vw;
+  }
+  
+  @media (min-width: 900px){
+    width: 43vw;
+  }
+  
+  @media (min-width: 1100px){
+    width: 39vw;
+  }
+  
+  @media (min-width: 1400px){
+    width: 35vw;
+  }
+`;
+
+export const FormikForm = styled(FormikFormNoStyle)`
   width: 80vw;
   display: grid;
   grid-template-columns: auto;

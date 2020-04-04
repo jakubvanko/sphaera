@@ -47,9 +47,19 @@ const InputContainer = styled.div`
   padding: 22px 0 10px 0;
 `;
 
-const LabeledInput = ({label, ...props}) => {
+const LabeledInput = ({label, onChange, onBlur, ...props}) => {
     const [isFocused, setFocused] = useState(false);
     const [hasContent, setHasContent] = useState(false);
+
+    const handleChange = (e) => {
+        setHasContent(e.target.value !== "");
+        onChange && onChange(e);
+    };
+
+    const handleBlur = (e) => {
+        setFocused(false);
+        onBlur && onBlur(e);
+    };
 
     return (
         <InputContainer>
@@ -57,8 +67,8 @@ const LabeledInput = ({label, ...props}) => {
                 {label}
             </Label>
             <Input {...props} onFocus={() => setFocused(true)}
-                   onBlur={(() => setFocused(false))}
-                   onChange={e => setHasContent(e.target.value !== "")}/>
+                   onBlur={handleBlur}
+                   onChange={handleChange}/>
         </InputContainer>
     )
 };
