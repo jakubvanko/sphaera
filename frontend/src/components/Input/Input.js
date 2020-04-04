@@ -21,7 +21,7 @@ const Label = styled.label`
   z-index: -1;
   font-size: ${props => props.$focused ? "0.8em" : "18px"};
   color: gray;
-  top: ${props => props.$focused ? 0 : "26px"};
+  top: ${props => props.$focused ? 0 : "25px"};
   left: ${props => props.$focused ? 0 : "2px"};
   transition: all 0.26s ease 0s;
 `;
@@ -44,7 +44,7 @@ const Input = styled.input`
 
 const InputContainer = styled.div`
   position: relative;
-  padding: 26px 0 10px 0;
+  padding: 22px 0 10px 0;
 `;
 
 const LabeledInput = ({label, ...props}) => {
