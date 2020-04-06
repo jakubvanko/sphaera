@@ -1,9 +1,9 @@
 import React from "react";
-import {Field, Form as FormikForm} from "formik";
+import {Form as FormikForm} from "formik";
 import * as Yup from "yup";
 
 import {Button, Form} from "../Login.styled";
-import Input from "../../../components/Input/Input";
+import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
 
 const FormRegister = () => (
@@ -33,11 +33,11 @@ const FormRegister = () => (
         }}>
         {({isSubmitting, ...props}) => (
             <Form as={FormikForm}>
-                <Field as={Input} label={"First name"} name={"firstname"} {...props}/>
-                <Field as={Input} label={"Last name"} name={"lastname"} {...props}/>
-                <Field as={Input} label={"Email address"} name={"email"} {...props}/>
-                <Field as={Input} label={"Password"} name={"password"} type={"password"} {...props}/>
-                <Field as={Input} label={"Confirm password"} name={"confirmpassword"} type={"password"}
+                <InputField label={"First name"} name={"firstname"} {...props}/>
+                <InputField label={"Last name"} name={"lastname"} {...props}/>
+                <InputField label={"Email address"} name={"email"} {...props}/>
+                <InputField label={"Password"} name={"password"} type={"password"} {...props}/>
+                <InputField label={"Confirm password"} name={"confirmpassword"} type={"password"}
                        {...props}/>
                 <Button disabled={isSubmitting}>Register</Button>
             </Form>

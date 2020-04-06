@@ -1,9 +1,9 @@
 import React from "react";
-import {Field, Form as FormikForm} from "formik";
+import {Form as FormikForm} from "formik";
 import * as Yup from "yup";
 
 import {Button, Form, AdditionalText} from "../Login.styled";
-import Input from "../../../components/Input/Input";
+import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
 
 const FormLogin = ({onFormChange}) => (
@@ -23,8 +23,8 @@ const FormLogin = ({onFormChange}) => (
     >
         {({isSubmitting, ...props}) => (
             <Form as={FormikForm}>
-                <Field as={Input} label={"Email address"} name={"email"} {...props}/>
-                <Field as={Input} label={"Password"} name={"password"} type={"password"} {...props}/>
+                <InputField label={"Email address"} name={"email"} {...props}/>
+                <InputField label={"Password"} name={"password"} type={"password"} {...props}/>
                 <Button type={"submit"} disabled={isSubmitting}>Log in</Button>
                 <AdditionalText onClick={onFormChange}>Forgotten your password?</AdditionalText>
             </Form>

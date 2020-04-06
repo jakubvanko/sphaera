@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import {ErrorMessage} from "formik";
+import {ErrorMessage, Field} from "formik";
 
 export const BasicInput = styled.input`
     border: none;
@@ -89,4 +89,6 @@ const LabeledInput = ({label, onChange, onBlur, errors, touched, name, ...props}
     )
 };
 
-export default LabeledInput;
+export const InputField = ({...props}) => (
+    <Field as={LabeledInput} {...props}/>
+);
