@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Text from "../../components/Text/Text";
-import {Form as FormikFormNoStyle} from "formik";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
