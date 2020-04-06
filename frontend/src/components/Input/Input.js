@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
+import {ErrorMessage} from "formik";
 
 export const BasicInput = styled.input`
     border: none;
@@ -21,20 +22,20 @@ const Label = styled.label`
   z-index: -1;
   font-size: ${props => props.$focused ? "0.8em" : "18px"};
   color: gray;
-  top: ${props => props.$focused ? 0 : "25px"};
+  top: ${props => props.$focused ? 0 : "24px"};
   left: ${props => props.$focused ? 0 : "2px"};
   transition: all 0.26s ease 0s;
 `;
 
 const Input = styled.input`
   border: none;
-  padding: 0 2px;
-  border-bottom: 2px #505050 solid;
+  border-bottom: 2px ${props => props.$error ? "#eb3327" : "#505050"} solid;
+  color: ${props => props.$error && "#eb3327"};
   transition: border-bottom-color 0.2s;
   :focus {
     border-bottom-color: #ffaa18;
   }
-  padding-bottom: 8px;
+  padding: 3px 2px 4px;
   outline: none;
   font-size: 18px;
   font-weight: 400;
@@ -47,7 +48,17 @@ const InputContainer = styled.div`
   padding: 22px 0 10px 0;
 `;
 
-const LabeledInput = ({label, onChange, onBlur, ...props}) => {
+const ErrorText = styled.div`
+  color: #eb3327;
+  font-size: 0.8em;
+  font-weight: 500;
+  padding-top: 8px;
+`;
+
+/*
+    This component only works with formik forms
+ */
+const LabeledInput = ({label, onChange, onBlur, errors, touched, name, ...props}) => {
     const [isFocused, setFocused] = useState(false);
     const [hasContent, setHasContent] = useState(false);
 
@@ -68,7 +79,12 @@ const LabeledInput = ({label, onChange, onBlur, ...props}) => {
             </Label>
             <Input {...props} onFocus={() => setFocused(true)}
                    onBlur={handleBlur}
-                   onChange={handleChange}/>
+                   onChange={handleChange}
+                   $error={touched && touched[name] && errors && errors[name]}
+                   name={name}/>
+            <ErrorMessage name={name}>
+                {msg => <ErrorText>{msg}</ErrorText>}
+            </ErrorMessage>
         </InputContainer>
     )
 };
