@@ -2,9 +2,10 @@ import React from "react";
 import {Form as FormikForm} from "formik";
 import * as Yup from "yup";
 
-import {Button, Form} from "../Login.styled";
+import {Form} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
+import {Button} from "../../../components/Button/Button";
 
 const FormRegister = () => (
     <FormikBase
@@ -39,7 +40,7 @@ const FormRegister = () => (
                 <InputField label={"Password"} name={"password"} type={"password"} {...props}/>
                 <InputField label={"Confirm password"} name={"confirmpassword"} type={"password"}
                        {...props}/>
-                <Button disabled={isSubmitting}>Register</Button>
+                <Button active={isSubmitting}>Register</Button>
             </Form>
         )}
     </FormikBase>

@@ -2,9 +2,10 @@ import React from "react";
 import {Form as FormikForm} from "formik";
 import * as Yup from "yup";
 
-import {AdditionalText, Button, Form} from "../Login.styled";
+import {AdditionalText, Form} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
+import {Button} from "../../../components/Button/Button";
 
 const FormResetPassword = ({onFormChange}) => (
     <FormikBase
@@ -22,7 +23,7 @@ const FormResetPassword = ({onFormChange}) => (
         {({isSubmitting, ...props}) => (
             <Form as={FormikForm}>
                 <InputField label={"Email address"} name={"email"} {...props}/>
-                <Button>Reset password</Button>
+                <Button active={isSubmitting}>Reset password</Button>
                 <AdditionalText onClick={onFormChange}>Log in with your password instead.</AdditionalText>
             </Form>
         )}

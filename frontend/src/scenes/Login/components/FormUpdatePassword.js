@@ -2,9 +2,10 @@ import React from "react";
 import {Form as FormikForm} from "formik";
 import * as Yup from "yup";
 
-import {Button, Form} from "../Login.styled";
+import {Form} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
+import {Button} from "../../../components/Button/Button";
 
 const FormUpdatePassword = () => (
     <FormikBase
@@ -28,7 +29,7 @@ const FormUpdatePassword = () => (
                 <InputField label={"New password"} name={"password"} type={"password"} {...props}/>
                 <InputField label={"Confirm password"} name={"confirmpassword"} type={"password"}
                             {...props}/>
-                <Button disabled={isSubmitting}>Update Password</Button>
+                <Button active={isSubmitting}>Update Password</Button>
             </Form>
         )}
     </FormikBase>
