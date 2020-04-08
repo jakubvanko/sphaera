@@ -25,7 +25,7 @@ const StyledButton = styled.button`
   }
 `;
 
-export const Button = ({active, children, ...props}) => (
+export const Button = ({active = false, children, ...props}) => (
     <StyledButton {...props} active={active} disabled={active}>
         <Loader size={"7px"} color={"white"} loading={active}/>
         {!active && children}

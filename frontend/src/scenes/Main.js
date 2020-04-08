@@ -8,11 +8,13 @@ import Home from "./Home/Home";
 import Visit from "./Visit/Visit";
 import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
+import Tickets from "./Tickets/Tickets";
+import Cart from "./Cart/Cart";
 
 const Main = () => (
     <>
         <Header/>
-        <Login/>
+        <Tickets/>
         <Footer/>
     </>
 );
