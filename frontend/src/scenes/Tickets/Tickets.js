@@ -50,10 +50,6 @@ const EVENTS = [
         artist: "Lady Gaga",
         image: test1,
         date: new Date("April 26, 2021")
-    }, {
-        artist: "Lady Gaga",
-        image: test1,
-        date: new Date("April 26, 2021")
     }
 ];
 EVENTS.sort((a, b) => a.date > b.date ? 1 : -1);

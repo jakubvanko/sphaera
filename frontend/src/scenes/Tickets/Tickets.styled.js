@@ -113,7 +113,7 @@ export const MainText = styled.div`
             text-align: left;
             padding-top: 0;
         }
-        @media only screen and (min-width: ${1400 + additionalQuery}px) {
+        @media only screen and (min-width: ${1200 + additionalQuery}px) {
             font-size: 7vw;
         }
       `;
