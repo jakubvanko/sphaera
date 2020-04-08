@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: relative;
   
   @media only screen and (min-width: 600px) {
-    height: calc(100vh - var(--nav-height) + 5px);
+    height: ${props => props.$height || "calc(100vh - var(--nav-height) + 5px)"};
     overflow: hidden;
     display: flex;
     align-items: center;

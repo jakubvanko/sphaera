@@ -1,10 +1,19 @@
 import React from "react";
 
-import {Container, EventContainer, ArtistText, DateText, TextContainer} from "./Tickets.styled";
+import {
+    Container,
+    EventContainer,
+    ArtistText,
+    DateText,
+    TextContainer,
+    AdditionalItemContainer
+} from "./Tickets.styled";
 import test1 from "./assets/test1.jpg";
 import test2 from "./assets/test2.jpg";
 import test3 from "./assets/test3.jpg";
 import hero from "./assets/hero.jpg";
+import Hero from "../../components/Hero/Hero";
+import useWindowDimensions from "../../hooks/useWindowsDimensions";
 
 const EVENTS = [
     {
@@ -46,9 +55,13 @@ const EVENTS = [
     }
 ];
 EVENTS.sort((a, b) => a.date > b.date ? 1 : -1);
-const emptyColumns = EVENTS.length % 3;
 
 const Tickets = () => {
+    const [width] = useWindowDimensions();
+    const columnAmount = width >= 1200 ? 3 : width >= 700 ? 2 : 1;
+    const emptyColumns = 3 - (EVENTS.length % columnAmount) === 0 ? columnAmount : 3 - (EVENTS.length % columnAmount);
+    const spanStart = Math.abs(emptyColumns - 4);
+
     return (
         <Container>
             {EVENTS.map(({artist, date, image}, index) => (
@@ -63,7 +76,19 @@ const Tickets = () => {
                     </TextContainer>
                 </EventContainer>
             ))}
-            <div columns={emptyColumns} src={hero}/>
+
+            <AdditionalItemContainer $spanStart={spanStart}>
+                <EventContainer $src={hero}>
+                    <TextContainer>
+                        <ArtistText>
+                            Still looking?
+                        </ArtistText>
+                        <DateText>
+                            Check back later for more marvelous celebrities and spectacular shows.
+                        </DateText>
+                    </TextContainer>
+                </EventContainer>
+            </AdditionalItemContainer>
         </Container>
     )
 };

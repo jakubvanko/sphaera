@@ -59,3 +59,7 @@ export const TextContainer = styled.div`
   grid-template-columns: auto;
   grid-row-gap: 1vh;
 `;
+
+export const AdditionalItemContainer = styled.div`
+  grid-column: ${props => props.$spanStart} / -1;
+`;

@@ -2,9 +2,9 @@ import React from "react";
 
 import {Container, GraphicContent, TextContainer, MainText, AdditionalText} from "./Hero.styled";
 
-const Hero = ({as, src, mainText, additionalText, $bigMain, $smallAdditional, ...props}) => {
+const Hero = ({as, src, mainText, additionalText, $bigMain, $smallAdditional, $height, ...props}) => {
     return (
-        <Container>
+        <Container $height={$height}>
             <GraphicContent as={as} src={src} {...props}>
                 {as === "video" ? <>
                     <source src={src} type="video/mp4"/>
