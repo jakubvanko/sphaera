@@ -77,7 +77,7 @@ const Tickets = () => {
             <AdditionalItemContainer $spanStart={spanStart} $src={hero}>
                 <AdditionalTextContainer $spanStart={spanStart}>
                     <MainText $spanStart={spanStart}>
-                        Still looking?
+                        Looking for more?
                     </MainText>
                     <AdditionalText $spanStart={spanStart}>
                         Check back later for more marvelous celebrities and spectacular shows.
