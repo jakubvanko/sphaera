@@ -6,13 +6,15 @@ import {
     ArtistText,
     DateText,
     TextContainer,
-    AdditionalItemContainer
+    AdditionalItemContainer,
+    AdditionalText,
+    AdditionalTextContainer,
+    MainText
 } from "./Tickets.styled";
 import test1 from "./assets/test1.jpg";
 import test2 from "./assets/test2.jpg";
 import test3 from "./assets/test3.jpg";
 import hero from "./assets/hero.jpg";
-import Hero from "../../components/Hero/Hero";
 import useWindowDimensions from "../../hooks/useWindowsDimensions";
 
 const EVENTS = [
@@ -76,18 +78,15 @@ const Tickets = () => {
                     </TextContainer>
                 </EventContainer>
             ))}
-
-            <AdditionalItemContainer $spanStart={spanStart}>
-                <EventContainer $src={hero}>
-                    <TextContainer>
-                        <ArtistText>
-                            Still looking?
-                        </ArtistText>
-                        <DateText>
-                            Check back later for more marvelous celebrities and spectacular shows.
-                        </DateText>
-                    </TextContainer>
-                </EventContainer>
+            <AdditionalItemContainer $spanStart={spanStart} $src={hero}>
+                <AdditionalTextContainer $spanStart={spanStart}>
+                    <MainText $spanStart={spanStart}>
+                        Still looking?
+                    </MainText>
+                    <AdditionalText $spanStart={spanStart}>
+                        Check back later for more marvelous celebrities and spectacular shows.
+                    </AdditionalText>
+                </AdditionalTextContainer>
             </AdditionalItemContainer>
         </Container>
     )
