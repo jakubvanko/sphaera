@@ -28,12 +28,19 @@ const CART = [{
     seat: "1",
     price: "22.48",
     event: "4f48as4f9a4fas9f8asfasfevent55"
+},{
+    artist: "Nickelback",
+    date: new Date("December 17, 2020 12:25:41"),
+    image: test2,
+    seat: "1",
+    price: "215.01",
+    event: "4f48as4f9a4fas9f8asfasfevent55"
 }];
 
 const Cart = () => (
     <Container>
         <HeadingContainer>
-            <Heading type={"main"}>Test</Heading>
+            <Heading type={"main"}>Cart</Heading>
         </HeadingContainer>
         <ItemContainer>
             {CART.map(({artist, date, image, seat, event, price}) => <>

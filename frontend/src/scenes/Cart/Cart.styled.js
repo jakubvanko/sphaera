@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
+  padding: 9vh 12vw 0 12vw;
 `;
 
 export const HeadingContainer = styled.div`
-  padding: 9vh 12vw 2vh 12vw;
+  padding-bottom: 2vh;
 `;
 
 export const ItemContainer = styled.div`
+  padding: 0 5vw;
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 1vw;
+  grid-row-gap: 2vh;
 `;
 
 export const ItemImage = styled.div`
@@ -27,7 +31,11 @@ export const Item = styled.div`
   border-radius: 4px;
 `;
 
-export const ItemHeader = styled.div`
+const ItemSectionBase = styled.div`
+  padding: 4vh 3vw;
+`;
+
+export const ItemHeader = styled(ItemSectionBase)`
   width: 100%;
   font-size: 2.4rem;
   text-transform: capitalize;
@@ -35,7 +43,6 @@ export const ItemHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
 `;
 
 export const IconContainer = styled.div`
@@ -48,12 +55,11 @@ export const IconContainer = styled.div`
   align-items: center;
 `;
 
-export const InformationContainer = styled.div`
+export const InformationContainer = styled(ItemSectionBase)`
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-areas: "text text code" "text text code";
   grid-row-gap: 20px;
-  padding: 30px 40px;
   border-bottom: dashed 1px #b2b2b2;
   border-top: dashed 1px #b2b2b2;
 `;
@@ -79,6 +85,8 @@ export const DeleteContainer = styled.div`
   font-size: 0.8rem;
   text-transform: none;
   cursor: pointer;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 4px;
   align-items: flex-end;
 `;
