@@ -14,7 +14,7 @@ import Cart from "./Cart/Cart";
 const Main = () => (
     <>
         <Header/>
-        <Tickets/>
+        <Cart/>
         <Footer/>
     </>
 );
