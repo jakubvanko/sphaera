@@ -29,16 +29,13 @@ export const Item = styled.div`
 
 export const ItemHeader = styled.div`
   width: 100%;
-  border-bottom: dashed 1px #b2b2b2;
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   text-transform: capitalize;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (min-width: 500px){
-    padding: 30px 40px;
-  }
+  padding: 30px 40px;
 `;
 
 export const IconContainer = styled.div`
@@ -49,4 +46,39 @@ export const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const InformationContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "text text code" "text text code";
+  grid-row-gap: 20px;
+  padding: 30px 40px;
+  border-bottom: dashed 1px #b2b2b2;
+  border-top: dashed 1px #b2b2b2;
+`;
+
+export const BigText = styled.div`
+  font-weight: 600;
+  font-size: 1.3em;
+`;
+
+export const SmallTextLabel = styled.div`
+  color: #757575;
+  font-size: 0.85em;
+  padding-bottom: 5px;
+`;
+
+export const CodeContainer = styled.div`
+  grid-area: code;
+  align-self: center;
+  justify-self: flex-end;
+`;
+
+export const DeleteContainer = styled.div`
+  font-size: 0.8rem;
+  text-transform: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
 `;

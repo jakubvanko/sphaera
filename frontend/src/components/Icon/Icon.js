@@ -24,6 +24,7 @@ import Cart from "./components/Cart";
 import ArrowRight from "./components/ArrowRight";
 import Location from "./components/Location";
 import Ticket from "./components/Ticket";
+import Delete from "./components/Delete";
 
 const ICON_MAP = {
     hamburger: Hamburger,
@@ -48,7 +49,8 @@ const ICON_MAP = {
     cart: Cart,
     arrowright: ArrowRight,
     location: Location,
-    ticket: Ticket
+    ticket: Ticket,
+    delete: Delete
 };
 
 const Icon = ({name, width, ...props}) => {
