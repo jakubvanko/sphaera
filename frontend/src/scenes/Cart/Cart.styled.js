@@ -1,16 +1,17 @@
 import styled from "styled-components";
+import {Button} from "../../components/Button/Button";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
-  padding: 9vh 12vw 0 12vw;
+  padding: 9vh 12vw;
 `;
 
 export const HeadingContainer = styled.div`
-  padding-bottom: 2vh;
+  padding-bottom: 2.5vh;
 `;
 
 export const ItemContainer = styled.div`
-  padding: 0 5vw;
+  padding: 0 4.5vw;
   display: grid;
   grid-template-columns: auto auto;
   grid-column-gap: 1vw;
@@ -29,10 +30,26 @@ export const ItemImage = styled.div`
 export const Item = styled.div`
   border: solid 1px rgb(198, 198, 198);
   border-radius: 4px;
+  position: relative;
+  :after {
+    display: ${props => props.$ticket ? "block" : "none"};
+    content: " ";
+    position: absolute;
+    top: calc(50% - 21px);
+    right: -1px;
+    width: 20px;
+    height: 40px;
+    background-color: white;
+    border-top-left-radius: 1100px;
+    border-bottom-left-radius: 1100px;
+    border: 1px solid rgb(198, 198, 198);
+    border-right: 0;
+  }
 `;
 
 const ItemSectionBase = styled.div`
-  padding: 4vh 3vw;
+  padding: 4vh 4vw 4vh 3vw;
+  grid-row-gap: 20px;
 `;
 
 export const ItemHeader = styled(ItemSectionBase)`
@@ -40,7 +57,8 @@ export const ItemHeader = styled(ItemSectionBase)`
   font-size: 2.4rem;
   text-transform: capitalize;
   font-weight: 600;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
 `;
@@ -57,9 +75,9 @@ export const IconContainer = styled.div`
 
 export const InformationContainer = styled(ItemSectionBase)`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: max-content max-content max-content;
   grid-template-areas: "text text code" "text text code";
-  grid-row-gap: 20px;
+  justify-content: space-between;
   border-bottom: dashed 1px #b2b2b2;
   border-top: dashed 1px #b2b2b2;
 `;
@@ -89,4 +107,18 @@ export const DeleteContainer = styled.div`
   grid-template-columns: auto auto;
   grid-column-gap: 4px;
   align-items: flex-end;
+`;
+
+export const TotalInformationContainer = styled(InformationContainer)`
+  margin: 0 4vw 0 3vw;
+  padding-left: 0;
+  padding-right: 0;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  grid-template-columns: auto auto;
+  grid-template-areas: none;
+`;
+
+export const BuyButton = styled(Button)`
+  grid-column: 1 / -1
 `;

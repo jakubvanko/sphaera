@@ -13,13 +13,16 @@ import {
     InformationContainer,
     SmallTextLabel,
     CodeContainer,
-    DeleteContainer
+    DeleteContainer,
+    TotalInformationContainer,
+    BuyButton
 } from "./Cart.styled";
 import Heading from "../../components/Heading/Heading";
-import test1 from "../../scenes/Tickets/assets/test1.jpg";
+import Icon from "../../components/Icon/Icon";
+import Text from "../../components/Text/Text";
+
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
-import Icon from "../../components/Icon/Icon";
 
 const CART = [{
     artist: "Marcus & Martinus",
@@ -28,64 +31,85 @@ const CART = [{
     seat: "1",
     price: "22.48",
     event: "4f48as4f9a4fas9f8asfasfevent55"
-},{
+}, {
     artist: "Nickelback",
     date: new Date("December 17, 2020 12:25:41"),
     image: test2,
     seat: "1",
     price: "215.01",
-    event: "4f48as4f9a4fas9f8asfasfevent55"
+    event: "4f4iohwnfnaiosfjpasfjsfevent55"
 }];
 
-const Cart = () => (
-    <Container>
-        <HeadingContainer>
-            <Heading type={"main"}>Cart</Heading>
-        </HeadingContainer>
-        <ItemContainer>
-            {CART.map(({artist, date, image, seat, event, price}) => <>
-                <ItemImage $src={image}/>
+const Cart = () => {
+    const totalPrice = CART.reduce((previousValue, currentValue) =>
+        (parseFloat(currentValue.price) + parseFloat(previousValue)), 0);
+    const tax = totalPrice * 0.2;
+
+    return (
+        <Container>
+            <HeadingContainer>
+                <Heading type={"main"}>Cart</Heading>
+            </HeadingContainer>
+            <ItemContainer>
+                {CART.map(({artist, date, image, seat, event, price}) => <>
+                    <ItemImage $src={image}/>
+                    <Item $ticket>
+                        <ItemHeader>
+                            {artist}
+                            <IconContainer>
+                                <Icon name={"ticket"} width={24}/>
+                            </IconContainer>
+                        </ItemHeader>
+                        <InformationContainer>
+                            <BigText>
+                                {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
+                            </BigText>
+                            <BigText>
+                                {`${date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? "PM" : "AM"}`}
+                            </BigText>
+                            <CodeContainer>
+                                <QRCode value={event} size={64} renderAs={"svg"}/>
+                            </CodeContainer>
+                            <div>
+                                <SmallTextLabel>
+                                    Venue
+                                </SmallTextLabel>
+                                SPHAERA
+                            </div>
+                            <div>
+                                <SmallTextLabel>
+                                    Area
+                                </SmallTextLabel>
+                                {seat}
+                            </div>
+                        </InformationContainer>
+                        <ItemHeader>
+                            <DeleteContainer>
+                                <Icon name={"delete"} width={20}/>
+                                remove
+                            </DeleteContainer>
+                            ${price}
+                        </ItemHeader>
+                    </Item>
+                </>)}
+                <ItemImage $src={test3}/>
                 <Item>
+                    <ItemHeader>Total</ItemHeader>
+                    <TotalInformationContainer>
+                        <Text>Tickets ({CART.length}x)</Text>
+                        <Text $align={"right"}>${totalPrice.toFixed(2)}</Text>
+                        <Text>Tax (20%)</Text>
+                        <Text $align={"right"}>${tax.toFixed(2)}</Text>
+                    </TotalInformationContainer>
                     <ItemHeader>
-                        {artist}
-                        <IconContainer>
-                            <Icon name={"ticket"} width={24}/>
-                        </IconContainer>
-                    </ItemHeader>
-                    <InformationContainer>
-                        <BigText>
-                            {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
-                        </BigText>
-                        <BigText>
-                            {`${date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? "PM" : "AM"}`}
-                        </BigText>
-                        <CodeContainer>
-                            <QRCode value={event} size={64} renderAs={"svg"}/>
-                        </CodeContainer>
-                        <div>
-                            <SmallTextLabel>
-                                Venue
-                            </SmallTextLabel>
-                            SPHAERA
-                        </div>
-                        <div>
-                            <SmallTextLabel>
-                                Area
-                            </SmallTextLabel>
-                            {seat}
-                        </div>
-                    </InformationContainer>
-                    <ItemHeader>
-                        <DeleteContainer>
-                            <Icon name={"delete"} width={20}/>
-                            remove
-                        </DeleteContainer>
-                        ${price}
+                        <Text>Amount due</Text>
+                        ${(totalPrice + tax).toFixed(2)}
+                        <BuyButton>Buy</BuyButton>
                     </ItemHeader>
                 </Item>
-            </>)}
-        </ItemContainer>
-    </Container>
-);
+            </ItemContainer>
+        </Container>
+    )
+};
 
 export default Cart;

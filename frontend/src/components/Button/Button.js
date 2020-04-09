@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   width: 100%;
   user-select: none;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1rem;
   letter-spacing: 1px;
   display: flex;
   justify-content: center;
