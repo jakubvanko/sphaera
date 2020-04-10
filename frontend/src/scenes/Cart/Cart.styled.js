@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Button} from "../../components/Button/Button";
+import shapes from "./assets/shapes.png";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -13,7 +14,7 @@ export const HeadingContainer = styled.div`
 export const ItemContainer = styled.div`
   padding: 0 4.5vw;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 7fr 19fr;
   grid-column-gap: 1vw;
   grid-row-gap: 2vh;
 `;
@@ -121,4 +122,18 @@ export const TotalInformationContainer = styled(InformationContainer)`
 
 export const BuyButton = styled(Button)`
   grid-column: 1 / -1
+`;
+
+export const PolicyInformationContainer = styled.div`
+  padding: 3vh 2vw;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: url("${shapes}");
 `;

@@ -31,3 +31,9 @@ export const Button = ({active = false, children, ...props}) => (
         {!active && children}
     </StyledButton>
 );
+
+export const SecondaryButton = styled(StyledButton)`
+  background-color: transparent;
+  border: black solid 2px;
+  color: black;
+`;
