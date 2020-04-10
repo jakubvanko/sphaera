@@ -158,12 +158,12 @@ export const DeleteContainer = styled.div`
 
 export const TotalInformationContainer = styled(InformationContainer)`
   margin: 0 4vw 0 4vw;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   border-top-style: solid;
   border-bottom-style: solid;
-  grid-template-columns: auto auto;
-  grid-template-areas: none;
+  grid-template-columns: max-content max-content !important;
+  grid-template-areas: unset !important;
 `;
 
 export const BuyButton = styled(Button)`
