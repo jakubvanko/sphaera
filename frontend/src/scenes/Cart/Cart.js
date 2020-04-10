@@ -53,7 +53,7 @@ const Cart = () => {
                 <Heading type={"main"}>Cart</Heading>
             </HeadingContainer>
             <ItemContainer>
-                {CART.map(({artist, date, image, seat, event, price}) => <>
+                {CART.map(({artist, date, image, seat, event, price}, index) => <React.Fragment key={event + index}>
                     <ItemImage $src={image}/>
                     <Item $ticket>
                         <ItemHeader>
@@ -93,10 +93,10 @@ const Cart = () => {
                             ${price}
                         </ItemHeader>
                     </Item>
-                </>)}
+                </React.Fragment>)}
                 <Item>
                     <PolicyInformationContainer>
-                        By purchasing a ticket, you agree to our Terms & Conditions. You can request a cashback in the
+                        By making a purchase, you agree to our Terms & Conditions. You can request a cashback in the
                         14 day following the purchase of all Sphaera tickets and additional goods associated with the
                         advertised events.
                         <SecondaryButton>Terms & Conditions</SecondaryButton>
