@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {Form, AdditionalText} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
-import {Button} from "../../../components/Button/Button";
+import {ButtonPrimaryLoader} from "../../../components/Button/Button";
 
 const FormLogin = ({onFormChange}) => (
     <FormikBase
@@ -26,7 +26,7 @@ const FormLogin = ({onFormChange}) => (
             <Form as={FormikForm}>
                 <InputField label={"Email address"} name={"email"} {...props}/>
                 <InputField label={"Password"} name={"password"} type={"password"} {...props}/>
-                <Button type={"submit"} active={isSubmitting}>Log in</Button>
+                <ButtonPrimaryLoader type={"submit"} isLoading={isSubmitting}>Log in</ButtonPrimaryLoader>
                 <AdditionalText onClick={onFormChange}>Forgotten your password?</AdditionalText>
             </Form>
         )}

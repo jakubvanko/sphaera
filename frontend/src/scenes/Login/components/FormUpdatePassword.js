@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {Form} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
-import {Button} from "../../../components/Button/Button";
+import {ButtonPrimaryLoader} from "../../../components/Button/Button";
 
 const FormUpdatePassword = () => (
     <FormikBase
@@ -29,7 +29,7 @@ const FormUpdatePassword = () => (
                 <InputField label={"New password"} name={"password"} type={"password"} {...props}/>
                 <InputField label={"Confirm password"} name={"confirmpassword"} type={"password"}
                             {...props}/>
-                <Button active={isSubmitting}>Update Password</Button>
+                <ButtonPrimaryLoader isLoading={isSubmitting}>Update Password</ButtonPrimaryLoader>
             </Form>
         )}
     </FormikBase>

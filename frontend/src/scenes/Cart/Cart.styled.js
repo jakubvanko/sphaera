@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Button} from "../../components/Button/Button";
+import {ButtonPrimary} from "../../components/Button/Button";
 import shapes from "./assets/shapes.png";
 
 export const ItemContainer = styled.div`
@@ -116,7 +116,7 @@ export const TotalInformationContainer = styled(InformationContainer)`
   grid-template-areas: unset !important;
 `;
 
-export const BuyButton = styled(Button)`
+export const BuyButton = styled(ButtonPrimary)`
   grid-column: 1 / -1
 `;
 

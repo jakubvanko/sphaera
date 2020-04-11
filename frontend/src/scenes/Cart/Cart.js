@@ -12,7 +12,7 @@ import {
 } from "./Cart.styled";
 import Icon from "../../components/Icon/Icon";
 import Text from "../../components/Text/Text";
-import {SecondaryButton} from "../../components/Button/Button";
+import {ButtonSecondary} from "../../components/Button/Button";
 
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
@@ -57,9 +57,9 @@ const Cart = () => {
                 <Item>
                     <PolicyInformationContainer>
                         By making a purchase, you agree to our Terms & Conditions. You can request a cashback in the
-                        14 day following the purchase of all Sphaera tickets and additional goods associated with the
+                        14 days following the purchase of all Sphaera tickets and additional goods associated with the
                         advertised events.
-                        <SecondaryButton>Terms & Conditions</SecondaryButton>
+                        <ButtonSecondary>Terms & Conditions</ButtonSecondary>
                     </PolicyInformationContainer>
                 </Item>
                 <Item>

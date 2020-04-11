@@ -1,7 +1,7 @@
 import React from "react";
 import {FormBase} from "./FormBase";
 import {FormText} from "../Login.styled";
-import {Button} from "../../../components/Button/Button";
+import {ButtonPrimary} from "../../../components/Button/Button";
 
 const FormRegisterPlaceholder = ({onFormChange}) => (
     <FormBase header={"Register"}>
@@ -13,7 +13,7 @@ const FormRegisterPlaceholder = ({onFormChange}) => (
             <br/>
             You also implicitly agree to our Terms & Conditions and our Privacy Policy.
         </FormText>
-        <Button onClick={onFormChange}>Register</Button>
+        <ButtonPrimary onClick={onFormChange}>Register</ButtonPrimary>
     </FormBase>
 );
 
