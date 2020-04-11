@@ -10,6 +10,7 @@ import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
 import Tickets from "./Tickets/Tickets";
 import Cart from "./Cart/Cart";
+import Profile from "./Profile/Profile";
 
 const Main = () => (
     <>

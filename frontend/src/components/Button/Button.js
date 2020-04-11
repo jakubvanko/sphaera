@@ -4,7 +4,7 @@ import Loader from "react-spinners/PulseLoader";
 
 const StyledButton = styled.button`
   border: none;
-  background-color: rgb(8, 12, 17);
+  background-color: var(--color-gray-1);
   color: ${props => props.active ? "transparent" : "white"};
   cursor: pointer;
   outline: none;

@@ -2,22 +2,6 @@ import styled from "styled-components";
 import {Button} from "../../components/Button/Button";
 import shapes from "./assets/shapes.png";
 
-export const Container = styled.div`
-  min-height: calc(100vh - var(--nav-height));
-  padding: 5vh 5vw;
-  @media screen and (min-width: 1350px){
-    padding: 7vh 9vw;
-  }
-  
-  @media screen and (min-width: 1500px){
-    padding: 9vh 12vw;
-  }
-`;
-
-export const HeadingContainer = styled.div`
-  padding-bottom: 2.5vh;
-`;
-
 export const ItemContainer = styled.div`
   display: grid;
   grid-column-gap: 1vw;
@@ -47,7 +31,7 @@ export const ItemImage = styled.div`
 `;
 
 export const Item = styled.div`
-  border: solid 1px rgb(198, 198, 198);
+  border: solid 1px var(--color-gray-8);
   border-radius: 4px;
   position: relative;
   :after {
@@ -60,7 +44,7 @@ export const Item = styled.div`
     background-color: white;
     border-top-left-radius: 1100px;
     border-bottom-left-radius: 1100px;
-    border: 1px solid rgb(198, 198, 198);
+    border: 1px solid var(--color-gray-8);
     border-right: 0;
     display: none;
     
@@ -99,50 +83,16 @@ export const ItemHeader = styled(ItemSectionBase)`
   }
 `;
 
-export const IconContainer = styled.div`
-  background-color: black;
-  border-radius: 100vw;
-  width: 40px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  display: none;
-  @media screen and (min-width: 450px){
-    display: flex;
-  }
-`;
-
 export const InformationContainer = styled(ItemSectionBase)`
   display: grid;
   justify-content: space-between;
-  border-bottom: dashed 1px #b2b2b2;
-  border-top: dashed 1px #b2b2b2;
+  border-bottom: dashed 1px var(--color-gray-7);
+  border-top: dashed 1px var(--color-gray-7);
   grid-template-columns: 1fr 1fr;
   
   @media screen and (min-width: 450px){
     grid-template-columns: max-content max-content max-content;
     grid-template-areas: "text text code" "text text code";
-  }
-`;
-
-export const BigText = styled.div`
-  font-weight: 600;
-  font-size: 1.3em;
-`;
-
-export const SmallTextLabel = styled.div`
-  color: #757575;
-  font-size: 0.85em;
-  padding-bottom: 5px;
-`;
-
-export const CodeContainer = styled.div`
-  grid-area: code;
-  align-self: center;
-  justify-self: flex-end;
-  display: none;
-  @media screen and (min-width: 450px){
-    display: block;
   }
 `;
 

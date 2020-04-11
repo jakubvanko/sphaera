@@ -12,7 +12,7 @@ export const BasicInput = styled.input`
     width: ${props => props.$width && props.$width};
     
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #9a9a9a;
+      color: var(--color-gray-6);
       opacity: 1; /* Firefox */
     }
 `;
@@ -21,7 +21,7 @@ const Label = styled.label`
   position: absolute;
   z-index: -1;
   font-size: ${props => props.$focused ? "0.8em" : "18px"};
-  color: gray;
+  color: var(--color-gray-5);
   top: ${props => props.$focused ? 0 : "24px"};
   left: ${props => props.$focused ? 0 : "2px"};
   transition: all 0.26s ease 0s;
@@ -29,8 +29,8 @@ const Label = styled.label`
 
 const Input = styled.input`
   border: none;
-  border-bottom: 2px ${props => props.$error ? "#eb3327" : "#505050"} solid;
-  color: ${props => props.$error && "#eb3327"};
+  border-bottom: 2px ${props => props.$error ? "var(--color-red)" : "var(--color-gray-3)"} solid;
+  color: ${props => props.$error && "var(--color-red)"};
   transition: border-bottom-color 0.2s;
   :focus {
     border-bottom-color: #ffaa18;
@@ -49,7 +49,7 @@ const InputContainer = styled.div`
 `;
 
 const ErrorText = styled.div`
-  color: #eb3327;
+  color: var(--color-red);
   font-size: 0.8em;
   font-weight: 500;
   padding-top: 8px;

@@ -12,4 +12,20 @@ body {
 
 :root {
     --nav-height: 100px;
+
+    --color-gray-1: rgb(15, 15, 15);
+    --color-gray-2: rgb(52, 52, 52);
+    --color-gray-3: rgb(80, 80, 80);
+    --color-gray-4: rgb(101, 101, 101);
+    --color-gray-5: rgb(128, 128, 128);
+    --color-gray-6: rgb(154, 154, 154);
+    --color-gray-7: rgb(178, 178, 178);
+    --color-gray-8: rgb(198, 198, 198);
+    --color-gray-9: rgb(233, 233, 233);
+
+    --color-mint: rgb(137, 196, 137);
+    --color-orange: rgb(244, 105, 61);
+    --color-red: rgb(235, 51, 39);
+    --color-yellow: rgb(255, 170, 24);
+    --color-shell: rgb(236, 234, 230);
 }

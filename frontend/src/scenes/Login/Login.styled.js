@@ -59,7 +59,7 @@ export const Form = styled.form`
 export const AdditionalText = styled.div`
   cursor: pointer;
   user-select: none;
-  color: gray;
+  color: var(--color-gray-5);
   font-size: 16px;
 `;
 

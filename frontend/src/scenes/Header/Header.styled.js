@@ -10,7 +10,7 @@ export const Container = styled.header`
   justify-content: space-between;
   color: black;
   font-weight: bolder;
-  border-bottom: 1px solid #eceae6;
+  border-bottom: 1px solid var(--color-gray-9);
   
   @media only screen and (min-width: 992px) {
     display: grid;
@@ -52,7 +52,7 @@ export const List = styled.ul`
 export const LinkContainer = styled.li`
   padding: 10px 30px;
   letter-spacing: 1px;
-  border-bottom: 1px solid rgb(54, 54, 54);
+  border-bottom: 1px solid var(--color-gray-2);
   user-select: none;
   
   @media only screen and (min-width: 992px) {
@@ -95,7 +95,7 @@ export const Link = styled.a`
 
 export const IconLinkContainer = styled.a`
   display: none;
-  color: #9a9a9a;
+  color: var(--color-gray-6);
   font-weight: normal;
   font-size: 14px;
   height: 100%;
@@ -126,8 +126,8 @@ export const SearchContainer = styled.div`
     height: 100%;
     align-items: center;
     padding: 0 35px;
-    border-left: 1px solid #eceae6;
-    border-right: 1px solid #eceae6;
+    border-left: 1px solid var(--color-gray-9);
+    border-right: 1px solid var(--color-gray-9);
   }
 `;
 
@@ -137,7 +137,7 @@ export const LogoContainer = styled.div`
   height: 100%;
   
   @media only screen and (min-width: 992px) {
-    border-right: 1px solid #eceae6;
+    border-right: 1px solid var(--color-gray-9);
     padding: 0 80px;
   }
   @media only screen and (min-width: 1250px) {

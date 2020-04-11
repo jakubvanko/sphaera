@@ -49,10 +49,10 @@ const ColorfulBlock = ({text, $color, ...props}) => (
 
 const ColorfulBlocks = () => (
     <ColorfulBlocksContainer>
-        <ColorfulBlock $backgroundColor={"#000"} $color={"white"} text={"Maps"}/>
-        <ColorfulBlock $backgroundColor={"#89c485"} text={"Transport"}/>
-        <ColorfulBlock $backgroundColor={"#eceae6"} text={"Parking"}/>
-        <ColorfulBlock $backgroundColor={"#f4693d"} text={"Food & Drinks"}/>
+        <ColorfulBlock $backgroundColor={"black"} $color={"white"} text={"Maps"}/>
+        <ColorfulBlock $backgroundColor={"var(--color-mint)"} text={"Transport"}/>
+        <ColorfulBlock $backgroundColor={"var(--color-shell)"} text={"Parking"}/>
+        <ColorfulBlock $backgroundColor={"var(--color-orange)"} text={"Food & Drinks"}/>
     </ColorfulBlocksContainer>
 );
 

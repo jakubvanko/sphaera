@@ -88,7 +88,7 @@ const Text = styled.span`
   line-height: 1.65em;
   letter-spacing: 1px;
   transition: color 0.3s, border-bottom-color 0.3s;
-  color: ${props => props.$disabled ? "black" : props.$active ? "white" : "rgb(128, 128, 128)"};
+  color: ${props => props.$disabled ? "black" : props.$active ? "white" : "var(--color-gray-5)"};
   
   @media (max-width: 1180px){
     font-size: 3.1em;
@@ -111,10 +111,10 @@ const Text = styled.span`
 `;
 
 const Highlight = styled(Text)`
-  color ${props => props.$disabled ? "rgb(125, 125, 125)" : props.$active ? "white" : "rgb(128, 128, 128, 0.6)"};
+  color ${props => props.$disabled ? "var(--color-gray-5)" : props.$active ? "white" : "rgb(128, 128, 128, 0.6)"};
   border-bottom-style: solid;
   border-bottom-width: 3px;
-  border-bottom-color: ${props => props.$disabled ? "rgb(125, 125, 125)" : props.$active ? "white" : "rgb(128, 128, 128, 0.6)"};
+  border-bottom-color: ${props => props.$disabled ? "var(--color-gray-5)" : props.$active ? "white" : "rgb(128, 128, 128, 0.6)"};
   cursor: pointer;
 `;
 

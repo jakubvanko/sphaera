@@ -10,7 +10,7 @@ export const IconContainer = styled.div`
   padding: 10vh 14vw;
   grid-row-gap: 8vh;
   justify-items: center;
-  border-bottom: 1px solid rgb(198,198,198);
+  border-bottom: 1px solid var(--color-gray-8);
   
   @media only screen and (min-width: 600px) {
     grid-template-columns: auto auto;
@@ -67,7 +67,7 @@ export const CorporateContainer = styled.div`
 `;
 
 export const CorporateLink = styled.a`
-  color: #333;
+  color: var(--color-gray-2);
   text-decoration: underline;
   cursor: pointer;
 `;

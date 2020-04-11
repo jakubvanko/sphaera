@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.footer`
-  background-color: #eceae6;
+  background-color: var(--color-shell);
   width: 100vw;
   max-width: 100%;
   min-height: 100px;
@@ -56,7 +56,7 @@ export const AdditionalContainer = styled.div`
 `;
 
 export const CopyrightText = styled(SmallLink)`
-  color: #646565;
+  color: var(--color-gray-4);
   padding: 0;
   @media only screen and (min-width: 992px) {
     padding: 10px 20px;

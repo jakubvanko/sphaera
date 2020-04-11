@@ -33,7 +33,7 @@ const Form = styled.form`
 
 const FormHeader = styled.h4`
   width: 100%;
-  border-bottom: dashed 1px #b2b2b2;
+  border-bottom: dashed 1px var(--color-gray-7);
   padding: 20px 25px;
   font-size: 2rem;
   text-transform: capitalize;
@@ -43,7 +43,7 @@ const FormHeader = styled.h4`
 `;
 
 const FormContainer = styled.div`
-  border: solid 1px rgb(198, 198, 198);
+  border: solid 1px var(--color-gray-8);
   border-radius: 4px;
 `;
 

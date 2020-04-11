@@ -1,30 +1,23 @@
 import React from "react";
-import QRCode from "qrcode.react";
 
 import {
-    Container,
-    HeadingContainer,
     ItemContainer,
     ItemImage,
     Item,
     ItemHeader,
-    IconContainer,
-    BigText,
-    InformationContainer,
-    SmallTextLabel,
-    CodeContainer,
     DeleteContainer,
     TotalInformationContainer,
     BuyButton,
     PolicyInformationContainer
 } from "./Cart.styled";
-import Heading from "../../components/Heading/Heading";
 import Icon from "../../components/Icon/Icon";
 import Text from "../../components/Text/Text";
 import {SecondaryButton} from "../../components/Button/Button";
 
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
+import BasicContainer from "../../components/BasicContainer/BasicContainer";
+import Ticket from "../../components/Ticket/Ticket";
 
 const CART = [{
     artist: "Marcus & Martinus",
@@ -42,57 +35,24 @@ const CART = [{
     event: "4f4iohwnfnaiosfjpasfjsfevent55"
 }];
 
+
 const Cart = () => {
     const totalPrice = CART.reduce((previousValue, currentValue) =>
         (parseFloat(currentValue.price) + parseFloat(previousValue)), 0);
     const tax = totalPrice * 0.2;
 
     return (
-        <Container>
-            <HeadingContainer>
-                <Heading type={"main"}>Cart</Heading>
-            </HeadingContainer>
+        <BasicContainer heading={"Cart"}>
             <ItemContainer>
-                {CART.map(({artist, date, image, seat, event, price}, index) => <React.Fragment key={event + index}>
+                {CART.map(({image, artist, date, seat, event, price}, index) => <React.Fragment key={event + index}>
                     <ItemImage $src={image}/>
-                    <Item $ticket>
-                        <ItemHeader>
-                            {artist}
-                            <IconContainer>
-                                <Icon name={"ticket"} width={24}/>
-                            </IconContainer>
-                        </ItemHeader>
-                        <InformationContainer>
-                            <BigText>
-                                {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
-                            </BigText>
-                            <BigText>
-                                {`${date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? "PM" : "AM"}`}
-                            </BigText>
-                            <CodeContainer>
-                                <QRCode value={event} size={64} renderAs={"svg"}/>
-                            </CodeContainer>
-                            <div>
-                                <SmallTextLabel>
-                                    Venue
-                                </SmallTextLabel>
-                                SPHAERA
-                            </div>
-                            <div>
-                                <SmallTextLabel>
-                                    Area
-                                </SmallTextLabel>
-                                {seat}
-                            </div>
-                        </InformationContainer>
-                        <ItemHeader>
-                            <DeleteContainer>
-                                <Icon name={"delete"} width={20}/>
-                                remove
-                            </DeleteContainer>
-                            ${price}
-                        </ItemHeader>
-                    </Item>
+                    <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={event}
+                            bottomIcon={() => (
+                                <DeleteContainer>
+                                    <Icon name={"delete"} width={20}/>
+                                    remove
+                                </DeleteContainer>)
+                            }/>
                 </React.Fragment>)}
                 <Item>
                     <PolicyInformationContainer>
@@ -117,7 +77,7 @@ const Cart = () => {
                     </ItemHeader>
                 </Item>
             </ItemContainer>
-        </Container>
+        </BasicContainer>
     )
 };
 
