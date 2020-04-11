@@ -12,7 +12,7 @@ import {
     LogoContainer
 } from "./Header.styled";
 import Icon from "../../components/Icon/Icon";
-import {BasicInput} from "../../components/Input/Input";
+import {InputBasic} from "../../components/Input/Input";
 
 const Header = () => {
     const [isMobileActive, setMobileActive] = useState(false);
@@ -24,7 +24,7 @@ const Header = () => {
                 <Icon name={"logo"} width={100} aria-label={"home"}/>
             </LogoContainer>
             <SearchContainer>
-                <BasicInput $width={"180px"} placeholder={"Search for..."}/>
+                <InputBasic placeholder={"Search for..."}/>
                 <Icon name={"search"} width={30}/>
             </SearchContainer>
             <List $mobileActive={isMobileActive}>

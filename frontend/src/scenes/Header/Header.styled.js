@@ -121,13 +121,17 @@ export const SearchContainer = styled.div`
   display: none;
   @media only screen and (min-width: 1250px) {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 180px 1fr;
     grid-column-gap: 10px;
     height: 100%;
     align-items: center;
     padding: 0 35px;
     border-left: 1px solid var(--color-gray-9);
     border-right: 1px solid var(--color-gray-9);
+    
+    input {
+      padding-bottom: 8px;
+    }
   }
 `;
 

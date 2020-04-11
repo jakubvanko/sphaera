@@ -2,45 +2,40 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {ErrorMessage, Field} from "formik";
 
-export const BasicInput = styled.input`
-    border: none;
-    border-bottom: 2px black solid;
-    padding-bottom: 8px;
-    outline: none;
-    font-size: 18px;
-    font-weight: 400;
-    width: ${props => props.$width && props.$width};
-    
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: var(--color-gray-6);
-      opacity: 1; /* Firefox */
-    }
-`;
-
-const Label = styled.label`
-  position: absolute;
-  z-index: -1;
-  font-size: ${props => props.$focused ? "0.8em" : "18px"};
-  color: var(--color-gray-5);
-  top: ${props => props.$focused ? 0 : "24px"};
-  left: ${props => props.$focused ? 0 : "2px"};
-  transition: all 0.26s ease 0s;
-`;
-
-const Input = styled.input`
+export const InputBasic = styled.input`
+  outline: none;
   border: none;
-  border-bottom: 2px ${props => props.$error ? "var(--color-red)" : "var(--color-gray-3)"} solid;
+  border-bottom: solid 2px var(--color-gray-3);
+  color: black;
+  font-weight: 400;
+  font-size: 1.125rem;
+  background-color: transparent;
+  width: 100%;
+  padding: 3px 2px 4px;
+  
+  ::placeholder {
+    color: var(--color-gray-6);
+    opacity: 1; /* Firefox */
+  }
+`;
+
+export const InputInteractive = styled(InputBasic)`
+  border-bottom-color: ${props => props.$error && "var(--color-red)"};
   color: ${props => props.$error && "var(--color-red)"};
   transition: border-bottom-color 0.2s;
   :focus {
     border-bottom-color: #ffaa18;
   }
-  padding: 3px 2px 4px;
-  outline: none;
-  font-size: 18px;
-  font-weight: 400;
-  width: 100%;
-  background-color: transparent;
+`;
+
+const Label = styled.label`
+  position: absolute;
+  z-index: -1;
+  font-size: ${props => props.$focused ? "0.8rem" : "1.125rem"};
+  color: var(--color-gray-5);
+  top: ${props => props.$focused ? 0 : "24px"};
+  left: ${props => props.$focused ? 0 : "2px"};
+  transition: all 0.26s ease 0s;
 `;
 
 const InputContainer = styled.div`
@@ -77,7 +72,7 @@ const LabeledInput = ({label, onChange, onBlur, errors, touched, name, ...props}
             <Label $focused={isFocused || hasContent}>
                 {label}
             </Label>
-            <Input {...props} onFocus={() => setFocused(true)}
+            <InputInteractive {...props} onFocus={() => setFocused(true)}
                    onBlur={handleBlur}
                    onChange={handleChange}
                    $error={touched && touched[name] && errors && errors[name]}
