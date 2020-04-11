@@ -15,7 +15,7 @@ import Profile from "./Profile/Profile";
 const Main = () => (
     <>
         <Header/>
-        <Login/>
+        <Contact/>
         <Footer/>
     </>
 );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FlipCard from "../../components/FlipCard/FlipCard";
 
 export const Container = styled.div`
     
@@ -13,6 +14,13 @@ export const ContentContainer = styled.div`
   
   @media(min-width: 1100px) {
     padding: 50px 5vw;
+  }
+`;
+
+export const StyledFlipCard = styled(FlipCard)`
+  height: 220px;
+  @media screen and (min-width: 580px) {
+    max-width: 400px;
   }
 `;
 

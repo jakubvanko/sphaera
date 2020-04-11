@@ -13,10 +13,10 @@ import {
     FlipCardFrontContainer,
     IconContainer,
     FlipCardBackContainer,
-    ContactName
+    ContactName,
+    StyledFlipCard
 } from "./Contact.styled";
 import Hero from "../../components/Hero/Hero";
-import FlipCard from "../../components/FlipCard/FlipCard";
 import Icon from "../../components/Icon/Icon";
 
 const CONTACTS = [
@@ -83,7 +83,7 @@ const Contact = () => (
               additionalText={"Our staff is eager to fulfill all of your wishes..."}/>
         <FlipCardsContainer>
             {CONTACTS.map(value =>
-                <FlipCard>
+                <StyledFlipCard>
                     <FlipCardFrontContainer $backgroundColor={value.$frontBackgroundColor}
                                             $backgroundImage={value.$backgroundImage}
                                             $color={value.$backgroundImage && "white"}>
@@ -98,7 +98,7 @@ const Contact = () => (
                         <p>{value.email}</p>
                         <p>{value.phone}</p>
                     </FlipCardBackContainer>
-                </FlipCard>)}
+                </StyledFlipCard>)}
         </FlipCardsContainer>
         <ContentContainer>
         </ContentContainer>
