@@ -16,3 +16,13 @@ export const Container = styled.button`
         stroke: ${props => props.$stroke && props.$stroke};
     }
 `;
+
+export const TextIconContainer = styled.div`
+  font-size: 0.8rem;
+  text-transform: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 4px;
+  align-items: flex-end;
+`;

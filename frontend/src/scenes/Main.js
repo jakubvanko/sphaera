@@ -13,11 +13,11 @@ import Cart from "./Cart/Cart";
 import Profile from "./Profile/Profile";
 
 const Main = () => (
-    <>
+    <React.Fragment>
         <Header/>
-        <Login/>
+        <Profile/>
         <Footer/>
-    </>
+    </React.Fragment>
 );
 
 export default Main;

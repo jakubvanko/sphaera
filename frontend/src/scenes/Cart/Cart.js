@@ -1,23 +1,24 @@
 import React from "react";
 
 import {
+    Container,
+    HeadingContainer,
     ItemContainer,
     ItemImage,
     Item,
     ItemHeader,
-    DeleteContainer,
     TotalInformationContainer,
     BuyButton,
     PolicyInformationContainer
 } from "./Cart.styled";
-import Icon from "../../components/Icon/Icon";
+import {TextIcon} from "../../components/Icon/Icon";
 import Text from "../../components/Text/Text";
 import {ButtonSecondary} from "../../components/Button/Button";
 
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
-import BasicContainer from "../../components/BasicContainer/BasicContainer";
 import Ticket from "../../components/Ticket/Ticket";
+import Heading from "../../components/Heading/Heading";
 
 const CART = [{
     artist: "Marcus & Martinus",
@@ -42,17 +43,15 @@ const Cart = () => {
     const tax = totalPrice * 0.2;
 
     return (
-        <BasicContainer heading={"Cart"}>
+        <Container>
+            <HeadingContainer>
+                <Heading type={"main"}>Cart</Heading>
+            </HeadingContainer>
             <ItemContainer>
                 {CART.map(({image, artist, date, seat, event, price}, index) => <React.Fragment key={event + index}>
                     <ItemImage $src={image}/>
                     <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={event}
-                            bottomIcon={() => (
-                                <DeleteContainer>
-                                    <Icon name={"delete"} width={20}/>
-                                    remove
-                                </DeleteContainer>)
-                            }/>
+                            bottomIcon={() => <TextIcon text={"remove"} name={"delete"}/>}/>
                 </React.Fragment>)}
                 <Item>
                     <PolicyInformationContainer>
@@ -77,7 +76,7 @@ const Cart = () => {
                     </ItemHeader>
                 </Item>
             </ItemContainer>
-        </BasicContainer>
+        </Container>
     )
 };
 

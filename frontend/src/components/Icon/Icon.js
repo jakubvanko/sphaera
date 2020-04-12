@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Container} from "./Icon.styled";
+import {Container, TextIconContainer} from "./Icon.styled";
 import Hamburger from "./components/Hamburger";
 import Logo from "./components/Logo";
 import Prerecorded from "./components/Prerecorded";
@@ -25,6 +25,8 @@ import ArrowRight from "./components/ArrowRight";
 import Location from "./components/Location";
 import Ticket from "./components/Ticket";
 import Delete from "./components/Delete";
+import Print from "./components/Print";
+import Pen from "./components/Pen";
 
 const ICON_MAP = {
     hamburger: Hamburger,
@@ -50,7 +52,9 @@ const ICON_MAP = {
     arrowright: ArrowRight,
     location: Location,
     ticket: Ticket,
-    delete: Delete
+    delete: Delete,
+    print: Print,
+    pen: Pen
 };
 
 const Icon = ({name, width, ...props}) => {
@@ -61,5 +65,12 @@ const Icon = ({name, width, ...props}) => {
         </Container>
     )
 };
+
+export const TextIcon = ({text, ...props}) => (
+    <TextIconContainer>
+        <Icon width={20} {...props}/>
+        {text}
+    </TextIconContainer>
+);
 
 export default Icon;

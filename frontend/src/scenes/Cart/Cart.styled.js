@@ -2,6 +2,22 @@ import styled from "styled-components";
 import {ButtonPrimary} from "../../components/Button/Button";
 import shapes from "./assets/shapes.png";
 
+export const Container = styled.div`
+  min-height: calc(100vh - var(--nav-height));
+  padding: 5vh 5vw;
+  @media screen and (min-width: 1350px){
+    padding: 7vh 9vw;
+  }
+  
+  @media screen and (min-width: 1500px){
+    padding: 9vh 12vw;
+  }
+`;
+
+export const HeadingContainer = styled.div`
+  padding-bottom: 3.5vh;
+`;
+
 export const ItemContainer = styled.div`
   display: grid;
   grid-column-gap: 1vw;
@@ -33,25 +49,6 @@ export const ItemImage = styled.div`
 export const Item = styled.div`
   border: solid 1px var(--color-gray-8);
   border-radius: 4px;
-  position: relative;
-  :after {
-    content: " ";
-    position: absolute;
-    top: calc(50% - 21px);
-    right: -1px;
-    width: 20px;
-    height: 40px;
-    background-color: white;
-    border-top-left-radius: 1100px;
-    border-bottom-left-radius: 1100px;
-    border: 1px solid var(--color-gray-8);
-    border-right: 0;
-    display: none;
-    
-    @media screen and (min-width: 500px){
-      display: ${props => props.$ticket ? "block" : "none"};
-    }
-  }
 `;
 
 const ItemSectionBase = styled.div`
@@ -94,16 +91,6 @@ export const InformationContainer = styled(ItemSectionBase)`
     grid-template-columns: max-content max-content max-content;
     grid-template-areas: "text text code" "text text code";
   }
-`;
-
-export const DeleteContainer = styled.div`
-  font-size: 0.8rem;
-  text-transform: none;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 4px;
-  align-items: flex-end;
 `;
 
 export const TotalInformationContainer = styled(InformationContainer)`
