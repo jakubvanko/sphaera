@@ -22,6 +22,8 @@ export const HeadingContainer = styled.div`
 export const LogoutText = styled.div`
   font-weight: 600;
   font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
 `;
 
 export const MainTextContainer = styled.div`

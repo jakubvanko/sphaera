@@ -66,8 +66,8 @@ const Icon = ({name, width, ...props}) => {
     )
 };
 
-export const TextIcon = ({text, ...props}) => (
-    <TextIconContainer>
+export const TextIcon = ({text, onClick, ...props}) => (
+    <TextIconContainer onClick={onClick}>
         <Icon width={20} {...props}/>
         {text}
     </TextIconContainer>

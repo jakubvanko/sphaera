@@ -2,7 +2,7 @@ import React from "react";
 
 import {Container, IconContainer, LinksContainer, SmallLink, AdditionalContainer, CopyrightText} from "./Footer.styled";
 import Icon from "../../components/Icon/Icon";
-import useWindowDimensions from "../../hooks/useWindowsDimensions";
+import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 
 const LINKS = [
     "Career",

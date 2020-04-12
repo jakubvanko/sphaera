@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import {Link as RouterLink} from "react-router-dom";
 
-import useWindowDimensions from "../../hooks/useWindowsDimensions";
+import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 import {
     Container,
     Link,
@@ -13,6 +14,7 @@ import {
 } from "./Header.styled";
 import Icon from "../../components/Icon/Icon";
 import {InputBasic} from "../../components/Input/Input";
+import {URL_CART, URL_CONTACT, URL_HOME, URL_LOGIN, URL_TICKETS, URL_VISIT} from "../../scripts/constants/urls";
 
 const Header = () => {
     const [isMobileActive, setMobileActive] = useState(false);
@@ -29,17 +31,18 @@ const Header = () => {
             </SearchContainer>
             <List $mobileActive={isMobileActive}>
                 <CloseButton onClick={() => setMobileActive(false)} aria-label={"close navigation"}/>
-                <LinkContainer><Link>Home</Link></LinkContainer>
-                <LinkContainer><Link>Tickets</Link></LinkContainer>
-                <LinkContainer><Link>Contact</Link></LinkContainer>
-                <LinkContainer><Link>Visit Us</Link></LinkContainer>
-                <LinkContainer $display={width >= 992 && "none"}><Link>Log In</Link></LinkContainer>
+                <LinkContainer><Link to={URL_HOME}>Home</Link></LinkContainer>
+                <LinkContainer><Link to={URL_TICKETS}>Tickets</Link></LinkContainer>
+                <LinkContainer><Link to={URL_CONTACT}>Contact</Link></LinkContainer>
+                <LinkContainer><Link to={URL_VISIT}>Visit Us</Link></LinkContainer>
+                <LinkContainer $display={width >= 992 && "none"}><Link to={URL_LOGIN}>Log In</Link></LinkContainer>
+                <LinkContainer $display={width >= 992 && "none"}><Link to={URL_CART}>Cart</Link></LinkContainer>
             </List>
-            <IconLinkContainer $border>
+            <IconLinkContainer $border as={RouterLink} to={URL_LOGIN}>
                 <Icon name={"user"} width={23}/>
                 <Link as={"span"}>Log In</Link>
             </IconLinkContainer>
-            <IconLinkContainer>
+            <IconLinkContainer as={RouterLink} to={URL_CART}>
                 <Icon name={"cart"} width={24}/>
                 <Link as={"span"}>Cart</Link>
             </IconLinkContainer>

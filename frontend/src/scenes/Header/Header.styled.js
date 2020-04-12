@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link as UnstyledLink} from "react-router-dom";
 
 export const Container = styled.header`
   background-color: white;
@@ -84,7 +85,9 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(UnstyledLink)`
+  color: black;
+  text-decoration: none;
   cursor: pointer;
   border-bottom: transparent 2px solid;
   

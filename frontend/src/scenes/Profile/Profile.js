@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import Heading from "../../components/Heading/Heading";
 import {
@@ -37,7 +37,10 @@ const TICKETS = [{
     _id: "4f4iohwnfnaiosfjpasfjsfevent55"
 }];
 
-const Profile = () => (
+const Profile = () => {
+    const [isEditing, setEditing] = useState(false);
+
+    return (
     <Container>
         <HeadingContainer>
             <Heading type={"main"}>My Account</Heading>
@@ -50,7 +53,7 @@ const Profile = () => (
             </MainTextContainer>
             <ItemImage $src={placeholder}/>
             <Item>
-                <ItemHeader>Account Details<TextIcon name={"pen"} text={"edit"}/></ItemHeader>
+                <ItemHeader>Account Details<TextIcon name={"pen"} text={"edit"} onClick={() => setEditing(true)}/></ItemHeader>
                 <AccountData>
                     <div><SmallTextLabel>Name</SmallTextLabel>Jakub Vanko</div>
                     <div><SmallTextLabel>Email</SmallTextLabel>kubko.vanko@gmail.com</div>
@@ -65,6 +68,6 @@ const Profile = () => (
             </React.Fragment>)}
         </ItemContainer>
     </Container>
-);
+)};
 
 export default Profile;
