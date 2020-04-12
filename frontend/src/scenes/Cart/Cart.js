@@ -12,13 +12,12 @@ import {
     PolicyInformationContainer
 } from "./Cart.styled";
 import {TextIcon} from "../../components/Icon/Icon";
-import Text from "../../components/Text/Text";
-import {ButtonSecondary} from "../../components/Button/Button";
+import {TextBasic, HeadingMain} from "../../components/TextTypes";
+import {ButtonSecondary} from "../../components/Button";
 
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
 import Ticket from "../../components/Ticket/Ticket";
-import Heading from "../../components/Heading/Heading";
 
 const CART = [{
     artist: "Marcus & Martinus",
@@ -45,7 +44,7 @@ const Cart = () => {
     return (
         <Container>
             <HeadingContainer>
-                <Heading type={"main"}>Cart</Heading>
+                <HeadingMain>Cart</HeadingMain>
             </HeadingContainer>
             <ItemContainer>
                 {CART.map(({image, artist, date, seat, event, price}, index) => <React.Fragment key={event + index}>
@@ -64,13 +63,13 @@ const Cart = () => {
                 <Item>
                     <ItemHeader>Total</ItemHeader>
                     <TotalInformationContainer>
-                        <Text>Tickets ({CART.length}x)</Text>
-                        <Text $align={"right"}>${totalPrice.toFixed(2)}</Text>
-                        <Text>Tax (20%)</Text>
-                        <Text $align={"right"}>${tax.toFixed(2)}</Text>
+                        <TextBasic>Tickets ({CART.length}x)</TextBasic>
+                        <TextBasic $align={"right"}>${totalPrice.toFixed(2)}</TextBasic>
+                        <TextBasic>Tax (20%)</TextBasic>
+                        <TextBasic $align={"right"}>${tax.toFixed(2)}</TextBasic>
                     </TotalInformationContainer>
                     <ItemHeader>
-                        <Text>Amount due</Text>
+                        <TextBasic>Amount due</TextBasic>
                         ${(totalPrice + tax).toFixed(2)}
                         <BuyButton>Buy</BuyButton>
                     </ItemHeader>

@@ -3,9 +3,8 @@ import React from "react";
 import {Container, ContentContainer, SectionContainer} from "./Visit.styled";
 import Hero from "../../components/Hero/Hero";
 import ColorfulBlocks from "./components/ColorfulBlocks";
-import Heading from "../../components/Heading/Heading";
 import Map from "./components/Map";
-import Text from "../../components/Text/Text";
+import {TextBasic, HeadingMain} from "../../components/TextTypes";
 
 import hero from "./assets/hero.jpg"
 
@@ -16,10 +15,10 @@ const Visit = () => (
         <ContentContainer>
             <ColorfulBlocks/>
             <SectionContainer>
-                <Heading type={"main"}>Maps</Heading>
-                <Text>
+                <HeadingMain>Maps</HeadingMain>
+                <TextBasic>
                     The following map will help you find a way...
-                </Text>
+                </TextBasic>
                 <Map/>
             </SectionContainer>
         </ContentContainer>

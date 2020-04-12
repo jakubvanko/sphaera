@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {Form, AdditionalText} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
-import {ButtonPrimaryLoader} from "../../../components/Button/Button";
+import {ButtonPrimaryLoader} from "../../../components/Button";
 
 const FormLogin = ({onFormChange}) => (
     <FormikBase

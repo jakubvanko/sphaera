@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Text from "../../components/Text/Text";
+import {TextBasic} from "../../components/TextTypes";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -63,7 +63,7 @@ export const AdditionalText = styled.div`
   font-size: 16px;
 `;
 
-export const FormText = styled(Text)`
+export const FormText = styled(TextBasic)`
   font-size: 1.1em;
   
   @media (min-width: 500px){

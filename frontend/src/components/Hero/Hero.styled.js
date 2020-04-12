@@ -39,26 +39,26 @@ export const TextContainer = styled.div`
   
   @media only screen and (min-width: 1000px) {
     padding: 50px 0 0 14vw;
-    line-height: 4em;
+    line-height: 4rem;
   }
 `;
 
 export const MainText = styled.div`
   font-weight: 900;
-  font-size: 2.8em;
+  font-size: 2.8rem;
   letter-spacing: 1px;
   line-height: 1.3em;
   padding: 0 0 10px 0;
   
   @media only screen and (min-width: 600px) {
-    font-size: 3.1em;
+    font-size: 3.1rem;
     line-height: 1.2em;
     text-align: left;
     padding-top: 0;
   }
   
   @media only screen and (min-width: 800px) {
-    font-size: 4em;
+    font-size: 4rem;
   }
   
   @media only screen and (min-width: 1400px) {
@@ -67,12 +67,12 @@ export const MainText = styled.div`
 `;
 
 export const AdditionalText = styled.div`
-  font-size: 1.4em;
+  font-size: 1.4rem;
   line-height: 1.6em;
   font-weight: 600;
   @media only screen and (min-width: 600px) {
     text-align: left;
     line-height: 1.4em;
-    font-size: ${props => props.$small && "1.1em"};
+    font-size: ${props => props.$small && "1.1rem"};
   }
 `;

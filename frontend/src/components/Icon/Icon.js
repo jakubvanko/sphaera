@@ -1,60 +1,60 @@
 import React from "react";
 
-import {Container, TextIconContainer} from "./Icon.styled";
-import Hamburger from "./components/Hamburger";
-import Logo from "./components/Logo";
-import Prerecorded from "./components/Prerecorded";
-import Isaak from "./components/Isaak";
-import Gawowed from "./components/Gawowed";
-import Mozell from "./components/Mozell";
 import Arrangiatore from "./components/Arrangiatore";
-import Concordea from "./components/Concordea";
-import Sonata from "./components/Sonata";
-import Orphonic from "./components/Orphonic";
-import Facebook from "./components/Facebook";
-import Youtube from "./components/Youtube";
-import Twitter from "./components/Twitter";
-import Instagram from "./components/Instagram";
-import Tiktok from "./components/Tiktok";
-import Foursquare from "./components/Foursquare";
-import User from "./components/User";
-import Search from "./components/Search";
-import UserFilled from "./components/UserFilled";
-import Cart from "./components/Cart";
 import ArrowRight from "./components/ArrowRight";
-import Location from "./components/Location";
-import Ticket from "./components/Ticket";
+import Cart from "./components/Cart";
+import Concordea from "./components/Concordea";
 import Delete from "./components/Delete";
-import Print from "./components/Print";
+import Facebook from "./components/Facebook";
+import Foursquare from "./components/Foursquare";
+import Gawowed from "./components/Gawowed";
+import Hamburger from "./components/Hamburger";
+import Instagram from "./components/Instagram";
+import Isaak from "./components/Isaak";
+import Location from "./components/Location";
+import Logo from "./components/Logo";
+import Mozell from "./components/Mozell";
+import Orphonic from "./components/Orphonic";
 import Pen from "./components/Pen";
+import Prerecorded from "./components/Prerecorded";
+import Print from "./components/Print";
+import Search from "./components/Search";
+import Sonata from "./components/Sonata";
+import Ticket from "./components/Ticket";
+import Tiktok from "./components/Tiktok";
+import Twitter from "./components/Twitter";
+import User from "./components/User";
+import UserFilled from "./components/UserFilled";
+import Youtube from "./components/Youtube";
+import {Container, TextIconContainer} from "./Icon.styled";
 
 const ICON_MAP = {
-    hamburger: Hamburger,
-    logo: Logo,
-    prerecorded: Prerecorded,
-    isaak: Isaak,
-    gawowed: Gawowed,
-    mozell: Mozell,
     arrangiatore: Arrangiatore,
+    arrowright: ArrowRight,
+    cart: Cart,
     concordea: Concordea,
-    sonata: Sonata,
-    orphonic: Orphonic,
+    delete: Delete,
     facebook: Facebook,
-    youtube: Youtube,
-    twitter: Twitter,
-    instagram: Instagram,
-    tiktok: Tiktok,
     foursquare: Foursquare,
+    gawowed: Gawowed,
+    hamburger: Hamburger,
+    instagram: Instagram,
+    isaak: Isaak,
+    location: Location,
+    logo: Logo,
+    mozell: Mozell,
+    orphonic: Orphonic,
+    pen: Pen,
+    prerecorded: Prerecorded,
+    print: Print,
+    search: Search,
+    sonata: Sonata,
+    ticket: Ticket,
+    tiktok: Tiktok,
+    twitter: Twitter,
     user: User,
     userfilled: UserFilled,
-    search: Search,
-    cart: Cart,
-    arrowright: ArrowRight,
-    location: Location,
-    ticket: Ticket,
-    delete: Delete,
-    print: Print,
-    pen: Pen
+    youtube: Youtube,
 };
 
 const Icon = ({name, width, ...props}) => {

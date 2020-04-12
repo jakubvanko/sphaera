@@ -1,7 +1,7 @@
 import React from "react";
 import {FormBase} from "./FormBase";
 import {FormText} from "../Login.styled";
-import {ButtonPrimary} from "../../../components/Button/Button";
+import {ButtonPrimary} from "../../../components/Button";
 
 const FormRegisterPlaceholder = ({onFormChange}) => (
     <FormBase header={"Register"}>

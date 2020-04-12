@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {ButtonPrimary} from "../../components/Button/Button";
+import {ButtonPrimary} from "../../components/Button";
 import shapes from "./assets/shapes.png";
 
 export const Container = styled.div`

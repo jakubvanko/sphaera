@@ -13,7 +13,7 @@ import {
     LogoContainer
 } from "./Header.styled";
 import Icon from "../../components/Icon/Icon";
-import {InputBasic} from "../../components/Input/Input";
+import {LabeledInput} from "../../components/Input";
 import {URL_CART, URL_CONTACT, URL_HOME, URL_LOGIN, URL_TICKETS, URL_VISIT} from "../../scripts/constants/urls";
 
 const Header = () => {
@@ -26,7 +26,7 @@ const Header = () => {
                 <Icon name={"logo"} width={100} aria-label={"home"}/>
             </LogoContainer>
             <SearchContainer>
-                <InputBasic placeholder={"Search for..."}/>
+                <LabeledInput label={"Search for..."} name={"search"}/>
                 <Icon name={"search"} width={30}/>
             </SearchContainer>
             <List $mobileActive={isMobileActive}>

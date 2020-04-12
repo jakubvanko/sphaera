@@ -1,25 +1,6 @@
 import React, {useState} from "react";
-import styled from "styled-components";
 
-const FlipCardContentContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  transform: ${props => props.$flipped && "rotateY(180deg)"};
-  
-  > * {
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    position: absolute;
-    :nth-child(2) {
-      transform: rotateY(180deg);
-    }
-  }
-`;
+import {Container} from "./FlipCard.styled";
 
 const FlipCard = ({children, ...props}) => {
     const [isFlipped, setFlipped] = useState(false);
@@ -28,11 +9,11 @@ const FlipCard = ({children, ...props}) => {
     }
 
     return (
-        <div style={{perspective: "1000px"}} {...props} onClick={() => setFlipped(!isFlipped)}>
-            <FlipCardContentContainer $flipped={isFlipped}>
+        <Container {...props} $flipped={isFlipped} onClick={() => setFlipped(!isFlipped)}>
+            <div>
                 {children}
-            </FlipCardContentContainer>
-        </div>
+            </div>
+        </Container>
     )
 };
 

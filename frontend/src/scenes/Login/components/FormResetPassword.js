@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import {AdditionalText, Form} from "../Login.styled";
 import {InputField} from "../../../components/Input/Input";
 import {FormikBase} from "./FormBase";
-import {ButtonPrimaryLoader} from "../../../components/Button/Button";
+import {ButtonPrimaryLoader} from "../../../components/Button";
 
 const FormResetPassword = ({onFormChange}) => (
     <FormikBase

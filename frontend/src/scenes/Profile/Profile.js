@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import Heading from "../../components/Heading/Heading";
+import {HeadingMain} from "../../components/TextTypes";
 import {
     Container,
     HeadingContainer,
@@ -43,7 +43,7 @@ const Profile = () => {
     return (
     <Container>
         <HeadingContainer>
-            <Heading type={"main"}>My Account</Heading>
+            <HeadingMain>My Account</HeadingMain>
             <LogoutText>Log out</LogoutText>
         </HeadingContainer>
         <ItemContainer>
