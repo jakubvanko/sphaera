@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {TextBasic} from "../../components/TextTypes";
+import {TextBasic} from "../../components/TextType";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));

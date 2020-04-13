@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {HeadingMain} from "../../components/TextTypes";
+import {HeadingMain} from "../../components/TextType";
 import {
     Container,
     HeadingContainer,

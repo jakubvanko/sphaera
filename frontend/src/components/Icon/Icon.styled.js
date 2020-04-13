@@ -26,3 +26,13 @@ export const TextIconContainer = styled.div`
   grid-column-gap: 4px;
   align-items: flex-end;
 `;
+
+export const CircleIconContainer = styled.div`
+  background-color: ${props => props.$backgroundColor || "black"};
+  border-radius: 100vw;
+  width: ${props => props.$size || "40"}px;
+  height: ${props => props.$size || "40"}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

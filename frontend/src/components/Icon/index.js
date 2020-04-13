@@ -1,1 +1,1 @@
-export {default as Icon, TextIcon} from "./Icon";
+export {default as Icon, TextIcon, CircleIcon} from "./Icon";

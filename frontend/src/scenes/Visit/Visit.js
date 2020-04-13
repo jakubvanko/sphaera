@@ -4,7 +4,7 @@ import {Container, ContentContainer, SectionContainer} from "./Visit.styled";
 import Hero from "../../components/Hero/Hero";
 import ColorfulBlocks from "./components/ColorfulBlocks";
 import Map from "./components/Map";
-import {TextBasic, HeadingMain} from "../../components/TextTypes";
+import {TextBasic, HeadingMain} from "../../components/TextType";
 
 import hero from "./assets/hero.jpg"
 

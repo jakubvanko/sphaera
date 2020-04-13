@@ -1,53 +1,50 @@
+import QRCode from "qrcode.react";
 import React from "react";
 
-import Icon from "../Icon/Icon";
-import QRCode from "qrcode.react";
+import {ContainerSpaceBetween} from "../Container";
+import {CircleIcon} from "../Icon";
+import {HeadingMedium, TextBig, TextLabeled} from "../TextType";
 import {
-    TicketContainer,
+    Container,
     InformationContainer,
     CodeContainer,
-    SmallTextLabel,
-    BigText,
-    IconContainer,
-    TicketHeading
+    IconContainer
 } from "./Ticket.styled";
 
 export const Ticket = ({artist, date, seat, price, qrValue, bottomIcon}) => (
-    <TicketContainer>
-        <TicketHeading>
-            {artist}
+    <Container>
+        <ContainerSpaceBetween>
+            <HeadingMedium>
+                {artist}
+            </HeadingMedium>
             <IconContainer>
-                <Icon name={"ticket"} width={24}/>
+                <CircleIcon size={40} name={"ticket"}/>
             </IconContainer>
-        </TicketHeading>
+        </ContainerSpaceBetween>
         <InformationContainer>
-            <BigText>
+            <TextBig>
                 {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
-            </BigText>
-            <BigText>
+            </TextBig>
+            <TextBig>
                 {`${date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? "PM" : "AM"}`}
-            </BigText>
+            </TextBig>
             <CodeContainer>
                 <QRCode value={qrValue} size={64} renderAs={"svg"}/>
             </CodeContainer>
-            <div>
-                <SmallTextLabel>
-                    Venue
-                </SmallTextLabel>
+            <TextLabeled label={"Venue"}>
                 SPHAERA
-            </div>
-            <div>
-                <SmallTextLabel>
-                    Area
-                </SmallTextLabel>
+            </TextLabeled>
+            <TextLabeled label={"Area"}>
                 {seat}
-            </div>
+            </TextLabeled>
         </InformationContainer>
-        <TicketHeading>
+        <ContainerSpaceBetween>
             {bottomIcon()}
-            ${price}
-        </TicketHeading>
-    </TicketContainer>
+            <HeadingMedium>
+                ${price}
+            </HeadingMedium>
+        </ContainerSpaceBetween>
+    </Container>
 );
 
 export default Ticket;

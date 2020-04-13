@@ -12,7 +12,7 @@ import {
     PolicyInformationContainer
 } from "./Cart.styled";
 import {TextIcon} from "../../components/Icon/Icon";
-import {TextBasic, HeadingMain} from "../../components/TextTypes";
+import {TextBasic, HeadingMain} from "../../components/TextType";
 import {ButtonSecondary} from "../../components/Button";
 
 import test2 from "../../scenes/Tickets/assets/test2.jpg";

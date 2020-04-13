@@ -26,7 +26,7 @@ import Twitter from "./components/Twitter";
 import User from "./components/User";
 import UserFilled from "./components/UserFilled";
 import Youtube from "./components/Youtube";
-import {Container, TextIconContainer} from "./Icon.styled";
+import {Container, TextIconContainer, CircleIconContainer} from "./Icon.styled";
 
 const ICON_MAP = {
     arrangiatore: Arrangiatore,
@@ -71,6 +71,12 @@ export const TextIcon = ({text, onClick, ...props}) => (
         <Icon width={20} {...props}/>
         {text}
     </TextIconContainer>
+);
+
+export const CircleIcon = ({size = 40, ...props}) => (
+    <CircleIconContainer $size={size}>
+        <Icon width={0.625 * size} {...props}/>
+    </CircleIconContainer>
 );
 
 export default Icon;
