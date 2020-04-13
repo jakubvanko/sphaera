@@ -1,25 +1,22 @@
-import QRCode from "qrcode.react";
 import React from "react";
 
 import {ContainerSpaceBetween} from "../Container";
-import {CircleIcon} from "../Icon";
+import {TextIcon} from "../Icon";
 import {HeadingMedium, TextBig, TextLabeled} from "../TextType";
 import {
     Container,
     InformationContainer,
-    CodeContainer,
-    IconContainer
+    Code,
+    StyledCircleIcon
 } from "./Ticket.styled";
 
-export const Ticket = ({artist, date, seat, price, qrValue, bottomIcon}) => (
+export const Ticket = ({artist, date, seat, price, qrValue, bottomIconText, bottomIconName}) => (
     <Container>
         <ContainerSpaceBetween>
             <HeadingMedium>
                 {artist}
             </HeadingMedium>
-            <IconContainer>
-                <CircleIcon size={40} name={"ticket"}/>
-            </IconContainer>
+            <StyledCircleIcon size={40} name={"ticket"}/>
         </ContainerSpaceBetween>
         <InformationContainer>
             <TextBig>
@@ -28,9 +25,7 @@ export const Ticket = ({artist, date, seat, price, qrValue, bottomIcon}) => (
             <TextBig>
                 {`${date.getHours()}:${date.getMinutes()} ${date.getHours() > 12 ? "PM" : "AM"}`}
             </TextBig>
-            <CodeContainer>
-                <QRCode value={qrValue} size={64} renderAs={"svg"}/>
-            </CodeContainer>
+            <Code value={qrValue} size={64} renderAs={"svg"}/>
             <TextLabeled label={"Venue"}>
                 SPHAERA
             </TextLabeled>
@@ -39,7 +34,7 @@ export const Ticket = ({artist, date, seat, price, qrValue, bottomIcon}) => (
             </TextLabeled>
         </InformationContainer>
         <ContainerSpaceBetween>
-            {bottomIcon()}
+            <TextIcon text={bottomIconText} name={bottomIconName}/>
             <HeadingMedium>
                 ${price}
             </HeadingMedium>

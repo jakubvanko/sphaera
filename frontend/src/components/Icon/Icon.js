@@ -27,6 +27,7 @@ import User from "./components/User";
 import UserFilled from "./components/UserFilled";
 import Youtube from "./components/Youtube";
 import {Container, TextIconContainer, CircleIconContainer} from "./Icon.styled";
+import {TextSmallBold} from "../TextType";
 
 const ICON_MAP = {
     arrangiatore: Arrangiatore,
@@ -69,12 +70,12 @@ const Icon = ({name, width, ...props}) => {
 export const TextIcon = ({text, onClick, ...props}) => (
     <TextIconContainer onClick={onClick}>
         <Icon width={20} {...props}/>
-        {text}
+        <TextSmallBold>{text}</TextSmallBold>
     </TextIconContainer>
 );
 
-export const CircleIcon = ({size = 40, ...props}) => (
-    <CircleIconContainer $size={size}>
+export const CircleIcon = ({size = 40, className, ...props}) => (
+    <CircleIconContainer $size={size} className={className}>
         <Icon width={0.625 * size} {...props}/>
     </CircleIconContainer>
 );

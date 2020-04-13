@@ -18,8 +18,6 @@ export const Container = styled.button`
 `;
 
 export const TextIconContainer = styled.div`
-  font-size: 0.8rem;
-  text-transform: none;
   cursor: pointer;
   display: grid;
   grid-template-columns: auto auto;

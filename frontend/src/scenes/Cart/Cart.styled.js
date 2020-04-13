@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import {ButtonPrimary} from "../../components/Button";
+
 import shapes from "./assets/shapes.png";
+import {ButtonPrimary} from "../../components/Button";
+import {ContainerSpaceBetween} from "../../components/Container";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -46,14 +48,41 @@ export const ItemImage = styled.div`
   } 
 `;
 
-export const Item = styled.div`
-  border: solid 1px var(--color-gray-8);
-  border-radius: 4px;
+export const ContainerSection = styled(ContainerSpaceBetween)`
+  width: calc(100% - 8vw);
+  margin: 0 4vw;
+  padding: 2vh 0;
+  grid-row-gap: 10px;
+  
+  @media screen and (min-width: 500px){
+    width: calc(100% - 12vw);
+    margin: 0 6vw;
+    padding: 4vh 0;
+    grid-row-gap: 20px;
+  }
+  
+  @media (min-width: 1000px) {
+    width: calc(100% - 8vw);
+    margin: 0 4vw;
+    padding: 4vh 0;
+  }
+  
+  :not(:first-child) {
+    border-top: solid 1px var(--color-gray-7);
+  }
 `;
 
-const ItemSectionBase = styled.div`
+export const BuyButton = styled(ButtonPrimary)`
+  grid-column: 1 / -1
+`;
+
+export const PolicyInformationContainer = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5em;
+  text-align: center;
+
   padding: 2vh 4vw;
-  grid-row-gap: 10px;
 
   @media screen and (min-width: 500px){
     padding: 4vh 6vw;
@@ -62,56 +91,8 @@ const ItemSectionBase = styled.div`
   
   @media (min-width: 1000px) {
     padding: 4vh 4vw 4vh 4vw;
-  } 
-`;
-
-export const ItemHeader = styled(ItemSectionBase)`
-  width: 100%;
-  font-size: 1.8rem;
-  text-transform: capitalize;
-  font-weight: 600;
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: space-between;
-  align-items: center;
-  
-  @media screen and (min-width: 500px){
-    font-size: 2.4rem;
   }
-`;
-
-export const InformationContainer = styled(ItemSectionBase)`
-  display: grid;
-  justify-content: space-between;
-  border-bottom: dashed 1px var(--color-gray-7);
-  border-top: dashed 1px var(--color-gray-7);
-  grid-template-columns: 1fr 1fr;
   
-  @media screen and (min-width: 450px){
-    grid-template-columns: max-content max-content max-content;
-    grid-template-areas: "text text code" "text text code";
-  }
-`;
-
-export const TotalInformationContainer = styled(InformationContainer)`
-  margin: 0 4vw 0 4vw;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  grid-template-columns: max-content max-content !important;
-  grid-template-areas: unset !important;
-`;
-
-export const BuyButton = styled(ButtonPrimary)`
-  grid-column: 1 / -1
-`;
-
-export const PolicyInformationContainer = styled(ItemSectionBase)`
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.5em;
-  text-align: center;
   width: 100%;
   height: 100%;
   background: url("${shapes}");

@@ -30,9 +30,17 @@ export const TextBasic = styled.span`
   text-align: ${props => props.$align && props.$align};
 `;
 
-export const TextLabel = styled.span`
+export const TextSmall = styled.span`
+  font-size: 0.84rem;
+  text-transform: none;
+`;
+
+export const TextLabel = styled(TextSmall)`
   color: var(--color-gray-5);
-  font-size: 0.85rem;
+`;
+
+export const TextSmallBold = styled(TextSmall)`
+  font-weight: 600;
 `;
 
 export const TextBig = styled.span`

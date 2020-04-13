@@ -1,1 +1,3 @@
-export {ContainerSpaceBetween} from "./Container.styled";
+export {
+    ContainerSpaceBetween, ContainerSectioned, ContainerBordered
+}from "./Container.styled";

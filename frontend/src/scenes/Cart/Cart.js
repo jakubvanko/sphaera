@@ -5,19 +5,16 @@ import {
     HeadingContainer,
     ItemContainer,
     ItemImage,
-    Item,
-    ItemHeader,
-    TotalInformationContainer,
     BuyButton,
-    PolicyInformationContainer
+    PolicyInformationContainer,
+    ContainerSection
 } from "./Cart.styled";
-import {TextIcon} from "../../components/Icon/Icon";
-import {TextBasic, HeadingMain} from "../../components/TextType";
 import {ButtonSecondary} from "../../components/Button";
-
+import {ContainerBordered} from "../../components/Container";
+import {TextBasic, HeadingMain, HeadingMedium} from "../../components/TextType";
+import {Ticket} from "../../components/Ticket";
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
 import test3 from "../../scenes/Tickets/assets/test3.jpg";
-import Ticket from "../../components/Ticket/Ticket";
 
 const CART = [{
     artist: "Marcus & Martinus",
@@ -50,30 +47,37 @@ const Cart = () => {
                 {CART.map(({image, artist, date, seat, event, price}, index) => <React.Fragment key={event + index}>
                     <ItemImage $src={image}/>
                     <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={event}
-                            bottomIcon={() => <TextIcon text={"remove"} name={"delete"}/>}/>
+                            bottomIconText={"remove"} bottomIconName={"delete"}/>
                 </React.Fragment>)}
-                <Item>
+                <ContainerBordered>
                     <PolicyInformationContainer>
                         By making a purchase, you agree to our Terms & Conditions. You can request a cashback in the
-                        14 days following the purchase of all Sphaera tickets and additional goods associated with the
+                        14 days following the purchase of all Sphaera tickets and additional goods associated with
+                        the
                         advertised events.
                         <ButtonSecondary>Terms & Conditions</ButtonSecondary>
                     </PolicyInformationContainer>
-                </Item>
-                <Item>
-                    <ItemHeader>Total</ItemHeader>
-                    <TotalInformationContainer>
+                </ContainerBordered>
+                <ContainerBordered>
+                    <ContainerSection>
+                        <HeadingMedium>
+                            Total
+                        </HeadingMedium>
+                    </ContainerSection>
+                    <ContainerSection>
                         <TextBasic>Tickets ({CART.length}x)</TextBasic>
                         <TextBasic $align={"right"}>${totalPrice.toFixed(2)}</TextBasic>
                         <TextBasic>Tax (20%)</TextBasic>
                         <TextBasic $align={"right"}>${tax.toFixed(2)}</TextBasic>
-                    </TotalInformationContainer>
-                    <ItemHeader>
+                    </ContainerSection>
+                    <ContainerSection>
                         <TextBasic>Amount due</TextBasic>
-                        ${(totalPrice + tax).toFixed(2)}
+                        <HeadingMedium>
+                            ${(totalPrice + tax).toFixed(2)}
+                        </HeadingMedium>
                         <BuyButton>Buy</BuyButton>
-                    </ItemHeader>
-                </Item>
+                    </ContainerSection>
+                </ContainerBordered>
             </ItemContainer>
         </Container>
     )
