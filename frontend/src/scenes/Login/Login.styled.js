@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import {TextBasic} from "../../components/TextType";
 
 export const Container = styled.div`
@@ -64,7 +65,7 @@ export const AdditionalText = styled.div`
 `;
 
 export const FormText = styled(TextBasic)`
-  font-size: 1.1em;
+  font-size: 1.1rem;
   
   @media (min-width: 500px){
     line-height: 1.6em;

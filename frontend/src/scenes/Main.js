@@ -20,7 +20,7 @@ import Visit from "./Visit/Visit";
 import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
 import Tickets from "./Tickets/Tickets";
-import Cart from "./Cart/Cart";
+import Cart from "./Cart";
 import Profile from "./Profile/Profile";
 
 const Main = () => (

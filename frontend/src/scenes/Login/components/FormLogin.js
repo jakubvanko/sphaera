@@ -1,11 +1,11 @@
-import React from "react";
 import {Form as FormikForm} from "formik";
+import React from "react";
 import * as Yup from "yup";
 
-import {Form, AdditionalText} from "../Login.styled";
-import {InputField} from "../../../components/Input/Input";
-import {FormikBase} from "./FormBase";
 import {ButtonPrimaryLoader} from "../../../components/Button";
+import {FormikBase} from "../../../components/FormBase";
+import {InputField} from "../../../components/Input/Input";
+import {Form, AdditionalText} from "../Login.styled";
 
 const FormLogin = ({onFormChange}) => (
     <FormikBase

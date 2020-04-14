@@ -98,12 +98,17 @@ export const Link = styled(UnstyledLink)`
 
 export const IconLinkContainer = styled.a`
   display: none;
-  color: var(--color-gray-6);
   font-weight: normal;
   font-size: 14px;
   height: 100%;
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
+  
+  > span {
+    color: var(--color-gray-6);
+  }
+  
   span:hover {
     border-bottom: transparent 2px solid;
   }

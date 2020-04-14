@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import FlipCard from "../../components/FlipCard/FlipCard";
 
-export const Container = styled.div`
-    
-`;
+import FlipCard from "../../components/FlipCard/FlipCard";
 
 export const ContentContainer = styled.div`
   padding: 0 30px 30px 30px;

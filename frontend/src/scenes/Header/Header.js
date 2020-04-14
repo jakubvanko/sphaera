@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import {Link as RouterLink} from "react-router-dom";
 
+import {Icon} from "../../components/Icon";
+import {LabeledInput} from "../../components/Input";
 import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
+import {URL_CART, URL_CONTACT, URL_HOME, URL_LOGIN, URL_TICKETS, URL_VISIT} from "../../scripts/constants/urls";
 import {
     Container,
     Link,
@@ -12,9 +15,6 @@ import {
     SearchContainer,
     LogoContainer
 } from "./Header.styled";
-import Icon from "../../components/Icon/Icon";
-import {LabeledInput} from "../../components/Input";
-import {URL_CART, URL_CONTACT, URL_HOME, URL_LOGIN, URL_TICKETS, URL_VISIT} from "../../scripts/constants/urls";
 
 const Header = () => {
     const [isMobileActive, setMobileActive] = useState(false);

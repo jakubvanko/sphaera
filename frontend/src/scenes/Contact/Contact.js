@@ -5,9 +5,9 @@ import bookings from "./assets/bookings.jpg";
 import business from "./assets/business.jpg";
 import costume from "./assets/costume.jpg";
 import pr from "./assets/pr.jpg";
-
+import {Hero} from "../../components/Hero";
+import {Icon} from "../../components/Icon";
 import {
-    Container,
     ContentContainer,
     FlipCardsContainer,
     FlipCardFrontContainer,
@@ -16,8 +16,6 @@ import {
     ContactName,
     StyledFlipCard
 } from "./Contact.styled";
-import Hero from "../../components/Hero/Hero";
-import Icon from "../../components/Icon/Icon";
 
 const CONTACTS = [
     {
@@ -78,7 +76,7 @@ const CONTACTS = [
 ];
 
 const Contact = () => (
-    <Container>
+    <div>
         <Hero as={"img"} src={hero} alt={""} mainText={"We're here for you"} $bigMain $smallAdditional
               additionalText={"Our staff is eager to fulfill all of your wishes..."}/>
         <FlipCardsContainer>
@@ -102,7 +100,7 @@ const Contact = () => (
         </FlipCardsContainer>
         <ContentContainer>
         </ContentContainer>
-    </Container>
+    </div>
 );
 
 export default Contact;

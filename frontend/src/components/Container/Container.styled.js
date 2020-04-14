@@ -17,23 +17,3 @@ export const ContainerBordered = styled.div`
   border-radius: 4px;
   position: relative;
 `;
-
-export const ContainerSectioned = styled(ContainerBordered)`
-  > div {
-    padding: 2vh 4vw;
-    grid-row-gap: 10px;
-
-    @media screen and (min-width: 500px){
-      padding: 4vh 6vw;
-      grid-row-gap: 20px;
-    }
-  
-    @media (min-width: 1000px) {
-      padding: 4vh 4vw 4vh 4vw;
-    }
-  
-    :not(:first-child) {
-      border-top: dashed 1px var(--color-gray-7);
-    }
-  }
-`;

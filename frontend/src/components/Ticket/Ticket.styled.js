@@ -1,8 +1,28 @@
 import QRCode from "qrcode.react";
 import styled from "styled-components";
 
-import {ContainerSectioned} from "../Container";
+import {ContainerBordered} from "../Container";
 import {CircleIcon} from "../Icon";
+
+export const ContainerSectioned = styled(ContainerBordered)`
+  > * {
+    padding: 2vh 4vw;
+    grid-row-gap: 10px;
+
+    @media screen and (min-width: 500px){
+      padding: 4vh 6vw;
+      grid-row-gap: 20px;
+    }
+  
+    @media (min-width: 1000px) {
+      padding: 4vh 4vw 4vh 4vw;
+    }
+  
+    :not(:first-child) {
+      border-top: dashed 1px var(--color-gray-7);
+    }
+  }
+`;
 
 export const Container = styled(ContainerSectioned)`
   // The Ticket circle cut-out

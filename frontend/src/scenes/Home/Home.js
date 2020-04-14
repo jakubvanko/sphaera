@@ -2,6 +2,9 @@ import React from "react";
 
 import poster from "./assets/placeholder.jpg"
 import source from "./assets/home.mp4";
+import BackgroundChangingText from "./components/BackgroundChangingText";
+import {Hero} from "../../components/Hero";
+import {Icon} from "../../components/Icon";
 import {
     Container,
     IconContainer,
@@ -12,9 +15,6 @@ import {
     CorporateLink,
     MainText
 } from "./Home.styled";
-import BackgroundChangingText from "./components/BackgroundChangingText";
-import Icon from "../../components/Icon/Icon";
-import Hero from "../../components/Hero/Hero";
 
 const Home = () => {
     const iconWidth = 150;

@@ -1,5 +1,11 @@
 import React from "react";
 
+import {ButtonSecondary} from "../../components/Button";
+import {ContainerBordered} from "../../components/Container";
+import {TextBasic, HeadingMain, HeadingMedium} from "../../components/TextType";
+import {Ticket} from "../../components/Ticket";
+import test2 from "../../scenes/Tickets/assets/test2.jpg";
+import test3 from "../../scenes/Tickets/assets/test3.jpg";
 import {
     Container,
     HeadingContainer,
@@ -9,12 +15,6 @@ import {
     PolicyInformationContainer,
     ContainerSection
 } from "./Cart.styled";
-import {ButtonSecondary} from "../../components/Button";
-import {ContainerBordered} from "../../components/Container";
-import {TextBasic, HeadingMain, HeadingMedium} from "../../components/TextType";
-import {Ticket} from "../../components/Ticket";
-import test2 from "../../scenes/Tickets/assets/test2.jpg";
-import test3 from "../../scenes/Tickets/assets/test3.jpg";
 
 const CART = [{
     artist: "Marcus & Martinus",

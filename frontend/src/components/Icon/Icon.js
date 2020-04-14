@@ -26,8 +26,8 @@ import Twitter from "./components/Twitter";
 import User from "./components/User";
 import UserFilled from "./components/UserFilled";
 import Youtube from "./components/Youtube";
-import {Container, TextIconContainer, CircleIconContainer} from "./Icon.styled";
 import {TextSmallBold} from "../TextType";
+import {Container, TextIconContainer, CircleIconContainer} from "./Icon.styled";
 
 const ICON_MAP = {
     arrangiatore: Arrangiatore,
