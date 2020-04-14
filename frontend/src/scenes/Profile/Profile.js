@@ -1,6 +1,11 @@
 import React, {useState} from "react";
 
+import test3 from "../Tickets/assets/test3.jpg";
+import test2 from "../Tickets/assets/test2.jpg";
+import placeholder from "./assets/placeholder.jpg";
+import {TextIcon} from "../../components/Icon";
 import {HeadingMain} from "../../components/TextType";
+import {Ticket} from "../../components/Ticket";
 import {
     Container,
     HeadingContainer,
@@ -14,12 +19,6 @@ import {
     MainTextContainer,
     SmallText
 } from "./Profile.styled";
-
-import test3 from "../Tickets/assets/test3.jpg";
-import test2 from "../Tickets/assets/test2.jpg";
-import placeholder from "./assets/placeholder.jpg";
-import Ticket from "../../components/Ticket/Ticket";
-import {TextIcon} from "../../components/Icon/Icon";
 
 const TICKETS = [{
     artist: "Marcus & Martinus",
@@ -64,7 +63,7 @@ const Profile = () => {
             {TICKETS.map(({image, artist, date, seat, _id, price}) => <React.Fragment key={_id}>
                 <ItemImage $src={image}/>
                 <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={_id}
-                        bottomIcon={() => <TextIcon name={"print"} text={"print"}/>}/>
+                        bottomIconName={"print"} bottomIconText={"print"}/>
             </React.Fragment>)}
         </ItemContainer>
     </Container>

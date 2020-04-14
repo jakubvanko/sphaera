@@ -13,15 +13,15 @@ import {
     URL_CART
 } from "../scripts/constants/urls";
 
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
-import Home from "./Home/Home";
-import Visit from "./Visit/Visit";
-import Contact from "./Contact/Contact";
-import Login from "./Login/Login";
-import Tickets from "./Tickets/Tickets";
+import Header from "./Header";
+import Footer from "./Footer";
+import Home from "./Home";
+import Visit from "./Visit";
+import Contact from "./Contact";
+import Login from "./Login";
+import Tickets from "./Tickets";
 import Cart from "./Cart";
-import Profile from "./Profile/Profile";
+import Profile from "./Profile";
 
 const Main = () => (
     <BrowserRouter>
