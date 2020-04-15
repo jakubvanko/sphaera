@@ -3,7 +3,7 @@ import React, {useState} from "react";
 
 import {InputContainer, Label, ErrorText, InputInteractive} from "./Input.styled";
 
-export const LabeledInput = ({label, onChange, onBlur, errors, touched, formik, name, ...props}) => {
+export const LabeledInput = ({label, onChange, onBlur, errors, touched, formik, name, labelActive = false, ...props}) => {
     const [isFocused, setFocused] = useState(false);
     const [hasContent, setHasContent] = useState(false);
 
@@ -19,7 +19,7 @@ export const LabeledInput = ({label, onChange, onBlur, errors, touched, formik, 
 
     return (
         <InputContainer>
-            <Label $focused={isFocused || hasContent}>
+            <Label $focused={isFocused || hasContent || labelActive}>
                 {label}
             </Label>
             <InputInteractive {...props} onFocus={() => setFocused(true)}

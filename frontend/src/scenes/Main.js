@@ -10,7 +10,8 @@ import {
     URL_PROFILE,
     URL_TICKETS,
     URL_VISIT,
-    URL_CART
+    URL_CART,
+    URL_ADMIN
 } from "../scripts/constants/urls";
 
 import Header from "./Header";
@@ -22,6 +23,7 @@ import Login from "./Login";
 import Tickets from "./Tickets";
 import Cart from "./Cart";
 import Profile from "./Profile";
+import Admin from "./Admin";
 
 const Main = () => (
     <BrowserRouter>
@@ -34,6 +36,7 @@ const Main = () => (
             <Route path={URL_PROFILE} component={Profile}/>
             <Route path={URL_CART} component={Cart}/>
             <Route path={URL_LOGIN} component={Login}/>
+            <Route path={URL_ADMIN} component={Admin}/>
         </Switch>
         <Footer/>
     </BrowserRouter>

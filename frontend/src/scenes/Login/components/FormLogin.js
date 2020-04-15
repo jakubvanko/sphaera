@@ -3,9 +3,9 @@ import React from "react";
 import * as Yup from "yup";
 
 import {ButtonPrimaryLoader} from "../../../components/Button";
-import {FormikBase} from "../../../components/FormBase";
+import {FormikBase, Form} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
-import {Form, AdditionalText} from "../Login.styled";
+import {AdditionalText} from "../Login.styled";
 
 const FormLogin = ({onFormChange}) => (
     <FormikBase
