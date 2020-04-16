@@ -1,7 +1,8 @@
 import React from "react";
 
-import {Container} from "./Admin.styled";
 import FormAddEvent from "./components/FormAddEvent";
+import {SeatSelection} from "../../components/SeatSelection";
+import {Container} from "./Admin.styled";
 
 const Admin = () => (
     <Container>

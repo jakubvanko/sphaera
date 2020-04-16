@@ -9,6 +9,7 @@ const ButtonBase = styled.button`
   padding: 15px 15px;
   border-radius: 2px;
   font-size: 1rem;
+  grid-area: button;
 `;
 
 export const ButtonPrimary = styled(ButtonBase)`
