@@ -1,14 +1,14 @@
-import {Form as FormikForm} from "formik";
-import React, {useState} from "react";
+import {Form as FormikForm, Field} from "formik";
+import React, {useState, useRef} from "react";
 import * as Yup from "yup";
 
 import {ButtonPrimaryLoader} from "../../../components/Button";
 import {FormikBase} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
-import {MultiColumnForm, AreaInputGroup, AreaInputContainer} from "../Admin.styled";
-import {SEATS} from "../../../scripts/constants/seats";
 import {SeatSelection} from "../../../components/SeatSelection";
 import {TextBig} from "../../../components/TextType";
+import {SEATS} from "../../../scripts/constants/seats";
+import {MultiColumnForm, AreaInputGroup, AreaInputContainer} from "../Admin.styled";
 
 const defaultValues = SEATS.reduce((
     (previousValue, {name, defaultSeats, defaultPrice, repeated = false, selectable = true}) => {
@@ -21,13 +21,15 @@ const defaultValues = SEATS.reduce((
 
 const FormAddEvent = () => {
     const [currentlyDisplayed, setCurrentlyDisplayed] = useState("1");
+    const fileRef = useRef();
 
     return (
         <FormikBase
             header={"Add Event"}
             emptyValues={["artist", "date", "file"]}
             validate={values => {
-                console.log(values)
+                console.log(values);
+                console.log(fileRef);
             }}
             initialValues={defaultValues}
             schema={values => ({
@@ -48,7 +50,7 @@ const FormAddEvent = () => {
                 <MultiColumnForm as={FormikForm}>
                     <InputField label={"Artist"} name={"artist"} {...props}/>
                     <InputField type={"date"} label={"Date"} name={"date"} labelActive={true} {...props}/>
-                    <InputField type={"file"} label={"File"} name={"file"} labelActive={true} {...props}/>
+                    <InputField innerRef={fileRef} type={"file"} label={"File"} name={"file"} labelActive={true} {...props}/>
                     <AreaInputContainer>
                         {SEATS.filter(({repeated = false, selectable = true}) => !repeated && selectable)
                             .map(({name}, index) => (
