@@ -18,10 +18,10 @@ const G = styled.g`
 
 
 const SeatSelection = ({onSeatSelected}) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox={VIEWBOX} width={"50vw"}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox={VIEWBOX} width={"100%"}>
         {SEATS.map(({name, path, textTransform, fill, color, selectable = true}, index) => (
             <G key={name + index} onClick={() => {
-                if (selectable) {
+                if (selectable && onSeatSelected) {
                     onSeatSelected(name)
                 }
             }} $selectable={selectable}>

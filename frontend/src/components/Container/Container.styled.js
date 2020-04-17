@@ -16,4 +16,5 @@ export const ContainerBordered = styled.div`
   border: solid 1px var(--color-gray-8);
   border-radius: 4px;
   position: relative;
+  width: 100%;
 `;
