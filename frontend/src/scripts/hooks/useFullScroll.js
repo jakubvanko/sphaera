@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {animateScroll, Events} from "react-scroll";
 
-import {useScrollHeight} from "./useScrollHeight";
 import useWindowDimensions from "./useWindowsDimensions";
 
 const useFullScroll = () => {
@@ -9,7 +8,6 @@ const useFullScroll = () => {
     const [currentPosition, setCurrentPosition] = useState(0);
     const [incompleteScroll, setIncompleteScroll] = useState(0);
     const [isScrollingPaused, setScrollingPaused] = useState(false);
-    const fullHeight = useScrollHeight();
 
     // Register handlers for react-scroll events
     useEffect(() => {
@@ -27,6 +25,7 @@ const useFullScroll = () => {
 
     // Hook for changing the current scroll position
     useEffect(() => {
+        const fullHeight = document.documentElement.scrollHeight;
         const scrollUp = () => {
             if (incompleteScroll !== 0) {
                 setCurrentPosition(currentPosition - incompleteScroll);
