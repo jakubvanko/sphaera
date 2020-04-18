@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const EventContainer = styled.div`
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${props => props.$src}");
+  background: url("${props => props.$src}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -27,15 +27,24 @@ export const EventContainer = styled.div`
   justify-content: center;
   align-items: center;
   grid-template-rows: min-content  min-content;
-  padding: 3vh 0;
   
-  :hover {
-    background: url("${props => props.$src}") no-repeat top;
-    background-size: cover;
-  }
   
   @media screen and (min-width: 700px) {
     align-items: flex-end;
+  }
+`;
+
+export const Filter = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3vh 0;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: flex-end;
+  
+  :hover {
+    background-color: transparent;
   }
 `;
 
@@ -54,13 +63,16 @@ export const DateText = styled(TextBase)`
 `;
 
 export const TextContainer = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-rows: auto auto;
+  align-items: flex-end;
+  grid-template-rows: min-content min-content;
   grid-template-columns: auto;
   grid-row-gap: 1vh;
 `;
 
 export const AdditionalItemContainer = styled(EventContainer)`
+  padding: 3vh 0;
   grid-column: ${props => props.$spanStart} / -1;
   background: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("${props => props.$src}") no-repeat top !important;
   cursor: default;

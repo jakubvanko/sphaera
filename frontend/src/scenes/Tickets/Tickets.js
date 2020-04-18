@@ -15,7 +15,8 @@ import {
     AdditionalItemContainer,
     AdditionalText,
     AdditionalTextContainer,
-    MainText
+    MainText,
+    Filter
 } from "./Tickets.styled";
 
 const EVENTS = [
@@ -66,14 +67,16 @@ const Tickets = () => {
         <Container>
             {EVENTS.map(({artist, date, image}, index) => (
                 <EventContainer $src={image} key={index}>
-                    <TextContainer>
-                        <ArtistText>
-                            {artist}
-                        </ArtistText>
-                        <DateText>
-                            {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
-                        </DateText>
-                    </TextContainer>
+                    <Filter>
+                        <TextContainer>
+                            <ArtistText>
+                                {artist}
+                            </ArtistText>
+                            <DateText>
+                                {`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`}
+                            </DateText>
+                        </TextContainer>
+                    </Filter>
                 </EventContainer>
             ))}
             <AdditionalItemContainer $spanStart={spanStart} $src={hero}>
