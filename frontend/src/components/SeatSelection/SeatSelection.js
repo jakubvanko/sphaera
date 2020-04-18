@@ -1,21 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
 import {SEATS, VIEWBOX} from "../../scripts/constants/seats";
-
-const Text = styled.text`
-  font-size: 5px;
-  user-select: none;
-`;
-
-const G = styled.g`
-  cursor: ${props => props.$selectable && "pointer"};
-  
-  :hover {
-    opacity: ${props => props.$selectable && 0.5};;
-  }
-`;
-
+import {G, Text} from "./SeatSelection.styled";
 
 const SeatSelection = ({onSeatSelected}) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox={VIEWBOX} width={"100%"}>

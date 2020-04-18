@@ -4,6 +4,7 @@ import test1 from "./assets/test1.jpg";
 import test2 from "./assets/test2.jpg";
 import test3 from "./assets/test3.jpg";
 import hero from "./assets/hero.jpg";
+import useFullScroll from "../../scripts/hooks/useFullScroll";
 import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 import {
     Container,
@@ -55,6 +56,7 @@ const EVENTS = [
 EVENTS.sort((a, b) => a.date > b.date ? 1 : -1);
 
 const Tickets = () => {
+    useFullScroll();
     const [width] = useWindowDimensions();
     const columnAmount = width >= 1200 ? 3 : width >= 700 ? 2 : 1;
     const emptyColumns = 3 - (EVENTS.length % columnAmount) === 0 ? columnAmount : 3 - (EVENTS.length % columnAmount);

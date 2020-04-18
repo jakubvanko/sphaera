@@ -32,15 +32,17 @@ export const FormikBase = ({header, schema, validate, initialValues = {}, emptyV
                     initialValues={initialValues}
                     validate={values => {
                         setValidationRan(true);
-                        if (validate) validate(values);
+                        let errors = {};
                         if (schema) {
                             const validationSchema = Yup.object().shape(schema(values));
                             try {
                                 validateYupSchema(values, validationSchema, true);
                             } catch (err) {
-                                return yupToFormErrors(err);
+                                errors = {...yupToFormErrors(err)};
                             }
                         }
+                        if (validate) errors = {...errors, ...validate(values)};
+                        return errors;
                     }}
                     validateOnChange={validationRan}
                     validateOnBlur={true}

@@ -1,7 +1,6 @@
 import React from "react";
 
 import FormAddEvent from "./components/FormAddEvent";
-import {SeatSelection} from "../../components/SeatSelection";
 import {Container} from "./Admin.styled";
 
 const Admin = () => (

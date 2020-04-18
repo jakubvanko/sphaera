@@ -1,4 +1,4 @@
-import {Form as FormikForm, Field} from "formik";
+import {Form as FormikForm} from "formik";
 import React, {useState, useRef} from "react";
 import * as Yup from "yup";
 
@@ -18,6 +18,7 @@ const defaultValues = SEATS.reduce((
         }
         return previousValue;
     }), {});
+const filteredSeats = SEATS.filter(({repeated = false, selectable = true}) => !repeated && selectable);
 
 const FormAddEvent = () => {
     const [currentlyDisplayed, setCurrentlyDisplayed] = useState("1");
@@ -28,11 +29,15 @@ const FormAddEvent = () => {
             header={"Add Event"}
             emptyValues={["artist", "date", "file"]}
             validate={values => {
-                console.log(values);
-                console.log(fileRef);
+                const errors = {};
+                const file = fileRef.current.files[0];
+                if (file.type !== "image/jpeg" || file.type !== "image/png") {
+                    errors.file = "Image must be either in .jpeg or .png type"
+                }
+                return errors;
             }}
             initialValues={defaultValues}
-            schema={values => ({
+            schema={() => ({
                 artist: Yup.string()
                     .min(2, "Please enter a valid artist")
                     .max(40, "Please enter a valid artist")
@@ -44,24 +49,25 @@ const FormAddEvent = () => {
                     .required("Please enter the required field")
             })}
             onSubmit={(values, {setSubmitting}) => {
-                // TODO: CALL AN API
+                const file = fileRef.current.files[0];
+                // TODO: work with files
             }}>
             {({isSubmitting, ...props}) => (
                 <MultiColumnForm as={FormikForm}>
                     <InputField label={"Artist"} name={"artist"} {...props}/>
                     <InputField type={"date"} label={"Date"} name={"date"} labelActive={true} {...props}/>
-                    <InputField innerRef={fileRef} type={"file"} label={"File"} name={"file"} labelActive={true} {...props}/>
+                    <InputField innerRef={fileRef} type={"file"} label={"File"} name={"file"}
+                                labelActive={true} {...props}/>
                     <AreaInputContainer>
-                        {SEATS.filter(({repeated = false, selectable = true}) => !repeated && selectable)
-                            .map(({name}, index) => (
-                                <AreaInputGroup $displayed={name === currentlyDisplayed} key={name + index}>
-                                    <TextBig>Area {name}</TextBig>
-                                    <InputField type={"number"} label={"Places in area " + name} name={"seats" + name}
-                                                labelActive={true} {...props}/>
-                                    <InputField type={"number"} label={"Price for area " + name} name={"price" + name}
-                                                labelActive={true} {...props}/>
-                                </AreaInputGroup>
-                            ))}
+                        {filteredSeats.map(({name}, index) => (
+                            <AreaInputGroup $displayed={name === currentlyDisplayed} key={name + index}>
+                                <TextBig>Area {name}</TextBig>
+                                <InputField type={"number"} label={"Places in area " + name} name={"seats" + name}
+                                            labelActive={true} {...props}/>
+                                <InputField type={"number"} label={"Price for area " + name} name={"price" + name}
+                                            labelActive={true} {...props}/>
+                            </AreaInputGroup>
+                        ))}
                         <SeatSelection onSeatSelected={name => setCurrentlyDisplayed(name)}/>
                     </AreaInputContainer>
                     <ButtonPrimaryLoader isLoading={isSubmitting}>Add Event</ButtonPrimaryLoader>
