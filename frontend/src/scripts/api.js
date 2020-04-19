@@ -1,13 +1,15 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://sphaera.jakubvanko.com/api/";
+axios.defaults.baseURL = "https://sphaera.jakubvanko.com/api";
 
 /*
     Request interceptor for login token authorization
 */
 axios.interceptors.request.use(config => {
     const token = localStorage.getItem("token");
-    if (token) config.headers.Authorization = "Bearer " + token;
+    if (token !== undefined) {
+        config.headers.Authorization = "Bearer " + token;
+    }
     return config;
 });
 
@@ -28,7 +30,7 @@ export const registerUser = (firstName, lastName, email, password) => axios.post
 
 export const loginUser = async (email, password) => {
     const result = await axios.post("/users/login", {email, password});
-    return result.token;
+    return result.data.token;
 };
 
 export const resetPassword = (email) => axios.post("users/resetpassword", {email});

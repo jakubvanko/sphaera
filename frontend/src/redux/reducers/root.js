@@ -1,4 +1,4 @@
-import {USER_LOGIN} from "../actionTypes";
+import {USER_LOGIN_SUCCEEDED} from "../actionTypes";
 
 const initialState = {
     user: null,
@@ -7,7 +7,7 @@ const initialState = {
 
 const root = (state = initialState, action) => {
     switch (action.type) {
-        case USER_LOGIN:
+        case USER_LOGIN_SUCCEEDED:
             return;
         default:
             return;

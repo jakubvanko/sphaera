@@ -1,7 +1,7 @@
-import {USER_LOGIN} from "../actionTypes";
+import {USER_LOGIN_REQUESTED} from "../actionTypes";
 
-const userLogin = (email, password) => ({
-    type: USER_LOGIN,
+export const userLogin = (email, password) => ({
+    type: USER_LOGIN_REQUESTED,
     payload: {
         email,
         password

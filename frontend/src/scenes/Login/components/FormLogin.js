@@ -1,5 +1,6 @@
 import {Form as FormikForm} from "formik";
 import React from "react";
+import {connect} from "react-redux";
 import * as Yup from "yup";
 
 import {ButtonPrimaryLoader} from "../../../components/Button";
@@ -7,7 +8,9 @@ import {FormikBase, Form} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
 import {AdditionalText} from "../Login.styled";
 
-const FormLogin = ({onFormChange}) => (
+import {userLogin} from "../../../redux/actions/userLogin";
+
+const FormLogin = ({onFormChange, userLogin}) => (
     <FormikBase
         header={"Log In"}
         emptyValues={["email", "password"]}
@@ -19,7 +22,9 @@ const FormLogin = ({onFormChange}) => (
                 .required("Please enter the required field")
         })}
         onSubmit={(values, {setSubmitting}) => {
-            // TODO: CALL AN API
+            const {email, password} = values;
+            userLogin(email, password);
+            setSubmitting(false);
         }}
     >
         {({isSubmitting, ...props}) => (
@@ -33,4 +38,4 @@ const FormLogin = ({onFormChange}) => (
     </FormikBase>
 );
 
-export default FormLogin;
+export default connect(null, {userLogin})(FormLogin);
