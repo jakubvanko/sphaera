@@ -8,7 +8,7 @@ import {FormikBase, Form} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
 import {AdditionalText} from "../Login.styled";
 
-import {userLogin} from "../../../redux/actions/userLogin";
+import {userLogin} from "../../../redux/__old/userLogin";
 
 const FormLogin = ({onFormChange, userLogin}) => (
     <FormikBase

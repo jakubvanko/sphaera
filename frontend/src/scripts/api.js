@@ -17,9 +17,15 @@ axios.interceptors.request.use(config => {
 /*
     Free-for-all API calls
 */
-export const getEvents = () => axios.get("/events");
+export const getEvents = async () => {
+    const result = await axios.get("/events");
+    return result.data;
+};
 
-export const getEvent = (id) => axios.get(`/events/${id}`);
+export const getEvent = async (id) => {
+    const result = await axios.get(`/events/${id}`);
+    return result.data;
+};
 
 export const registerUser = (firstName, lastName, email, password) => axios.post("/users", {
     firstName,
@@ -42,7 +48,10 @@ export const resetPassword = (email) => axios.post("users/resetpassword", {email
 export const buyTicket = (user, event, area) => axios.post("/tickets", {user, event, area});
 
 // Using id other than "current" is possible only for admins
-export const getUser = (id = "current") => axios.get(`/users/${id}`);
+export const getUser = async (id = "current") => {
+    const result = await axios.get(`/users/${id}`);
+    return result.data;
+};
 
 export const deleteUser = (id = "current") => axios.delete(`/users/${id}`);
 

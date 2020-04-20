@@ -1,18 +1,24 @@
-import {takeLatest, call, put} from "redux-saga/effects";
+import {takeLatest, call, put, all} from "redux-saga/effects";
 
-import {USER_LOGIN_REQUESTED, USER_LOGIN_SUCCEEDED, USER_LOGIN_FAILED} from "../actionTypes";
-import {loginUser} from "../../scripts/api";
+import {
+    USER_LOGIN_REQUESTED,
+    USER_LOGIN_SUCCEEDED,
+    USER_LOGIN_FAILED,
+    USER_CURRENT_DATA_SUCCEEDED, USER_CURRENT_DATA_FAILED, USER_CURRENT_DATA_REQUESTED
+} from "../actionTypes";
+import {loginUser, getUser} from "../../scripts/api";
 
-function* login({payload}) {
+function* loginRequested({payload}) {
     try {
         const {email, password} = payload;
-        console.log("START " + email + " " + password);
         const token = yield call(loginUser, email, password);
         localStorage.setItem("token", token);
-        console.log("LOGIN SUCCESS: " + token);
-        yield put({
+        yield all([put({
             type: USER_LOGIN_SUCCEEDED
-        });
+        }),
+            put({
+                type: USER_CURRENT_DATA_REQUESTED
+            })])
     } catch (e) {
         yield put({
             type: USER_LOGIN_FAILED
@@ -21,5 +27,23 @@ function* login({payload}) {
 }
 
 export function* watchLogin() {
-    yield takeLatest(USER_LOGIN_REQUESTED, login)
+    yield takeLatest(USER_LOGIN_REQUESTED, loginRequested)
+}
+
+function* userCurrentDataRequested() {
+    try {
+        const userData = yield call(getUser);
+        yield put({
+            type: USER_CURRENT_DATA_SUCCEEDED,
+            payload: userData
+        })
+    } catch (e) {
+        yield put({
+            type: USER_CURRENT_DATA_FAILED
+        })
+    }
+}
+
+export function* watchCurrentUserDataRequest() {
+    yield takeLatest(USER_CURRENT_DATA_REQUESTED, userCurrentDataRequested)
 }
