@@ -13,6 +13,8 @@ const initialState = {
     users: [],
     loginPending: false,
     loginError: undefined,
+    loadPending: false,
+    loadError: undefined,
     updatePending: false,
     updateError: undefined,
     deletePending: false,
@@ -32,23 +34,35 @@ const root = (state = initialState, action) => {
             return {...state, loginPending: false, loginError: action.payload};
         case USER.LOGOUT_REQUEST:
             return initialState;
-        case USER.UPDATE_REQUEST:
-            return {...state, updatePending: true};
-        case USER.UPDATE_SUCCESS: {
-            const newState = {...state, updatePending: false};
-            if (action.payload._id === state.current._id) {
+        case USER.LOAD_REQUEST:
+            return {...state, loadPending: true};
+        case USER.LOAD_SUCCESS: {
+            const newState = {...state, loadPending: false, users: [...state.users]};
+            if (action.meta.current === true) {
                 newState.current = action.payload;
+            }
+            const index = newState.users.findIndex(user => user._id === action.payload._id);
+            if (index === -1) {
+                newState.users.push(action.payload);
             } else {
-                newState.users = state.users.map((user) => user._id === action.payload._id ? action.payload : user);
+                newState[index] = action.payload;
             }
             return newState;
         }
+        case USER.LOAD_FAILURE:
+            return {...state, loadPending: false, loadError: action.payload};
+        case USER.UPDATE_REQUEST:
+            return {...state, updatePending: true};
+        case USER.UPDATE_SUCCESS: // TODO: Update needs to call load action in saga
+            return {...state, updatePending: false};
         case USER.UPDATE_FAILURE:
             return {...state, updatePending: false, updateError: action.payload};
         case USER.DELETE_REQUEST:
             return {...state, deletePending: true};
         case USER.DELETE_SUCCESS: {
-            if (action.payload._id === state.current._id) return initialState;
+            if (action.meta.current === true && action.payload._id === state.current._id) {
+                return initialState
+            }
             return {
                 ...state,
                 deletePending: false,
