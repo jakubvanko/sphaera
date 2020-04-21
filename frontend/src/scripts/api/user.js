@@ -19,8 +19,14 @@ const getById = async (id = "current") => {
     const result = await axios.get(`/users/${id}`);
     return result.data;
 };
-const deleteById = (id = "current") => axios.delete(`/users/${id}`);
-const updateById = (id = "current", toUpdate) => axios.patch(`/users/${id}`, toUpdate);
+const deleteById = async (id = "current") => {
+    const result = await axios.delete(`/users/${id}`);
+    return result.data._id;
+};
+const updateById = async (id = "current", toUpdate) => {
+    const result = await axios.patch(`/users/${id}`, toUpdate);
+    return result.data;
+};
 
 
 export default {

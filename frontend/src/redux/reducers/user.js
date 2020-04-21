@@ -34,7 +34,7 @@ const user = (state = initialState, action) => {
             return {...state, loginPending: false, loginError: action.payload};
         case USER.LOGOUT:
             return initialState;
-        case USER.UPDATE: // TODO: WILL BE CALLED IN SAGA BY GET AND UPDATE
+        case USER.UPDATE:
             const newState = {...state, users: [...state.users]};
             if (action.meta.current === true) {
                 newState.current = action.payload;
