@@ -1,49 +1,47 @@
-import {takeLatest, call, put, all} from "redux-saga/effects";
+import {all, call, put, takeLatest} from "redux-saga/effects";
 
-import {
-    USER_LOGIN_REQUESTED,
-    USER_LOGIN_SUCCEEDED,
-    USER_LOGIN_FAILED,
-    USER_CURRENT_DATA_SUCCEEDED, USER_CURRENT_DATA_FAILED, USER_CURRENT_DATA_REQUESTED
-} from "../actionTypes";
-import {loginUser, getUser} from "../../scripts/api";
+import {USER} from "../actionTypes";
+import {userApi} from "../../scripts/api";
 
-function* loginRequested({payload}) {
+
+function* loginRequest({payload}) {
     try {
         const {email, password} = payload;
-        const token = yield call(loginUser, email, password);
+        const token = yield call(userApi.login, email, password);
         localStorage.setItem("token", token);
-        yield all([put({
-            type: USER_LOGIN_SUCCEEDED
-        }),
+        yield all([
             put({
-                type: USER_CURRENT_DATA_REQUESTED
-            })])
+                type: USER.LOGIN_SUCCESS
+            }),
+            put({
+                type: USER.GET_REQUEST,
+                payload: {
+                    _id: "current"
+                },
+                meta: {
+                    current: true
+                }
+            })
+        ]);
     } catch (e) {
         yield put({
-            type: USER_LOGIN_FAILED
+            type: USER.LOGIN_FAILURE
         })
     }
 }
 
-export function* watchLogin() {
-    yield takeLatest(USER_LOGIN_REQUESTED, loginRequested)
+
+
+
+
+
+
+
+
+function* userSaga() {
+    yield all([
+        takeLatest(USER.LOGIN_REQUEST, loginRequest)
+    ])
 }
 
-function* userCurrentDataRequested() {
-    try {
-        const userData = yield call(getUser);
-        yield put({
-            type: USER_CURRENT_DATA_SUCCEEDED,
-            payload: userData
-        })
-    } catch (e) {
-        yield put({
-            type: USER_CURRENT_DATA_FAILED
-        })
-    }
-}
-
-export function* watchCurrentUserDataRequest() {
-    yield takeLatest(USER_CURRENT_DATA_REQUESTED, userCurrentDataRequested)
-}
+export default userSaga;

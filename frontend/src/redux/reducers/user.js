@@ -29,7 +29,7 @@ const user = (state = initialState, action) => {
         case USER.LOGIN_REQUEST:
             return {...state, loginPending: true};
         case USER.LOGIN_SUCCESS:
-            return {...state, loginPending: false, current: action.payload};
+            return {...state, loginPending: false};
         case USER.LOGIN_FAILURE:
             return {...state, loginPending: false, loginError: action.payload};
         case USER.LOGOUT:
