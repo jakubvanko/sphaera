@@ -13,10 +13,10 @@ const initialState = {
     users: [],
     loginPending: false,
     loginError: undefined,
-    loadPending: false,
-    loadError: undefined,
-    updatePending: false,
-    updateError: undefined,
+    getPending: false,
+    getError: undefined,
+    patchPending: false,
+    patchError: undefined,
     deletePending: false,
     deleteError: undefined,
     registerPending: false,
@@ -24,7 +24,7 @@ const initialState = {
     registerSuccess: undefined
 };
 
-const root = (state = initialState, action) => {
+const user = (state = initialState, action) => {
     switch (action.type) {
         case USER.LOGIN_REQUEST:
             return {...state, loginPending: true};
@@ -34,10 +34,10 @@ const root = (state = initialState, action) => {
             return {...state, loginPending: false, loginError: action.payload};
         case USER.LOGOUT_REQUEST:
             return initialState;
-        case USER.LOAD_REQUEST:
-            return {...state, loadPending: true};
-        case USER.LOAD_SUCCESS: {
-            const newState = {...state, loadPending: false, users: [...state.users]};
+        case USER.GET_REQUEST:
+            return {...state, getPending: true};
+        case USER.GET_SUCCESS: {
+            const newState = {...state, getPending: false, users: [...state.users]};
             if (action.meta.current === true) {
                 newState.current = action.payload;
             }
@@ -49,14 +49,14 @@ const root = (state = initialState, action) => {
             }
             return newState;
         }
-        case USER.LOAD_FAILURE:
-            return {...state, loadPending: false, loadError: action.payload};
-        case USER.UPDATE_REQUEST:
-            return {...state, updatePending: true};
-        case USER.UPDATE_SUCCESS: // TODO: Update needs to call load action in saga
-            return {...state, updatePending: false};
-        case USER.UPDATE_FAILURE:
-            return {...state, updatePending: false, updateError: action.payload};
+        case USER.GET_FAILURE:
+            return {...state, getPending: false, getError: action.payload};
+        case USER.PATCH_REQUEST:
+            return {...state, patchPending: true};
+        case USER.PATCH_SUCCESS: // TODO: Update needs to call load action in saga
+            return {...state, patchPending: false};
+        case USER.PATCH_FAILURE:
+            return {...state, patchPending: false, patchError: action.payload};
         case USER.DELETE_REQUEST:
             return {...state, deletePending: true};
         case USER.DELETE_SUCCESS: {
@@ -82,4 +82,4 @@ const root = (state = initialState, action) => {
     }
 };
 
-export default root;
+export default user;
