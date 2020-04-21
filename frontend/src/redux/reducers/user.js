@@ -32,12 +32,10 @@ const user = (state = initialState, action) => {
             return {...state, loginPending: false, current: action.payload};
         case USER.LOGIN_FAILURE:
             return {...state, loginPending: false, loginError: action.payload};
-        case USER.LOGOUT_REQUEST:
+        case USER.LOGOUT:
             return initialState;
-        case USER.GET_REQUEST:
-            return {...state, getPending: true};
-        case USER.GET_SUCCESS: {
-            const newState = {...state, getPending: false, users: [...state.users]};
+        case USER.UPDATE: // TODO: WILL BE CALLED IN SAGA BY GET AND UPDATE
+            const newState = {...state, users: [...state.users]};
             if (action.meta.current === true) {
                 newState.current = action.payload;
             }
@@ -48,12 +46,15 @@ const user = (state = initialState, action) => {
                 newState[index] = action.payload;
             }
             return newState;
-        }
+        case USER.GET_REQUEST:
+            return {...state, getPending: true};
+        case USER.GET_SUCCESS:
+            return {...state, getPending: false};
         case USER.GET_FAILURE:
             return {...state, getPending: false, getError: action.payload};
         case USER.PATCH_REQUEST:
             return {...state, patchPending: true};
-        case USER.PATCH_SUCCESS: // TODO: Update needs to call load action in saga
+        case USER.PATCH_SUCCESS:
             return {...state, patchPending: false};
         case USER.PATCH_FAILURE:
             return {...state, patchPending: false, patchError: action.payload};
