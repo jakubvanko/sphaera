@@ -44,8 +44,8 @@ const Map = () => (
             panControl: true,
             mapTypeControl: true,
             scrollwheel: true,
-            styles
-        }}
+            styles,
+        }} distanceToMouse={()=>{}}
         >
             <MarkerContainer lat={47.798279}
                              lng={13.044036}>
