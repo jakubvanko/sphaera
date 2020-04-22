@@ -94,13 +94,29 @@ function* deleteRequest({payload, meta}) {
     }
 }
 
+function* registerRequest({payload}) {
+    try {
+        const {firstName, lastName, email, password} = payload;
+        yield call(userApi.register, firstName, lastName, email, password);
+        yield put({
+            type: USER.REGISTER_SUCCESS
+        })
+    } catch (e) {
+        yield put({
+            type: USER.REGISTER_FAILURE,
+            payload: e
+        })
+    }
+}
+
 
 function* userSaga() {
     yield all([
         takeLatest(USER.LOGIN_REQUEST, loginRequest),
         takeEvery(USER.GET_REQUEST, getRequest),
         takeEvery(USER.PATCH_REQUEST, patchRequest),
-        takeEvery(USER.DELETE_REQUEST, deleteRequest)
+        takeEvery(USER.DELETE_REQUEST, deleteRequest),
+        takeLatest(USER.REGISTER_REQUEST, registerRequest)
     ])
 }
 

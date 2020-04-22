@@ -75,7 +75,7 @@ const user = (state = initialState, action) => {
         case USER.REGISTER_REQUEST:
             return {...state, registerPending: true};
         case USER.REGISTER_SUCCESS:
-            return {...state, registerPending: false, registerSuccess: true, current: action.payload};
+            return {...state, registerPending: false, registerSuccess: true};
         case USER.REGISTER_FAILURE:
             return {...state, registerPending: false, registerError: action.payload};
         default:

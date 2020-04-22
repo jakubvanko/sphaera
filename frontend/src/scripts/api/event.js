@@ -11,7 +11,10 @@ const getById = async (id) => {
 };
 
 // Login only
-const buyTicket = (user, event, area) => axios.post("/tickets", {user, event, area});
+const buyTicket = async (user, event, area) => {
+    const result = await axios.post("/tickets", {user, event, area});
+    return result.data;
+};
 
 // Admin only
 const uploadImage = async (file) => {
@@ -27,12 +30,19 @@ const uploadImage = async (file) => {
 
 const create = async (artist, date, imageFile, areas) => {
     const image = await uploadImage(imageFile);
-    return axios.post("/events", {artist, date, image, areas});
+    const result = await axios.post("/events", {artist, date, image, areas});
+    return result.data;
 };
 
-const deleteById = (id) => axios.delete(`/events/${id}`);
+const deleteById = async (id) => {
+    const result = await axios.delete(`/events/${id}`);
+    return result.data._id;
+};
 
-const updateById = (id, toUpdate) => axios.patch(`/events/${id}`, toUpdate);
+const updateById = async (id, toUpdate) => {
+    const result = await axios.patch(`/events/${id}`, toUpdate);
+    return result.data;
+};
 
 
 export default {

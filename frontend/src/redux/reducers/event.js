@@ -10,6 +10,8 @@ const initialState = {
     patchError: undefined,
     deletePending: false,
     deleteError: undefined,
+    createPending: false,
+    createError: undefined
 };
 
 const event = (state = initialState, action) => {
@@ -21,6 +23,7 @@ const event = (state = initialState, action) => {
         case EVENT.GET_FAILURE:
             return {...state, getPending: false, getError: action.payload};
         case EVENT.UPDATE: // TODO: WILL BE CALLED IN SAGA BY GET AND UPDATE
+        {
             const newState = {...state, events: [...state.events]};
             const index = newState.events.findIndex(event => event._id === action.payload._id);
             if (index === -1) {
@@ -29,6 +32,7 @@ const event = (state = initialState, action) => {
                 newState[index] = action.payload;
             }
             return newState;
+        }
         case EVENT.GET_ALL_REQUEST:
             return {...state, getAllPending: true};
         case EVENT.GET_ALL_SUCCESS:
@@ -52,6 +56,12 @@ const event = (state = initialState, action) => {
         }
         case EVENT.DELETE_FAILURE:
             return {...state, deletePending: false, deleteError: action.payload};
+        case EVENT.CREATE_REQUEST:
+            return {...state, createPending: true};
+        case EVENT.CREATE_SUCCESS:
+            return {...state, createPending: false};
+        case EVENT.CREATE_FAILURE:
+            return {...state, createPending: false, createError: action.payload};
         default:
             return state;
     }
