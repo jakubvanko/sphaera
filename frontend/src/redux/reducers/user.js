@@ -37,7 +37,7 @@ const user = (state = initialState, action) => {
         case USER.UPDATE:
             const newState = {...state, users: [...state.users]};
             if (action.meta.current === true) {
-                newState.current = action.payload;
+                newState.current = {...state.current, ...action.payload};
             }
             const index = newState.users.findIndex(user => user._id === action.payload._id);
             if (index === -1) {

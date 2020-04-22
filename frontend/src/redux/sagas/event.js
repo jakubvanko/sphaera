@@ -15,12 +15,12 @@ function* getRequest({payload}) {
                 type: EVENT.UPDATE,
                 payload: event
             })
-        ])
+        ]);
     } catch (e) {
         yield put({
             type: EVENT.GET_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -30,12 +30,12 @@ function* getAllRequest() {
         yield put({
             type: EVENT.GET_ALL_SUCCESS,
             payload: events
-        })
+        });
     } catch (e) {
         yield put({
             type: EVENT.GET_ALL_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -50,12 +50,12 @@ function* patchRequest({payload}) {
                 type: EVENT.UPDATE,
                 payload: event
             })
-        ])
+        ]);
     } catch (e) {
         yield put({
             type: EVENT.PATCH_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -67,12 +67,12 @@ function* deleteRequest({payload}) {
             payload: {
                 _id
             }
-        })
+        });
     } catch (e) {
         yield put({
             type: EVENT.DELETE_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -93,7 +93,7 @@ function* createRequest({payload}) {
         yield put({
             type: EVENT.CREATE_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -105,7 +105,7 @@ function* eventSaga() {
         takeEvery(EVENT.PATCH_REQUEST, patchRequest),
         takeEvery(EVENT.DELETE_REQUEST, deleteRequest),
         takeEvery(EVENT.CREATE_REQUEST, createRequest)
-    ])
+    ]);
 }
 
 export default eventSaga;

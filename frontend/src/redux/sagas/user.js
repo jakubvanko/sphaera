@@ -24,7 +24,7 @@ function* loginRequest({payload}) {
         yield put({
             type: USER.LOGIN_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -47,7 +47,7 @@ function* getRequest({payload, meta}) {
         yield put({
             type: USER.GET_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -70,7 +70,7 @@ function* patchRequest({payload, meta}) {   // TODO: RESET PASSWORD ?
         yield put({
             type: USER.PATCH_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -85,12 +85,12 @@ function* deleteRequest({payload, meta}) {
                 _id
             },
             meta
-        })
+        });
     } catch (e) {
         yield put({
             type: USER.DELETE_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -100,12 +100,12 @@ function* registerRequest({payload}) {
         yield call(userApi.register, firstName, lastName, email, password);
         yield put({
             type: USER.REGISTER_SUCCESS
-        })
+        });
     } catch (e) {
         yield put({
             type: USER.REGISTER_FAILURE,
             payload: e
-        })
+        });
     }
 }
 
@@ -117,7 +117,7 @@ function* userSaga() {
         takeEvery(USER.PATCH_REQUEST, patchRequest),
         takeEvery(USER.DELETE_REQUEST, deleteRequest),
         takeLatest(USER.REGISTER_REQUEST, registerRequest)
-    ])
+    ]);
 }
 
 export default userSaga;

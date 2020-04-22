@@ -11,8 +11,8 @@ const getById = async (id) => {
 };
 
 // Login only
-const buyTicket = async (user, event, area) => {
-    const result = await axios.post("/tickets", {user, event, area});
+const buyTicket = async (event, area) => {
+    const result = await axios.post("/tickets", {event, area});
     return result.data;
 };
 
