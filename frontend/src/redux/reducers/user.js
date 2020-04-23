@@ -33,6 +33,7 @@ const user = (state = initialState, action) => {
         case USER.LOGIN_FAILURE:
             return {...state, loginPending: false, loginError: action.payload};
         case USER.LOGOUT:
+            localStorage.removeItem("token");
             return initialState;
         case USER.UPDATE:
             const newState = {...state, users: [...state.users]};

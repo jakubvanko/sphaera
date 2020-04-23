@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import "./main.css"
 
+import RoutePermission from "../components/RoutePermission/RoutePermission";
 import {
     URL_CONTACT,
     URL_HOME,
@@ -33,10 +34,10 @@ const Main = () => (
             <Route path={URL_TICKETS} component={Tickets}/>
             <Route path={URL_CONTACT} component={Contact}/>
             <Route path={URL_VISIT} component={Visit}/>
-            <Route path={URL_PROFILE} component={Profile}/>
+            <RoutePermission type={"login"} path={URL_PROFILE} component={Profile}/>
             <Route path={URL_CART} component={Cart}/>
-            <Route path={URL_LOGIN} component={Login}/>
-            <Route path={URL_ADMIN} component={Admin}/>
+            <RoutePermission type={"nologin"} path={URL_LOGIN} component={Login}/>
+            <RoutePermission type={"admin"} path={URL_ADMIN} component={Admin}/>
         </Switch>
         <Footer/>
     </BrowserRouter>
