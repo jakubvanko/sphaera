@@ -156,3 +156,7 @@ export const LogoContainer = styled.div`
     border-right: none;
   }
 `;
+
+export const IconLink = styled(UnstyledLink)`
+  display: flex;
+`;

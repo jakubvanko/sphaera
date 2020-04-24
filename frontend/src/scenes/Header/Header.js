@@ -22,7 +22,8 @@ import {
     CloseButton,
     IconLinkContainer,
     SearchContainer,
-    LogoContainer
+    LogoContainer,
+    IconLink
 } from "./Header.styled";
 
 const Header = ({user}) => {
@@ -35,7 +36,9 @@ const Header = ({user}) => {
     return (
         <Container>
             <LogoContainer>
-                <Icon name={"logo"} width={100} aria-label={"home"}/>
+                <IconLink to={URL_HOME}>
+                    <Icon name={"logo"} width={100} aria-label={"home"}/>
+                </IconLink>
             </LogoContainer>
             <SearchContainer>
                 <LabeledInput label={"Search for..."} name={"search"}/>

@@ -81,7 +81,7 @@ const Contact = () => (
               additionalText={"Our staff is eager to fulfill all of your wishes..."}/>
         <FlipCardsContainer>
             {CONTACTS.map(value =>
-                <StyledFlipCard>
+                <StyledFlipCard key={value.title}>
                     <FlipCardFrontContainer $backgroundColor={value.$frontBackgroundColor}
                                             $backgroundImage={value.$backgroundImage}
                                             $color={value.$backgroundImage && "white"}>
