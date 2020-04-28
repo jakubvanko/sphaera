@@ -6,3 +6,4 @@ export const URL_LOGIN = "/login/";
 export const URL_PROFILE = "/my-account/";
 export const URL_CART = "/cart/";
 export const URL_ADMIN = "/admin/";
+export const URL_EVENT = "/event/";

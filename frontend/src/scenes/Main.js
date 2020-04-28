@@ -12,7 +12,8 @@ import {
     URL_TICKETS,
     URL_VISIT,
     URL_CART,
-    URL_ADMIN
+    URL_ADMIN,
+    URL_EVENT
 } from "../scripts/constants/urls";
 
 import Header from "./Header";
@@ -25,6 +26,7 @@ import Tickets from "./Tickets";
 import Cart from "./Cart";
 import Profile from "./Profile";
 import Admin from "./Admin";
+import Event from "./Event/Event";
 
 const Main = () => (
     <BrowserRouter>
@@ -32,6 +34,7 @@ const Main = () => (
         <Switch>
             <Route exact path={URL_HOME} component={Home}/>
             <Route path={URL_TICKETS} component={Tickets}/>
+            <Route path={URL_EVENT + ":id"} component={Event}/>
             <Route path={URL_CONTACT} component={Contact}/>
             <Route path={URL_VISIT} component={Visit}/>
             <RoutePermission type={"login"} path={URL_PROFILE} component={Profile}/>

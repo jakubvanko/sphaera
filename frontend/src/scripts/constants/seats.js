@@ -4,61 +4,71 @@ export const SEATS = [{
     path: "M125.2,4.6h12.1V15.5H125.2Z",
     textTransform: "translate(113.21 7.87)",
     defaultSeats: 5,
-    defaultPrice: 250
+    defaultPrice: 250,
+    fill: "#FF5555",
 }, {
     name: "2",
     path: "M139,4.6h12.1V15.5H139Z",
     textTransform: "translate(126.98 7.87)",
     defaultSeats: 5,
-    defaultPrice: 250
+    defaultPrice: 250,
+    fill: "#FF5555",
 }, {
     name: "3",
     path: "M158.5,4.6h12.1V15.5H158.5Z",
     textTransform: "translate(146.42 7.75)",
     defaultSeats: 5,
-    defaultPrice: 300
+    defaultPrice: 300,
+    fill: "#FF5555",
 }, {
     name: "4",
     path: "M172.4,4.6h12.1V15.5H172.4Z",
     textTransform: "translate(160.36 7.75)",
     defaultSeats: 5,
-    defaultPrice: 350
+    defaultPrice: 350,
+    fill: "#FF5555",
 }, {
     name: "5",
     path: "M186.3,4.6h12.1V15.5H186.3Z",
     textTransform: "translate(174.31 7.75)",
     defaultSeats: 5,
-    defaultPrice: 300
+    defaultPrice: 300,
+    fill: "#FF5555",
 }, {
     name: "6",
     path: "M205.2,4.6h12.1V15.5H205.2V4.6Z",
     textTransform: "translate(193.14 7.75)",
     defaultSeats: 5,
-    defaultPrice: 250
+    defaultPrice: 250,
+    fill: "#FF5555",
 }, {
     name: "7",
     path: "M219.1,4.6h12.1V15.5H219.1Z",
     textTransform: "translate(207.08 7.75)",
     defaultSeats: 5,
-    defaultPrice: 250
+    defaultPrice: 250,
+    fill: "#FF5555",
 }, {
     name: "8",
     path: "M158.3,38.1h12.1V49H158.3Z",
     textTransform: "translate(146.26 40.77)",
     defaultSeats: 5,
-    defaultPrice: 300
+    defaultPrice: 300,
+    fill: "#FF5555",
 }, {
     name: "9",
     path: "M172,38.2h12V49.1H172Z",
     textTransform: "translate(159.96 40.81)",
     defaultSeats: 5,
-    defaultPrice: 325
+    defaultPrice: 325,
+    fill: "#FF5555",
 }, {
     name: "10",
     path: "M185.7,38.2h12.1V49.1H185.7Z",
     textTransform: "translate(172.3 40.81)",
     defaultSeats: 5,
-    defaultPrice: 300
+    defaultPrice: 300,
+    fill: "#FF5555",
 }, {
     name: "11",
     path: "M65.3,152.2H38.7V188H65.3Z",
@@ -112,7 +122,8 @@ export const SEATS = [{
     path: "M199.5,17.2H157.1V37.3h42.4Z",
     textTransform: "translate(158.85 24.47)",
     defaultSeats: 50,
-    defaultPrice: 150
+    defaultPrice: 150,
+    fill: "#FFDD55",
 }, {
     name: "20",
     path: "M244.6,11.8H232.3V17H204V57h15.8V52.8h7.7v9.5h15.4V60.2h1.8V47.9h-1.8V37h1.8V11.8Z",
@@ -166,91 +177,106 @@ export const SEATS = [{
     path: "M198.1,57V49.6H158.5V57h15.8V52.1h8.1V57Z",
     textTransform: "translate(145.26 51.29)",
     defaultSeats: 10,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "29",
     path: "M89.8,188V162H70.9v26Z",
     textTransform: "translate(60.95 172.2)",
     defaultSeats: 20,
-    defaultPrice: 130
+    defaultPrice: 130,
+    fill: "#FFDD55",
 }, {
     name: "30",
     path: "M89.8,157.1V138.2H70.9v18.9Z",
     textTransform: "translate(60.95 144.88)",
     defaultSeats: 10,
-    defaultPrice: 425
+    defaultPrice: 425,
+    fill: "#FF5555",
 }, {
     name: "31",
     path: "M89.8,134.7V109.1H70.9v25.6Z",
     textTransform: "translate(60.95 119.14)",
     defaultSeats: 20,
-    defaultPrice: 130
+    defaultPrice: 130,
+    fill: "#FFDD55",
 }, {
     name: "32",
     path: "M96.1,95.8,85.2,81.1,74.7,88.8l5.3,7,7.7,6.3Z",
     textTransform: "translate(64.66 88.84)",
     defaultSeats: 10,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "33",
     path: "M99.6,94.1l3.5-2.8V68.9L88.4,79Z",
     textTransform: "translate(77.36 78.68)",
     defaultSeats: 10,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "34",
     path: "M131.2,66.1H109.1v42.4h22.1Z",
     textTransform: "translate(100.7 84.46)",
     defaultSeats: 50,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "35",
     path: "M178.3,69.9H163.4l-2.1-7H134v45.5h44.3Z",
     textTransform: "translate(136.69 82.88)",
     defaultSeats: 70,
-    defaultPrice: 125
+    defaultPrice: 125,
+    fill: "#FFDD55",
 }, {
     name: "36",
     path: "M223,108.4V62.9H195.7l-2.1,7H178.7v38.5Z",
     textTransform: "translate(181.46 82.88)",
     defaultSeats: 70,
-    defaultPrice: 125
+    defaultPrice: 125,
+    fill: "#FFDD55",
 }, {
     name: "37",
     path: "M247.4,66.1H225.3v42.4h22.1Z",
     textTransform: "translate(216.99 84.46)",
     defaultSeats: 50,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "38",
     path: "M253.4,91.3l3.5,2.8L268.1,79,253.4,68.8Z",
     textTransform: "translate(240.34 78.68)",
     defaultSeats: 10,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "39",
     path: "M271.3,81.1,260.4,95.8l8.4,6.3,7.7-6.3,5.3-7Z",
     textTransform: "translate(250.51 88.84)",
     defaultSeats: 10,
-    defaultPrice: 110
+    defaultPrice: 110,
+    fill: "#FFDD55",
 }, {
     name: "40",
     path: "M285.7,134.7V109.1H266.8v25.6Z",
     textTransform: "translate(256.77 119.14)",
     defaultSeats: 20,
-    defaultPrice: 130
+    defaultPrice: 130,
+    fill: "#FFDD55",
 }, {
     name: "41",
     path: "M266.7,138.2v18.9h18.9V138.2Z",
     textTransform: "translate(256.77 144.88)",
     defaultSeats: 10,
-    defaultPrice: 425
+    defaultPrice: 425,
+    fill: "#FF5555",
 }, {
     name: "42",
     path: "M285.7,162H266.8v26h18.9Z",
     textTransform: "translate(256.77 172.12)",
     defaultSeats: 20,
-    defaultPrice: 130
+    defaultPrice: 130,
+    fill: "#FFDD55",
 }, {
     name: "43",
     path: "M248.2,193.3h32.2V214H248.2Z",
@@ -262,13 +288,15 @@ export const SEATS = [{
     path: "M178.6,193.3h63.7V214H178.6V193.3Z",
     textTransform: "translate(191.06 200.86)",
     defaultSeats: 50,
-    defaultPrice: 100
+    defaultPrice: 100,
+    fill: "#FFDD55",
 }, {
     name: "45",
     path: "M113.6,193.3h63.7V214H113.6Z",
     textTransform: "translate(126.03 200.86)",
     defaultSeats: 50,
-    defaultPrice: 100
+    defaultPrice: 100,
+    fill: "#FFDD55",
 }, {
     name: "46",
     path: "M78.7,193.3h32.2V214H78.7Z",
@@ -286,13 +314,15 @@ export const SEATS = [{
     path: "M179.4,218.4h32.2V233H179.4V218.4Z",
     textTransform: "translate(176.1 222.9)",
     defaultSeats: 20,
-    defaultPrice: 95
+    defaultPrice: 95,
+    fill: "#FFDD55",
 }, {
     name: "49",
     path: "M145.5,218.4h32.2V233H145.5Z",
     textTransform: "translate(142.14 222.9)",
     defaultSeats: 20,
-    defaultPrice: 95
+    defaultPrice: 95,
+    fill: "#FFDD55",
 }, {
     name: "50",
     path: "M111.2,218.4h32.2V233H111.2Z",

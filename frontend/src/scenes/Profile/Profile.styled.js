@@ -64,20 +64,6 @@ export const ItemContainer = styled.div`
   }
 `;
 
-export const ItemImage = styled.div`
-  background-image: url("${props => props.$src}");
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  display: none;
-  
-  @media (min-width: 1000px) {
-    display: block;
-  } 
-`;
-
 const ItemSectionBase = styled.div`
   padding: 2vh 4vw;
   grid-row-gap: 10px;

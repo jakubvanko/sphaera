@@ -2,6 +2,7 @@ import React from "react";
 
 import {ButtonSecondary} from "../../components/Button";
 import {ContainerBordered} from "../../components/Container";
+import {ItemImage} from "../../components/ItemImage";
 import {TextBasic, HeadingMain, HeadingMedium} from "../../components/TextType";
 import {Ticket} from "../../components/Ticket";
 import test2 from "../../scenes/Tickets/assets/test2.jpg";
@@ -10,7 +11,6 @@ import {
     Container,
     HeadingContainer,
     ItemContainer,
-    ItemImage,
     BuyButton,
     PolicyInformationContainer,
     ContainerSection

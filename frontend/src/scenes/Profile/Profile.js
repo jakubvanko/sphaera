@@ -5,13 +5,13 @@ import test3 from "../Tickets/assets/test3.jpg";
 import test2 from "../Tickets/assets/test2.jpg";
 import placeholder from "./assets/placeholder.jpg";
 import {TextIcon} from "../../components/Icon";
+import {ItemImage} from "../../components/ItemImage";
 import {HeadingMain} from "../../components/TextType";
 import {Ticket} from "../../components/Ticket";
 import {
     Container,
     HeadingContainer,
     Item,
-    ItemImage,
     ItemContainer,
     ItemHeader,
     AccountData,
