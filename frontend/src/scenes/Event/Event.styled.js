@@ -16,9 +16,10 @@ export const DataContainer = styled(ContainerBordered)`
   display: grid;
   grid-template-areas: "heading heading heading" "text text text" "amount button button";
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 3fr 3fr;
   align-items: center;
   grid-row-gap: 10px;
+  grid-column-gap: 20px;
   
   button {
     grid-area: button;
@@ -49,6 +50,6 @@ export const ArtistHeading = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 50px 0 20px;
+  padding: 0 50px 12px 10px;
   grid-area: text;
 `;

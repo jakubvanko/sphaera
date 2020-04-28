@@ -12,6 +12,7 @@ import {SeatSelection} from "../../components/SeatSelection";
 import {ButtonPrimary} from "../../components/Button";
 import {ItemImage} from "../../components/ItemImage";
 import {TextLabeled} from "../../components/TextType";
+import DropdownNumber from "./components/DropdownNumber";
 import test2 from "../Tickets/assets/test3.jpg";
 
 const Event = () => (
@@ -34,7 +35,7 @@ const Event = () => (
                         Floor
                     </TextLabeled>
                 </TextContainer>
-                <div></div>
+                <DropdownNumber/>
                 <ButtonPrimary>Add to cart</ButtonPrimary>
             </DataContainer>
         </MenuContainer>

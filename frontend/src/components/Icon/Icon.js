@@ -1,6 +1,7 @@
 import React from "react";
 
 import Arrangiatore from "./components/Arrangiatore";
+import ArrowDownFilled from "./components/ArrowDownFilled";
 import ArrowRight from "./components/ArrowRight";
 import Cart from "./components/Cart";
 import Concordea from "./components/Concordea";
@@ -31,6 +32,7 @@ import {Container, TextIconContainer, CircleIconContainer} from "./Icon.styled";
 
 const ICON_MAP = {
     arrangiatore: Arrangiatore,
+    arrowdownfilled: ArrowDownFilled,
     arrowright: ArrowRight,
     cart: Cart,
     concordea: Concordea,
