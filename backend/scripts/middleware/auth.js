@@ -4,7 +4,7 @@ const util = require("util");
 const verifyToken = util.promisify(jwt.verify);
 const User = require("../models/user");
 
-exports.loadAuthData = (options) => async (req, res, next) => {
+exports.loadAuthData = options => async (req, res, next) => {
     req.auth = {
         verified: false,
         admin: false,
@@ -28,9 +28,7 @@ exports.loadAuthData = (options) => async (req, res, next) => {
                 req.auth.user = user;
                 req.auth.admin = user.admin;
             } catch (e) {
-                const error = new Error("Auth failed");
-                error.status = 401;
-                throw error;
+                req.auth.verified = false;
             }
         }
     }

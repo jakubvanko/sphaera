@@ -61,6 +61,8 @@ exports.getUser = async (id) => {
 
 exports.deleteUser = (id) => {
     return User.findByIdAndDelete(id)
+        .select("_id firstName lastName email admin funds tickets")
+        .populate("tickets", "_id event area price bought")
         .exec();
 };
 
@@ -115,5 +117,8 @@ exports.updateUser = async (id, properties) => {
         $set: updatedProperties
     }, {
         new: true
-    }).exec();
+    })
+        .select("_id firstName lastName email admin funds tickets")
+        .populate("tickets", "_id event area price bought")
+        .exec();
 };

@@ -4,6 +4,7 @@ require("dotenv").config();
 const userController = require("./user");
 const User = require("../models/user");
 
+// Testing needs to be done using the command "npm test user", using IDE tests doesn't trigger imports
 describe("User controller test", () => {
     beforeAll(async () => {
         await mongoose.connect(process.env.TEST_DATABASE_URI, {
@@ -84,13 +85,21 @@ describe("User controller test", () => {
         });
     });
 
-    test("deleteUser(id) deletes and returns a user", async () => {
-        const createdUser = await createTestUser();
-        const deletedUser = await userController.deleteUser(createdUser._id);
-        validateTestUser(deletedUser);
-        await expect(userController.getUser(deletedUser._id))
-            .rejects
-            .toThrow();
+    describe("deleteUser(id)", () => {
+        test("correctly deletes and returns a user", async () => {
+            const createdUser = await createTestUser();
+            const deletedUser = await userController.deleteUser(createdUser._id);
+            validateTestUser(deletedUser);
+            await expect(userController.getUser(deletedUser._id))
+                .rejects
+                .toThrow();
+        });
+        test("does not return password or salt fields", async () => {
+            const createdUser = await createTestUser();
+            const deletedUser = await userController.deleteUser(createdUser._id);
+            expect(deletedUser.password).toBe(undefined);
+            expect(deletedUser.salt).toBe(undefined);
+        })
     });
 
     describe("updateUser(id, properties)", () => {
@@ -105,9 +114,18 @@ describe("User controller test", () => {
         });
         test("correctly updates password", async () => {
             const createdUser = await createTestUser();
-            await userController.updateUser(createdUser._id, {
+            expect.assertions(1);
+            await expect(userController.updateUser(createdUser._id, {
                 password: "newpassword"
+            })).resolves.not.toThrow();
+        });
+        test("does not return password or salt fields", async () => {
+            const createdUser = await createTestUser();
+            const updatedUser = await userController.updateUser(createdUser._id, {
+                firstName: "Marcus"
             });
+            expect(updatedUser.password).toBe(undefined);
+            expect(updatedUser.salt).toBe(undefined);
         });
     });
 
