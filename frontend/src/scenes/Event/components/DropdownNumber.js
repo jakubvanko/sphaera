@@ -25,7 +25,7 @@ const DropdownIndicator = () => (
 );
 
 const DropdownNumber = () => (
-    <CreatableSelect components={{DropdownIndicator}} isSearchable={false} styles={customStyles}
+    <CreatableSelect components={{DropdownIndicator}} isSearchable={false} styles={customStyles} blurInputOnSelect
                      defaultValue={{value: 1, label: 1}} options={[
         {value: 1, label: 1}, {value: 2, label: 2}, {value: 3, label: 3}
     ]} theme={theme => ({

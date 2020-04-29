@@ -14,9 +14,11 @@ import {ItemImage} from "../../components/ItemImage";
 import {TextLabeled} from "../../components/TextType";
 import DropdownNumber from "./components/DropdownNumber";
 import test2 from "../Tickets/assets/test3.jpg";
+import HoverBox from "./components/HoverBox";
 
 const Event = () => (
     <Container>
+        <HoverBox/>
         <SeatSelectionContainer>
             <SeatSelection/>
         </SeatSelectionContainer>
