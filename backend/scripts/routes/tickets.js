@@ -11,4 +11,9 @@ router.post("/", auth.authorized(), async (req, res) => {
     return res.status(200).json(ticket);
 });
 
+router.get("/:ticketId", auth.authorized(), async (req, res) => {
+    const ticket = await ticketController.getTicket(req.auth.user, req.params.ticketId);
+    return res.status(200).json(ticket);
+});
+
 module.exports = router;

@@ -3,7 +3,21 @@ const mongoose = require("mongoose");
 const Ticket = require("../models/ticket");
 const eventController = require("./event");
 const pdfLib = require("../configurations/pdflib");
+const sendMail = require("../configurations/nodemailer");
+const ticketPurchase = require("../emails/ticketPurchase");
 
+const sendTicketMail = async (ticket, event, user) => {
+    const ticketBytes = await pdfLib.createTicket(ticket._id.toString(), event.artist, event.date, ticket.area);
+    await sendMail({
+        to: user.email,
+        subject: `Ticket to a show by ${event.artist}`,
+        html: ticketPurchase(user.firstName, user.lastName, event.artist, event.date, ticket.bought, ticket.price),
+        attachments: [{
+            filename: "ticket.pdf",
+            content: ticketBytes
+        }]
+    });
+};
 
 exports.buyTicket = async (user, eventId, areaName) => {
     const event = await eventController.getEvent(eventId);
@@ -54,8 +68,19 @@ exports.buyTicket = async (user, eventId, areaName) => {
     user.tickets.push(ticketResult._id);
     await user.save();
     // Create a ticket PDF file
-    await pdfLib.createTicket(ticketResult._id.toString(), event.artist, event.date, areaName);
-
-    // TODO: send the ticket to email in PDF
+    await sendTicketMail(ticketResult, event, user);
     return ticketResult;
+};
+
+exports.getTicket = async (user, ticketId) => {
+    if (!user.tickets.some(id => id.toString() === ticketId)) {
+        const error = new Error("Auth failed");
+        error.status = 401;
+        throw error;
+    }
+    const ticket = await Ticket.findById(ticketId)
+        .exec();
+    const event = await eventController.getEvent(ticket.event);
+    await sendTicketMail(ticket, event, user);
+    return ticket;
 };

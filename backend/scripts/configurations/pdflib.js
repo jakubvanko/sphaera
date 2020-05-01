@@ -16,11 +16,6 @@ const loadDocument = async name => {
     return pdfDocument;
 };
 
-const saveDocument = async (document, name) => {
-    const pdfBytes = await document.save();
-    return fs.writeFile(path.join(__dirname, "../../temp/", name + ".pdf"), pdfBytes);
-};
-
 const loadFont = async (document, fontName) => {
     const uint8Array = await fs.readFile(path.join(__dirname, "../../assets/", fontName + ".otf"));
     return document.embedFont(uint8Array);
@@ -104,5 +99,5 @@ exports.createTicket = async (code, artist, date, area) => {
         color,
         vertical: true
     });
-    await saveDocument(ticketDocument, "testTicket5")
+    return ticketDocument.save();
 };

@@ -25,6 +25,10 @@ module.exports = {
         user: (obj, args, context) => createResponse(async result => {
             authController.currentOrAdmin(context.auth, args._id);
             result.user = await userController.getUser(args._id);
+        }),
+        ticket: (obj, args, context) => createResponse(async result => {
+            authController.checkAuthorized(context.auth);
+            result.ticket = await ticketController.getTicket(context.auth.user, args._id);
         })
     },
     Mutation: {

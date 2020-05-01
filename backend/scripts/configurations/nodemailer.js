@@ -10,11 +10,16 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendMessage = (to, subject, html) => transporter.sendMail({
-    from: process.env.MAIL_SENDER,
-    to,
-    subject,
-    html
-});
+const sendMessage = async data => {
+    const mailResult = await transporter.sendMail({
+        from: process.env.MAIL_SENDER,
+        ...data
+    });
+    if (mailResult.messageId === undefined) {
+        const error = new Error("Mail error");
+        error.status = 500;
+        throw error;
+    }
+};
 
 module.exports = sendMessage;

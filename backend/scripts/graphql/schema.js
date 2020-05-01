@@ -141,6 +141,7 @@ const typeDefs = gql`
         events: EventsPayload!
         event(_id: ID!): EventPayload!
         user(_id: ID!): UserPayload!
+        ticket(_id: ID!): BuyTicketPayload!
     }
 
     type Mutation {

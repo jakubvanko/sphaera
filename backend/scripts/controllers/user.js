@@ -93,12 +93,11 @@ exports.resetPassword = async (email) => {
             expiresIn: process.env.RESET_TOKEN_EXPIRATION
         });
         const link = `https://sphaera.jakubvanko.com/reset-password/${token}`;
-        const mailResult = await sendMail(email, "Password Change Request", passwordReset(user.firstName, link));
-        if (mailResult.messageId === undefined) {
-            const error = new Error("Mail error");
-            error.status = 500;
-            throw error;
-        }
+        await sendMail({
+            to: email,
+            subject: "Password Change Request",
+            html: passwordReset(user.firstName, link)
+        });
     }
 };
 
