@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 import test3 from "../Tickets/assets/test3.jpg";
 import test2 from "../Tickets/assets/test2.jpg";
@@ -21,6 +22,7 @@ import {
     SmallText
 } from "./Profile.styled";
 import {logout} from "../../redux/actionCreators/user";
+import {URL_ADMIN} from "../../scripts/constants/urls";
 
 const TICKETS = [{
     artist: "Marcus & Martinus",
@@ -50,6 +52,7 @@ const Profile = ({user, logout}) => {
             <HeadingContainer>
                 <HeadingMain>My Account</HeadingMain>
                 <LogoutText onClick={logout}>Log out</LogoutText>
+                {user.admin && <Link to={URL_ADMIN}>Admin</Link>}
             </HeadingContainer>
             <ItemContainer>
                 <MainTextContainer>

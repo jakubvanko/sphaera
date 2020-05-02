@@ -25,7 +25,7 @@ const uploadImage = async (file) => {
             "Content-Type": "multipart/form-data"
         }
     });
-    return result.name;
+    return result.data.name;
 };
 
 const create = async (artist, date, imageFile, areas) => {

@@ -1,5 +1,6 @@
 import {Form as FormikForm} from "formik";
 import React, {useState, useRef} from "react";
+import {connect} from "react-redux";
 import * as Yup from "yup";
 
 import {ButtonPrimaryLoader} from "../../../components/Button";
@@ -9,18 +10,19 @@ import {SeatSelection} from "../../../components/SeatSelection";
 import {TextBig} from "../../../components/TextType";
 import {SEATS} from "../../../scripts/constants/seats";
 import {MultiColumnForm, AreaInputGroup, AreaInputContainer} from "../Admin.styled";
+import {createRequest} from "../../../redux/actionCreators/event";
 
 const defaultValues = SEATS.reduce((
     (previousValue, {name, defaultSeats, defaultPrice, repeated = false, selectable = true}) => {
         if (!repeated && selectable) {
-            previousValue["seats" + name] = defaultSeats;
-            previousValue["price" + name] = defaultPrice;
+            previousValue["input_seats_" + name] = defaultSeats;
+            previousValue["input_price_" + name] = defaultPrice;
         }
         return previousValue;
     }), {});
 const filteredSeats = SEATS.filter(({repeated = false, selectable = true}) => !repeated && selectable);
 
-const FormAddEvent = () => {
+const FormAddEvent = ({createPending, createRequest}) => {
     const [currentlyDisplayed, setCurrentlyDisplayed] = useState("1");
     const fileRef = useRef();
 
@@ -31,7 +33,7 @@ const FormAddEvent = () => {
             validate={values => {
                 const errors = {};
                 const file = fileRef.current.files[0];
-                if (file.type !== "image/jpeg" || file.type !== "image/png") {
+                if (file.type !== "image/jpeg" && file.type !== "image/png") {
                     errors.file = "Image must be either in .jpeg or .png type"
                 }
                 return errors;
@@ -48,9 +50,21 @@ const FormAddEvent = () => {
                 file: Yup.mixed()
                     .required("Please enter the required field")
             })}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={(values, {resetForm}) => {
                 const file = fileRef.current.files[0];
-                // TODO: work with files
+                const {artist, date} = values;
+                const areas = [];
+                for (let [key, value] of Object.entries(values)) {
+                    if (!key.startsWith("input_price_")) continue;
+                    const areaName = key.split("_")[2];
+                    areas.push({
+                        name: areaName,
+                        price: value,
+                        capacity: values["input_seats_" + areaName]
+                    })
+                }
+                createRequest(artist, date, file);
+                resetForm();
             }}>
             {({isSubmitting, ...props}) => (
                 <MultiColumnForm as={FormikForm}>
@@ -62,18 +76,20 @@ const FormAddEvent = () => {
                         {filteredSeats.map(({name}, index) => (
                             <AreaInputGroup $displayed={name === currentlyDisplayed} key={name + index}>
                                 <TextBig>Area {name}</TextBig>
-                                <InputField type={"number"} label={"Places in area " + name} name={"seats" + name}
+                                <InputField type={"number"} label={"Places in area " + name}
+                                            name={"input_seats_" + name}
                                             labelActive={true} {...props}/>
-                                <InputField type={"number"} label={"Price for area " + name} name={"price" + name}
+                                <InputField type={"number"} label={"Price for area " + name}
+                                            name={"input_price_" + name}
                                             labelActive={true} {...props}/>
                             </AreaInputGroup>
                         ))}
                         <SeatSelection onSeatSelected={name => setCurrentlyDisplayed(name)}/>
                     </AreaInputContainer>
-                    <ButtonPrimaryLoader isLoading={isSubmitting}>Add Event</ButtonPrimaryLoader>
+                    <ButtonPrimaryLoader isLoading={createPending}>Add Event</ButtonPrimaryLoader>
                 </MultiColumnForm>
             )}
         </FormikBase>
     )
 };
-export default FormAddEvent;
+export default connect(({event}) => ({createPending: event.createPending}), {createRequest})(FormAddEvent);

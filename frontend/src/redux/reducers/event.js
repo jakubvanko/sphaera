@@ -22,7 +22,7 @@ const event = (state = initialState, action) => {
             return {...state, getPending: false};
         case EVENT.GET_FAILURE:
             return {...state, getPending: false, getError: action.payload};
-        case EVENT.UPDATE: // TODO: WILL BE CALLED IN SAGA BY GET AND UPDATE
+        case EVENT.UPDATE:
         {
             const newState = {...state, events: [...state.events]};
             const index = newState.events.findIndex(event => event._id === action.payload._id);
