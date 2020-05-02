@@ -12,3 +12,4 @@ const RoutePermission = ({user, type, ...props}) => {
 };
 
 export default connect(({user}) => ({user: user.current}))(RoutePermission);
+

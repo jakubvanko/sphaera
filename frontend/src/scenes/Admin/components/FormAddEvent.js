@@ -8,7 +8,7 @@ import {FormikBase} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
 import {SeatSelection} from "../../../components/SeatSelection";
 import {TextBig} from "../../../components/TextType";
-import {SEATS} from "../../../scripts/constants/seats";
+import {SEATS, VIEWBOX} from "../../../scripts/constants/seats";
 import {MultiColumnForm, AreaInputGroup, AreaInputContainer} from "../Admin.styled";
 import {createRequest} from "../../../redux/actionCreators/event";
 
@@ -63,7 +63,7 @@ const FormAddEvent = ({createPending, createRequest}) => {
                         capacity: values["input_seats_" + areaName]
                     })
                 }
-                createRequest(artist, date, file);
+                createRequest(artist, date, file, areas);
                 resetForm();
             }}>
             {({isSubmitting, ...props}) => (
@@ -84,7 +84,8 @@ const FormAddEvent = ({createPending, createRequest}) => {
                                             labelActive={true} {...props}/>
                             </AreaInputGroup>
                         ))}
-                        <SeatSelection onSeatSelected={name => setCurrentlyDisplayed(name)}/>
+                        <SeatSelection layout={SEATS} viewbox={VIEWBOX}
+                                       onSeatSelected={name => setCurrentlyDisplayed(name)}/>
                     </AreaInputContainer>
                     <ButtonPrimaryLoader isLoading={createPending}>Add Event</ButtonPrimaryLoader>
                 </MultiColumnForm>

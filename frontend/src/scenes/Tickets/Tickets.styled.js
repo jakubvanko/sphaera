@@ -27,6 +27,7 @@ export const EventContainer = styled.div`
   justify-content: center;
   align-items: center;
   grid-template-rows: min-content  min-content;
+  text-decoration: none;
   
   
   @media screen and (min-width: 700px) {

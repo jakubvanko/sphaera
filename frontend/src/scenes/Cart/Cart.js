@@ -1,12 +1,11 @@
 import React from "react";
+import {connect} from "react-redux";
 
 import {ButtonSecondary} from "../../components/Button";
 import {ContainerBordered} from "../../components/Container";
 import {ItemImage} from "../../components/ItemImage";
 import {TextBasic, HeadingMain, HeadingMedium} from "../../components/TextType";
 import {Ticket} from "../../components/Ticket";
-import test2 from "../../scenes/Tickets/assets/test2.jpg";
-import test3 from "../../scenes/Tickets/assets/test3.jpg";
 import {
     Container,
     HeadingContainer,
@@ -16,25 +15,9 @@ import {
     ContainerSection
 } from "./Cart.styled";
 
-const CART = [{
-    artist: "Marcus & Martinus",
-    date: new Date("December 17, 2020 12:25:41"),
-    image: test3,
-    seat: "1",
-    price: "22.48",
-    event: "4f48as4f9a4fas9f8asfasfevent55"
-}, {
-    artist: "Nickelback",
-    date: new Date("December 17, 2020 12:25:41"),
-    image: test2,
-    seat: "1",
-    price: "215.01",
-    event: "4f4iohwnfnaiosfjpasfjsfevent55"
-}];
 
-
-const Cart = () => {
-    const totalPrice = CART.reduce((previousValue, currentValue) =>
+const Cart = ({items}) => {
+    const totalPrice = items.reduce((previousValue, currentValue) =>
         (parseFloat(currentValue.price) + parseFloat(previousValue)), 0);
     const tax = totalPrice * 0.2;
 
@@ -44,9 +27,9 @@ const Cart = () => {
                 <HeadingMain>Cart</HeadingMain>
             </HeadingContainer>
             <ItemContainer>
-                {CART.map(({image, artist, date, seat, event, price}, index) => <React.Fragment key={event + index}>
+                {items.map(({image, artist, date, seat, _id, price}, index) => <React.Fragment key={_id + index}>
                     <ItemImage $src={image}/>
-                    <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={event}
+                    <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={_id}
                             bottomIconText={"remove"} bottomIconName={"delete"}/>
                 </React.Fragment>)}
                 <ContainerBordered>
@@ -65,7 +48,7 @@ const Cart = () => {
                         </HeadingMedium>
                     </ContainerSection>
                     <ContainerSection>
-                        <TextBasic>Tickets ({CART.length}x)</TextBasic>
+                        <TextBasic>Tickets ({items.length}x)</TextBasic>
                         <TextBasic $align={"right"}>${totalPrice.toFixed(2)}</TextBasic>
                         <TextBasic>Tax (20%)</TextBasic>
                         <TextBasic $align={"right"}>${tax.toFixed(2)}</TextBasic>
@@ -83,4 +66,4 @@ const Cart = () => {
     )
 };
 
-export default Cart;
+export default connect(({cart}) => ({items: cart.items}))(Cart);

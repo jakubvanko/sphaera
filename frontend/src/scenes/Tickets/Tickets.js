@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 import hero from "./assets/hero.jpg";
 import useFullScroll from "../../scripts/hooks/useFullScroll";
@@ -16,6 +17,7 @@ import {
     MainText,
     Filter
 } from "./Tickets.styled";
+import {URL_EVENT} from "../../scripts/constants/urls";
 
 const formatDate = dateString => {
     const date = new Date(dateString);
@@ -35,8 +37,9 @@ const Tickets = ({events}) => {
 
     return (
         <Container>
-            {filteredEvents.map(({artist, date, image}, index) => (
-                <EventContainer $src={"https://sphaera.jakubvanko.com/api/uploads/" + image} key={index}>
+            {filteredEvents.map(({_id, artist, date, image}, index) => (
+                <EventContainer as={Link} $src={image} key={index}
+                                to={URL_EVENT + _id}>
                     <Filter>
                         <TextContainer>
                             <ArtistText>

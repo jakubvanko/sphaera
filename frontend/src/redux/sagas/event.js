@@ -7,6 +7,8 @@ import {eventApi} from "../../scripts/api";
 function* getRequest({payload}) {
     try {
         const event = yield call(eventApi.getById, payload._id);
+        event.date = new Date(event.date);
+        event.image = "https://sphaera.jakubvanko.com/api/uploads/" + event.image;
         yield all([
             put({
                 type: EVENT.GET_SUCCESS
@@ -27,6 +29,10 @@ function* getRequest({payload}) {
 function* getAllRequest() {
     try {
         const events = yield call(eventApi.getAll);
+        events.forEach(event => {
+            event.date = new Date(event.date);
+            event.image = "https://sphaera.jakubvanko.com/api/uploads/" + event.image;
+        });
         yield put({
             type: EVENT.GET_ALL_SUCCESS,
             payload: events
