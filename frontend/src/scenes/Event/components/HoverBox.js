@@ -10,7 +10,6 @@ const Container = styled.div`
   width: 180px;
   top: 0;
   left: 0;
-  transform: translate(${props => props.$x - 90 || 0}px, ${props => props.$y - 180 || 0}px);
   
   :after {
     content: " ";
@@ -38,7 +37,7 @@ const Text = styled.span`
 `;
 
 const HoverBox = ({displayed, fill, area, available, price, x, y}) => (
-    <Container $displayed={displayed} $x={x} $y={y}>
+    <Container $displayed={displayed} style={{transform: `translate(${x - 90}px, ${y - 180}px)`}}>
         <div>
             <ColoredSquare $color={fill}/>
             <Text>{area}</Text>

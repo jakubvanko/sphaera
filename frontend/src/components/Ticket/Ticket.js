@@ -10,7 +10,7 @@ import {
     StyledCircleIcon
 } from "./Ticket.styled";
 
-export const Ticket = ({artist, date, seat, price, qrValue, bottomIconText, bottomIconName}) => (
+export const Ticket = ({artist, date, seat, price, qrValue, bottomIconText, bottomIconName, onBottomIconClick}) => (
     <Container>
         <ContainerSpaceBetween>
             <HeadingMedium>
@@ -34,7 +34,7 @@ export const Ticket = ({artist, date, seat, price, qrValue, bottomIconText, bott
             </TextLabeled>
         </InformationContainer>
         <ContainerSpaceBetween>
-            <TextIcon text={bottomIconText} name={bottomIconName}/>
+            <TextIcon text={bottomIconText} name={bottomIconName} onClick={onBottomIconClick}/>
             <HeadingMedium>
                 ${price}
             </HeadingMedium>

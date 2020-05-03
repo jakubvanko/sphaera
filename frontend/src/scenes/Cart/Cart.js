@@ -14,9 +14,10 @@ import {
     PolicyInformationContainer,
     ContainerSection
 } from "./Cart.styled";
+import {removeItem} from "../../redux/actionCreators/cart";
 
 
-const Cart = ({items}) => {
+const Cart = ({items, removeItem}) => {
     const totalPrice = items.reduce((previousValue, currentValue) =>
         (parseFloat(currentValue.price) + parseFloat(previousValue)), 0);
     const tax = totalPrice * 0.2;
@@ -30,7 +31,8 @@ const Cart = ({items}) => {
                 {items.map(({image, artist, date, seat, _id, price}, index) => <React.Fragment key={_id + index}>
                     <ItemImage $src={image}/>
                     <Ticket artist={artist} date={date} price={price} seat={seat} qrValue={_id}
-                            bottomIconText={"remove"} bottomIconName={"delete"}/>
+                            bottomIconText={"remove"} bottomIconName={"delete"}
+                            onBottomIconClick={() => removeItem({_id}, seat)}/>
                 </React.Fragment>)}
                 <ContainerBordered>
                     <PolicyInformationContainer>
@@ -66,4 +68,4 @@ const Cart = ({items}) => {
     )
 };
 
-export default connect(({cart}) => ({items: cart.items}))(Cart);
+export default connect(({cart}) => ({items: cart.items}), {removeItem})(Cart);

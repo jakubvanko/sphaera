@@ -15,10 +15,11 @@ const cart = (state = initialState, action) => {
             return {...state, items};
         }
         case CART.REMOVE_ITEM: {
-            const items = state.items.filter(value => {
+            // a function keyword needs to be used for this keyword to work
+            const items = state.items.filter(function (value) {
                 if (this.amountLeft === 0) return true;
-                if (value.event !== action.payload.event) return true;
-                if (value.area !== action.payload.area) return true;
+                if (value._id !== action.payload._id) return true;
+                if (value.seat !== action.payload.seat) return true;
                 this.amountLeft = 0;
                 return false;
             }, {amountLeft: 1});

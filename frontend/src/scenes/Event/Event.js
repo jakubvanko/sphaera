@@ -19,7 +19,7 @@ import HoverBox from "./components/HoverBox";
 import {addItem} from "../../redux/actionCreators/cart";
 import {AREA_LAYOUT, AREA_VIEWBOX} from "../../scripts/constants/areaLayout";
 
-const Event = ({event}) => {
+const Event = ({event, addItem}) => {
     const [currentArea, setCurrentArea] = useState();
     const [currentHoveredArea, setCurrentHoveredArea] = useState();
     const [isPopupDisplayed, setPopupDisplayed] = useState(false);
@@ -69,8 +69,9 @@ const Event = ({event}) => {
                         </TextLabeled>
                     </TextContainer>
                     <DropdownNumber/>
-                    <ButtonPrimary onClick={() => {
-                        addItem(event, currentArea);
+                    <ButtonPrimary disabled={!currentArea} onClick={() => {
+                        const currentAreaObject = event.areas.find(({name}) => name === currentArea);
+                        addItem(event, currentArea, currentAreaObject.price);
                     }}>Add to cart</ButtonPrimary>
                 </DataContainer>
             </MenuContainer>
