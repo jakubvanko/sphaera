@@ -8,19 +8,18 @@ import {FormikBase} from "../../../components/FormBase";
 import {InputField} from "../../../components/Input/Input";
 import {SeatSelection} from "../../../components/SeatSelection";
 import {TextBig} from "../../../components/TextType";
-import {SEATS, VIEWBOX} from "../../../scripts/constants/seats";
 import {MultiColumnForm, AreaInputGroup, AreaInputContainer} from "../Admin.styled";
+
+import {AREA_DEFAULTS} from "../../../scripts/constants/areaDefaults";
+import {AREA_LAYOUT, AREA_VIEWBOX} from "../../../scripts/constants/areaLayout";
 import {createRequest} from "../../../redux/actionCreators/event";
 
-const defaultValues = SEATS.reduce((
-    (previousValue, {name, defaultSeats, defaultPrice, repeated = false, selectable = true}) => {
-        if (!repeated && selectable) {
-            previousValue["input_seats_" + name] = defaultSeats;
-            previousValue["input_price_" + name] = defaultPrice;
-        }
-        return previousValue;
-    }), {});
-const filteredSeats = SEATS.filter(({repeated = false, selectable = true}) => !repeated && selectable);
+
+const area_values = {};
+AREA_DEFAULTS.forEach(({name, defaultSeats, defaultPrice}) => {
+    area_values["input_seats_" + name] = defaultSeats;
+    area_values["input_price_" + name] = defaultPrice;
+});
 
 const FormAddEvent = ({createPending, createRequest}) => {
     const [currentlyDisplayed, setCurrentlyDisplayed] = useState("1");
@@ -38,7 +37,7 @@ const FormAddEvent = ({createPending, createRequest}) => {
                 }
                 return errors;
             }}
-            initialValues={defaultValues}
+            initialValues={area_values}
             schema={() => ({
                 artist: Yup.string()
                     .min(2, "Please enter a valid artist")
@@ -73,7 +72,7 @@ const FormAddEvent = ({createPending, createRequest}) => {
                     <InputField innerRef={fileRef} type={"file"} label={"File"} name={"file"}
                                 labelActive={true} {...props}/>
                     <AreaInputContainer>
-                        {filteredSeats.map(({name}, index) => (
+                        {AREA_DEFAULTS.map(({name}, index) => (
                             <AreaInputGroup $displayed={name === currentlyDisplayed} key={name + index}>
                                 <TextBig>Area {name}</TextBig>
                                 <InputField type={"number"} label={"Places in area " + name}
@@ -84,7 +83,7 @@ const FormAddEvent = ({createPending, createRequest}) => {
                                             labelActive={true} {...props}/>
                             </AreaInputGroup>
                         ))}
-                        <SeatSelection layout={SEATS} viewbox={VIEWBOX}
+                        <SeatSelection layout={AREA_LAYOUT} viewbox={AREA_VIEWBOX}
                                        onSeatSelected={name => setCurrentlyDisplayed(name)}/>
                     </AreaInputContainer>
                     <ButtonPrimaryLoader isLoading={createPending}>Add Event</ButtonPrimaryLoader>

@@ -17,26 +17,22 @@ import {TextLabeled} from "../../components/TextType";
 import DropdownNumber from "./components/DropdownNumber";
 import HoverBox from "./components/HoverBox";
 import {addItem} from "../../redux/actionCreators/cart";
-import {SEATS, VIEWBOX} from "../../scripts/constants/seats";
+import {AREA_LAYOUT, AREA_VIEWBOX} from "../../scripts/constants/areaLayout";
 
 const Event = ({event}) => {
     const [currentArea, setCurrentArea] = useState();
 
     if (!event) return <Container><ClockLoader/></Container>;
 
-    const checkedDisabledAreas = SEATS.map(seat => {
-        if (seat.selectable === false) return {...seat};
-        const areaForSeat = event.areas.find(area => area.name == seat.name);
-        return {
-            ...seat,
-            disabled: areaForSeat.reserved >= areaForSeat.capacity
-        }
+    const disabledAreas = {};
+    event.areas.forEach(({name, reserved, capacity}) => {
+        if (reserved >= capacity) disabledAreas[name] = true;
     });
     return (
         <Container>
             <HoverBox/>
             <SeatSelectionContainer>
-                <SeatSelection layout={checkedDisabledAreas} viewbox={VIEWBOX}
+                <SeatSelection layout={AREA_LAYOUT} viewbox={AREA_VIEWBOX} disabled={disabledAreas}
                                onSeatSelected={name => setCurrentArea(name)}/>
             </SeatSelectionContainer>
             <MenuContainer>
