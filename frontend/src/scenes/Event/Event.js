@@ -21,6 +21,11 @@ import {AREA_LAYOUT, AREA_VIEWBOX} from "../../scripts/constants/areaLayout";
 
 const Event = ({event}) => {
     const [currentArea, setCurrentArea] = useState();
+    const [currentHoveredArea, setCurrentHoveredArea] = useState();
+    const [isPopupDisplayed, setPopupDisplayed] = useState(false);
+    const [currentFill, setCurrentFill] = useState("pink");
+    const [mouseX, setMouseX] = useState(0);
+    const [mouseY, setMouseY] = useState(0);
 
     if (!event) return <Container><ClockLoader/></Container>;
 
@@ -28,12 +33,25 @@ const Event = ({event}) => {
     event.areas.forEach(({name, reserved, capacity}) => {
         if (reserved >= capacity) disabledAreas[name] = true;
     });
+    const currentHoveredAreaObject = event.areas.find(({name}) => name === currentHoveredArea);
+
     return (
-        <Container>
-            <HoverBox/>
+        <Container onMouseMove={event => {
+            if (event.screenX !== mouseX) setMouseX(event.screenX);
+            if (event.screenY !== mouseY) setMouseY(event.screenY);
+        }}>
+            <HoverBox displayed={isPopupDisplayed} fill={currentFill} area={currentHoveredArea}
+                      price={currentHoveredArea && currentHoveredAreaObject.price} x={mouseX} y={mouseY}
+                      available={currentHoveredArea && currentHoveredAreaObject.capacity - currentHoveredAreaObject.reserved}/>
             <SeatSelectionContainer>
                 <SeatSelection layout={AREA_LAYOUT} viewbox={AREA_VIEWBOX} disabled={disabledAreas}
-                               onSeatSelected={name => setCurrentArea(name)}/>
+                               onSeatSelected={name => setCurrentArea(name)}
+                               onSeatOver={(name, fill) => {
+                                   setPopupDisplayed(true);
+                                   setCurrentFill(fill);
+                                   setCurrentHoveredArea(name);
+                               }}
+                               onSeatOut={() => setPopupDisplayed(false)}/>
             </SeatSelectionContainer>
             <MenuContainer>
                 <ItemImage $src={event.image}/>

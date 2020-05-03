@@ -6,6 +6,11 @@ const Container = styled.div`
   position: absolute;
   border: 2px solid var(--color-gray-5);
   background-color: white;
+  display: ${props => props.$displayed ? "block" : "none"};
+  width: 180px;
+  top: 0;
+  left: 0;
+  transform: translate(${props => props.$x - 90 || 0}px, ${props => props.$y - 180 || 0}px);
   
   :after {
     content: " ";
@@ -32,22 +37,22 @@ const Text = styled.span`
   font-weight: 600;
 `;
 
-const HoverBox = () => (
-    <Container>
+const HoverBox = ({displayed, fill, area, available, price, x, y}) => (
+    <Container $displayed={displayed} $x={x} $y={y}>
         <div>
-            <ColoredSquare $color={"pink"}/>
-            <Text>A</Text>
+            <ColoredSquare $color={fill}/>
+            <Text>{area}</Text>
         </div>
         <div>
             Available:
             <Text>
-                51
+                {available}
             </Text>
         </div>
         <div>
             Prices from:
             <Text>
-                $55.04
+                ${price}
             </Text>
         </div>
     </Container>
