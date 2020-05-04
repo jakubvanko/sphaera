@@ -46,12 +46,9 @@ const TICKETS = [
 const Profile = ({ user, logout }) => {
   const [isEditing, setEditing] = useState(false);
 
-  const userName =
-    user.firstName.charAt(0).toUpperCase() +
-    user.firstName.slice(1) +
-    " " +
-    user.lastName.charAt(0).toUpperCase() +
-    user.firstName.slice(1);
+  const userName = `${
+    user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
+  } ${user.lastName.charAt(0).toUpperCase()}${user.firstName.slice(1)}`;
 
   return (
     <Container>

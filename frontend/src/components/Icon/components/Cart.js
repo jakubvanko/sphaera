@@ -2,8 +2,8 @@ import React from "react";
 
 const Cart = ({ width = 42 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 511.997 511.997"
+    xmlns={"http://www.w3.org/2000/svg"}
+    viewBox={"0 0 511.997 511.997"}
     width={width}
   >
     <path

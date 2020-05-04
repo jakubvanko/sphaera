@@ -10,7 +10,7 @@ const SeatSelection = ({
   onSeatOver,
   onSeatOut,
 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewbox} width={"100%"}>
+  <svg xmlns={"http://www.w3.org/2000/svg"} viewBox={viewbox} width={"100%"}>
     {layout.map(
       (
         {
@@ -45,7 +45,7 @@ const SeatSelection = ({
         >
           <path
             d={path}
-            transform="translate(-16.7 -4.1)"
+            transform={"translate(-16.7 -4.1)"}
             fill={fill}
             stroke={"black"}
           />

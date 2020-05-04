@@ -119,7 +119,7 @@ const Contact = () => (
         </StyledFlipCard>
       ))}
     </FlipCardsContainer>
-    <ContentContainer></ContentContainer>
+    <ContentContainer />
   </div>
 );
 

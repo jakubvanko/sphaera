@@ -34,7 +34,7 @@ const Main = () => (
     <Switch>
       <Route exact path={URL_HOME} component={Home} />
       <Route path={URL_TICKETS} component={Tickets} />
-      <Route path={URL_EVENT + ":id"} component={Event} />
+      <Route path={`${URL_EVENT}:id`} component={Event} />
       <Route path={URL_CONTACT} component={Contact} />
       <Route path={URL_VISIT} component={Visit} />
       <RoutePermission type={"login"} path={URL_PROFILE} component={Profile} />

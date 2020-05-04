@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ContainerBordered } from "../Container";
 import { Formik, validateYupSchema, yupToFormErrors } from "formik";
 import * as Yup from "yup";
+import { ContainerBordered } from "../Container";
 
 import { FormHeader, Form } from "./FormBase.styled";
 
@@ -51,8 +51,8 @@ export const FormikBase = ({
           return errors;
         }}
         validateOnChange={validationRan}
-        validateOnBlur={true}
-      ></Formik>
+        validateOnBlur
+      />
     </Base>
   );
 };
