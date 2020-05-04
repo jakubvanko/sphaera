@@ -4,9 +4,9 @@ import { ContainerSpaceBetween } from "../Container";
 import { TextIcon } from "../Icon";
 import { HeadingMedium, TextBig, TextLabeled } from "../TextType";
 import {
+  Code,
   Container,
   InformationContainer,
-  Code,
   StyledCircleIcon,
 } from "./Ticket.styled";
 

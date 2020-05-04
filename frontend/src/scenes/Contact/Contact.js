@@ -1,19 +1,19 @@
 import React from "react";
 
-import hero from "./assets/hero.jpg";
+import { Hero } from "../../components/Hero";
+import { Icon } from "../../components/Icon";
 import bookings from "./assets/bookings.jpg";
 import business from "./assets/business.jpg";
 import costume from "./assets/costume.jpg";
+import hero from "./assets/hero.jpg";
 import pr from "./assets/pr.jpg";
-import { Hero } from "../../components/Hero";
-import { Icon } from "../../components/Icon";
 import {
-  ContentContainer,
-  FlipCardsContainer,
-  FlipCardFrontContainer,
-  IconContainer,
-  FlipCardBackContainer,
   ContactName,
+  ContentContainer,
+  FlipCardBackContainer,
+  FlipCardFrontContainer,
+  FlipCardsContainer,
+  IconContainer,
   StyledFlipCard,
 } from "./Contact.styled";
 

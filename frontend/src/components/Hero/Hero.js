@@ -1,11 +1,11 @@
 import React from "react";
 
 import {
+  AdditionalText,
   Container,
   GraphicContent,
-  TextContainer,
   MainText,
-  AdditionalText,
+  TextContainer,
 } from "./Hero.styled";
 
 const Hero = ({

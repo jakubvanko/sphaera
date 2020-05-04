@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { Formik, validateYupSchema, yupToFormErrors } from "formik";
+import React, { useState } from "react";
 import * as Yup from "yup";
-import { ContainerBordered } from "../Container";
 
-import { FormHeader, Form } from "./FormBase.styled";
+import { ContainerBordered } from "../Container";
+import { Form, FormHeader } from "./FormBase.styled";
 
 const Base = ({ header, children }) => (
   <ContainerBordered>

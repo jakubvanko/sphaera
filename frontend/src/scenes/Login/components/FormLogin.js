@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
-import { FormikBase, Form } from "../../../components/FormBase";
+import { Form, FormikBase } from "../../../components/FormBase";
 import { InputField } from "../../../components/Input/Input";
-import { AdditionalText } from "../Login.styled";
 import { loginRequest } from "../../../redux/actionCreators/user";
+import { AdditionalText } from "../Login.styled";
 
 const FormLogin = ({ onFormChange, loginPending, loginRequest }) => (
   <FormikBase

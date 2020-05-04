@@ -1,32 +1,31 @@
+import "./main.css";
+
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import "./main.css";
-
 import RoutePermission from "../components/RoutePermission/RoutePermission";
 import {
+  URL_ADMIN,
+  URL_CART,
   URL_CONTACT,
+  URL_EVENT,
   URL_HOME,
   URL_LOGIN,
   URL_PROFILE,
   URL_TICKETS,
   URL_VISIT,
-  URL_CART,
-  URL_ADMIN,
-  URL_EVENT,
 } from "../scripts/constants/urls";
-
-import Header from "./Header";
-import Footer from "./Footer";
-import Home from "./Home";
-import Visit from "./Visit";
-import Contact from "./Contact";
-import Login from "./Login";
-import Tickets from "./Tickets";
-import Cart from "./Cart";
-import Profile from "./Profile";
 import Admin from "./Admin";
+import Cart from "./Cart";
+import Contact from "./Contact";
 import Event from "./Event/Event";
+import Footer from "./Footer";
+import Header from "./Header";
+import Home from "./Home";
+import Login from "./Login";
+import Profile from "./Profile";
+import Tickets from "./Tickets";
+import Visit from "./Visit";
 
 const Main = () => (
   <BrowserRouter>

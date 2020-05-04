@@ -4,7 +4,6 @@ import { Link as RouterLink } from "react-router-dom";
 
 import { Icon } from "../../components/Icon";
 import { LabeledInput } from "../../components/Input";
-import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 import {
   URL_CART,
   URL_CONTACT,
@@ -14,16 +13,17 @@ import {
   URL_TICKETS,
   URL_VISIT,
 } from "../../scripts/constants/urls";
+import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 import {
-  Container,
-  Link,
-  List,
-  LinkContainer,
   CloseButton,
-  IconLinkContainer,
-  SearchContainer,
-  LogoContainer,
+  Container,
   IconLink,
+  IconLinkContainer,
+  Link,
+  LinkContainer,
+  List,
+  LogoContainer,
+  SearchContainer,
 } from "./Header.styled";
 
 const Header = ({ user }) => {

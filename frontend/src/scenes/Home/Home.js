@@ -1,18 +1,18 @@
 import React from "react";
 
-import poster from "./assets/placeholder.jpg";
-import source from "./assets/home.mp4";
-import BackgroundChangingText from "./components/BackgroundChangingText";
 import { Hero } from "../../components/Hero";
 import { Icon } from "../../components/Icon";
+import source from "./assets/home.mp4";
+import poster from "./assets/placeholder.jpg";
+import BackgroundChangingText from "./components/BackgroundChangingText";
 import {
-  Container,
-  IconContainer,
-  BlackBanner,
   BannerText,
-  IconText,
+  BlackBanner,
+  Container,
   CorporateContainer,
   CorporateLink,
+  IconContainer,
+  IconText,
   MainText,
 } from "./Home.styled";
 

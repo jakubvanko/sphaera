@@ -1,7 +1,7 @@
-import { all, put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
-import { EVENT } from "../actionTypes";
 import { eventApi } from "../../scripts/api";
+import { EVENT } from "../actionTypes";
 
 function* getRequest({ payload }) {
   try {

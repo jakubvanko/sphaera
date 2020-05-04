@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
-import { FormikBase, Form } from "../../../components/FormBase";
+import { Form, FormikBase } from "../../../components/FormBase";
 import { InputField } from "../../../components/Input/Input";
 
 const FormRegister = () => (

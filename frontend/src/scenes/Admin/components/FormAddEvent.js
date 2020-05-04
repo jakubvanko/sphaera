@@ -1,5 +1,5 @@
 import { Form as FormikForm } from "formik";
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import * as Yup from "yup";
 
@@ -8,18 +8,17 @@ import { FormikBase } from "../../../components/FormBase";
 import { InputField } from "../../../components/Input/Input";
 import { SeatSelection } from "../../../components/SeatSelection";
 import { TextBig } from "../../../components/TextType";
-import {
-  MultiColumnForm,
-  AreaInputGroup,
-  AreaInputContainer,
-} from "../Admin.styled";
-
+import { createRequest } from "../../../redux/actionCreators/event";
 import { AREA_DEFAULTS } from "../../../scripts/constants/areaDefaults";
 import {
   AREA_LAYOUT,
   AREA_VIEWBOX,
 } from "../../../scripts/constants/areaLayout";
-import { createRequest } from "../../../redux/actionCreators/event";
+import {
+  AreaInputContainer,
+  AreaInputGroup,
+  MultiColumnForm,
+} from "../Admin.styled";
 
 const area_values = {};
 AREA_DEFAULTS.forEach(({ name, defaultSeats, defaultPrice }) => {

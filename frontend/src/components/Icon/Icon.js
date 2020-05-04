@@ -1,5 +1,6 @@
 import React from "react";
 
+import { TextSmallBold } from "../TextType";
 import Arrangiatore from "./components/Arrangiatore";
 import ArrowDownFilled from "./components/ArrowDownFilled";
 import ArrowRight from "./components/ArrowRight";
@@ -27,11 +28,10 @@ import Twitter from "./components/Twitter";
 import User from "./components/User";
 import UserFilled from "./components/UserFilled";
 import Youtube from "./components/Youtube";
-import { TextSmallBold } from "../TextType";
 import {
+  CircleIconContainer,
   Container,
   TextIconContainer,
-  CircleIconContainer,
 } from "./Icon.styled";
 
 const ICON_MAP = {
