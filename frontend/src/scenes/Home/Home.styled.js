@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const IconContainer = styled.div`
   display: grid;
@@ -11,12 +10,12 @@ export const IconContainer = styled.div`
   grid-row-gap: 8vh;
   justify-items: center;
   border-bottom: 1px solid var(--color-gray-8);
-  
+
   @media only screen and (min-width: 600px) {
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto auto auto;
   }
-  
+
   @media only screen and (min-width: 992px) {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto auto;
@@ -41,7 +40,7 @@ export const MainText = styled.div`
   font-weight: 600;
   color: black;
   line-height: 1.4em;
-  
+
   @media only screen and (min-width: 992px) {
     line-height: normal;
   }
@@ -56,7 +55,7 @@ export const IconText = styled(MainText)`
   @media only screen and (min-width: 600px) {
     grid-column: 1 / span 2;
   }
-  
+
   @media only screen and (min-width: 992px) {
     grid-column: 1 / span 4;
   }

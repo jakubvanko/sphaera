@@ -17,8 +17,8 @@ export const HeadingMedium = styled.h4`
   font-size: 1.8rem;
   text-transform: capitalize;
   font-weight: 600;
-  
-  @media screen and (min-width: 500px){
+
+  @media screen and (min-width: 500px) {
     font-size: 2.4rem;
   }
 `;
@@ -27,7 +27,7 @@ export const TextBasic = styled.span`
   font-size: 1.2rem;
   text-transform: none;
   font-weight: 400;
-  text-align: ${props => props.$align && props.$align};
+  text-align: ${(props) => props.$align && props.$align};
 `;
 
 export const TextSmall = styled.span`

@@ -10,7 +10,7 @@ const InputBase = styled.input`
   background-color: transparent;
   width: 100%;
   padding: 3px 2px 4px;
-  
+
   ::placeholder {
     color: var(--color-gray-6);
     opacity: 1; /* Firefox */
@@ -18,8 +18,8 @@ const InputBase = styled.input`
 `;
 
 export const InputInteractive = styled(InputBase)`
-  border-bottom-color: ${props => props.$error && "var(--color-red)"};
-  color: ${props => props.$error && "var(--color-red)"};
+  border-bottom-color: ${(props) => props.$error && "var(--color-red)"};
+  color: ${(props) => props.$error && "var(--color-red)"};
   transition: border-bottom-color 0.2s;
   :focus {
     border-bottom-color: #ffaa18;
@@ -29,10 +29,10 @@ export const InputInteractive = styled(InputBase)`
 export const Label = styled.label`
   position: absolute;
   font-weight: normal;
-  font-size: ${props => props.$focused ? "0.8rem" : "1.125rem"};
+  font-size: ${(props) => (props.$focused ? "0.8rem" : "1.125rem")};
   color: var(--color-gray-5);
-  top: ${props => props.$focused ? 0 : "24px"};
-  left: ${props => props.$focused ? 0 : "2px"};
+  top: ${(props) => (props.$focused ? 0 : "24px")};
+  left: ${(props) => (props.$focused ? 0 : "2px")};
   transition: all 0.26s ease 0s;
   z-index: -1;
 `;

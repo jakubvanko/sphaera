@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
   padding: 5vh 5vw;
-  @media screen and (min-width: 1350px){
+  @media screen and (min-width: 1350px) {
     padding: 7vh 9vw;
   }
-  
-  @media screen and (min-width: 1500px){
+
+  @media screen and (min-width: 1500px) {
     padding: 9vh 12vw;
   }
 `;
@@ -44,7 +44,7 @@ export const SmallText = styled.span`
 export const Item = styled.div`
   border: solid 1px var(--color-gray-8);
   border-radius: 4px;
-  
+
   > div:not(:last-child) {
     border-bottom: dashed 1px var(--color-gray-7);
   }
@@ -54,12 +54,12 @@ export const ItemContainer = styled.div`
   display: grid;
   grid-column-gap: 1vw;
   grid-row-gap: 2vh;
-  
+
   @media (min-width: 1000px) {
     grid-template-columns: 7fr 19fr;
-  } 
-  
-  @media screen and (min-width: 1150px){
+  }
+
+  @media screen and (min-width: 1150px) {
     padding: 0 4.5vw;
   }
 `;
@@ -68,14 +68,14 @@ const ItemSectionBase = styled.div`
   padding: 2vh 4vw;
   grid-row-gap: 10px;
 
-  @media screen and (min-width: 500px){
+  @media screen and (min-width: 500px) {
     padding: 4vh 6vw;
     grid-row-gap: 20px;
   }
-  
+
   @media (min-width: 1000px) {
     padding: 4vh 4vw 4vh 4vw;
-  } 
+  }
 `;
 
 export const ItemHeader = styled(ItemSectionBase)`
@@ -87,8 +87,8 @@ export const ItemHeader = styled(ItemSectionBase)`
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
-  
-  @media screen and (min-width: 500px){
+
+  @media screen and (min-width: 500px) {
     font-size: 2.4rem;
   }
 `;
@@ -96,7 +96,7 @@ export const ItemHeader = styled(ItemSectionBase)`
 export const AccountData = styled(ItemSectionBase)`
   display: grid;
   grid-template-columns: auto;
-  @media screen and (min-width: 500px){
+  @media screen and (min-width: 500px) {
     grid-template-columns: auto auto;
   }
 `;

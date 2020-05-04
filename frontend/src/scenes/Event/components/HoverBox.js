@@ -6,11 +6,11 @@ const Container = styled.div`
   position: absolute;
   border: 2px solid var(--color-gray-5);
   background-color: white;
-  display: ${props => props.$displayed ? "block" : "none"};
+  display: ${(props) => (props.$displayed ? "block" : "none")};
   width: 180px;
   top: 0;
   left: 0;
-  
+
   :after {
     content: " ";
     border-top: 9px solid var(--color-gray-5);
@@ -28,7 +28,7 @@ const ColoredSquare = styled.div`
   height: 15px;
   border-radius: 5px;
   display: inline-block;
-  background-color: ${props => props.$color || "none"};
+  background-color: ${(props) => props.$color || "none"};
 `;
 
 const Text = styled.span`
@@ -36,25 +36,24 @@ const Text = styled.span`
   font-weight: 600;
 `;
 
-const HoverBox = ({displayed, fill, area, available, price, x, y}) => (
-    <Container $displayed={displayed} style={{transform: `translate(${x - 90}px, ${y - 180}px)`}}>
-        <div>
-            <ColoredSquare $color={fill}/>
-            <Text>{area}</Text>
-        </div>
-        <div>
-            Available:
-            <Text>
-                {available}
-            </Text>
-        </div>
-        <div>
-            Prices from:
-            <Text>
-                ${price}
-            </Text>
-        </div>
-    </Container>
+const HoverBox = ({ displayed, fill, area, available, price, x, y }) => (
+  <Container
+    $displayed={displayed}
+    style={{ transform: `translate(${x - 90}px, ${y - 180}px)` }}
+  >
+    <div>
+      <ColoredSquare $color={fill} />
+      <Text>{area}</Text>
+    </div>
+    <div>
+      Available:
+      <Text>{available}</Text>
+    </div>
+    <div>
+      Prices from:
+      <Text>${price}</Text>
+    </div>
+  </Container>
 );
 
 export default HoverBox;

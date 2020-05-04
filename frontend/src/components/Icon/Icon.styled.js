@@ -1,20 +1,20 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-    cursor: pointer;
-    background-color: transparent;
-    padding: ${props => props.$padding || 0};
-    border: none;
-    outline: none;
-    grid-area: ${props => props.$gridArea && props.$gridArea};
-    display: ${props => props.$display && props.$display};
-    align-self: center;
-    
-    svg {
-        display: block;
-        fill: ${props => props.$fill && props.$fill};
-        stroke: ${props => props.$stroke && props.$stroke};
-    }
+  cursor: pointer;
+  background-color: transparent;
+  padding: ${(props) => props.$padding || 0};
+  border: none;
+  outline: none;
+  grid-area: ${(props) => props.$gridArea && props.$gridArea};
+  display: ${(props) => props.$display && props.$display};
+  align-self: center;
+
+  svg {
+    display: block;
+    fill: ${(props) => props.$fill && props.$fill};
+    stroke: ${(props) => props.$stroke && props.$stroke};
+  }
 `;
 
 export const TextIconContainer = styled.div`
@@ -26,10 +26,10 @@ export const TextIconContainer = styled.div`
 `;
 
 export const CircleIconContainer = styled.div`
-  background-color: ${props => props.$backgroundColor || "black"};
+  background-color: ${(props) => props.$backgroundColor || "black"};
   border-radius: 100vw;
-  width: ${props => props.$size || "40"}px;
-  height: ${props => props.$size || "40"}px;
+  width: ${(props) => props.$size || "40"}px;
+  height: ${(props) => props.$size || "40"}px;
   display: flex;
   justify-content: center;
   align-items: center;

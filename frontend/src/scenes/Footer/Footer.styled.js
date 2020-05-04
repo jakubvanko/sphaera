@@ -10,7 +10,7 @@ export const Container = styled.footer`
   justify-items: center;
   grid-template-rows: auto auto auto;
   grid-row-gap: 30px;
-  
+
   @media only screen and (min-width: 992px) {
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: auto;
@@ -22,11 +22,11 @@ export const IconContainer = styled.div`
   grid-template-columns: repeat(3, min-content);
   grid-row-gap: 26px;
   grid-column-gap: 40px;
-  
+
   @media only screen and (min-width: 470px) {
     grid-template-columns: repeat(6, min-content);
   }
-  
+
   @media only screen and (min-width: 992px) {
     grid-template-columns: min-content min-content min-content;
     grid-template-rows: min-content min-content;

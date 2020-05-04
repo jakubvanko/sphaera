@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {ContainerBordered} from "../../components/Container";
+import { ContainerBordered } from "../../components/Container";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -20,15 +20,14 @@ export const DataContainer = styled(ContainerBordered)`
   align-items: center;
   grid-row-gap: 10px;
   grid-column-gap: 20px;
-  
+
   button {
     grid-area: button;
   }
-  
 
   padding: 15px 25px 25px 25px;
-  
-  @media (min-width: 500px){
+
+  @media (min-width: 500px) {
     padding: 10px 30px 10px 30px;
   }
 `;

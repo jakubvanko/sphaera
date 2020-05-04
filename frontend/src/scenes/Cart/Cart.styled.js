@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 import shapes from "./assets/shapes.png";
-import {ButtonPrimary} from "../../components/Button";
-import {ContainerSpaceBetween} from "../../components/Container";
+import { ButtonPrimary } from "../../components/Button";
+import { ContainerSpaceBetween } from "../../components/Container";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
   padding: 5vh 5vw;
-  @media screen and (min-width: 1350px){
+  @media screen and (min-width: 1350px) {
     padding: 7vh 9vw;
   }
-  
-  @media screen and (min-width: 1500px){
+
+  @media screen and (min-width: 1500px) {
     padding: 9vh 12vw;
   }
 `;
@@ -24,12 +24,12 @@ export const ItemContainer = styled.div`
   display: grid;
   grid-column-gap: 1vw;
   grid-row-gap: 2vh;
-  
+
   @media (min-width: 1000px) {
     grid-template-columns: 7fr 19fr;
-  } 
-  
-  @media screen and (min-width: 1150px){
+  }
+
+  @media screen and (min-width: 1150px) {
     padding: 0 4.5vw;
   }
 `;
@@ -39,27 +39,27 @@ export const ContainerSection = styled(ContainerSpaceBetween)`
   margin: 0 4vw;
   padding: 2vh 0;
   grid-row-gap: 10px;
-  
-  @media screen and (min-width: 500px){
+
+  @media screen and (min-width: 500px) {
     width: calc(100% - 12vw);
     margin: 0 6vw;
     padding: 4vh 0;
     grid-row-gap: 20px;
   }
-  
+
   @media (min-width: 1000px) {
     width: calc(100% - 8vw);
     margin: 0 4vw;
     padding: 4vh 0;
   }
-  
+
   :not(:first-child) {
     border-top: solid 1px var(--color-gray-7);
   }
 `;
 
 export const BuyButton = styled(ButtonPrimary)`
-  grid-column: 1 / -1
+  grid-column: 1 / -1;
 `;
 
 export const PolicyInformationContainer = styled.div`

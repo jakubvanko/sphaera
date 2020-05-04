@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Link as UnstyledLink} from "react-router-dom";
+import { Link as UnstyledLink } from "react-router-dom";
 
 export const Container = styled.header`
   background-color: white;
@@ -12,7 +12,7 @@ export const Container = styled.header`
   color: black;
   font-weight: bolder;
   border-bottom: 1px solid var(--color-gray-9);
-  
+
   @media only screen and (min-width: 992px) {
     display: grid;
     grid-template-rows: auto;
@@ -31,14 +31,14 @@ export const List = styled.ul`
   left: 0;
   z-index: 1;
   height: 100vh;
-  width: ${props => props.$mobileActive ? "200px" : 0};
+  width: ${(props) => (props.$mobileActive ? "200px" : 0)};
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   transition: 0.5s;
   white-space: nowrap;
   background-color: inherit;
-  
+
   @media only screen and (min-width: 992px) {
     position: static;
     flex-direction: row;
@@ -55,10 +55,10 @@ export const LinkContainer = styled.li`
   letter-spacing: 1px;
   border-bottom: 1px solid var(--color-gray-2);
   user-select: none;
-  
+
   @media only screen and (min-width: 992px) {
     border-bottom: none;
-    display: ${props => props.$display && props.$display};
+    display: ${(props) => props.$display && props.$display};
   }
 `;
 
@@ -72,14 +72,14 @@ export const CloseButton = styled.button`
   border: none;
   padding: 2px 6px;
   align-self: flex-end;
-  
+
   :after {
     content: "\\2573";
   }
   :hover:after {
     content: "\\2501";
   }
-  
+
   @media only screen and (min-width: 992px) {
     display: none;
   }
@@ -90,7 +90,7 @@ export const Link = styled(UnstyledLink)`
   text-decoration: none;
   cursor: pointer;
   border-bottom: transparent 2px solid;
-  
+
   :hover {
     border-bottom: black 2px solid;
   }
@@ -104,23 +104,23 @@ export const IconLinkContainer = styled.a`
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  
+
   > span {
     color: var(--color-gray-6);
   }
-  
+
   span:hover {
     border-bottom: transparent 2px solid;
   }
-  
+
   @media only screen and (min-width: 992px) {
     display: grid;
     grid-template-rows: auto auto;
     justify-items: center;
     align-content: center;
     grid-row-gap: 7px;
-    border-left: ${props => props.$border && "1px solid #eceae6"};
-    border-right: ${props => props.$border && "1px solid #eceae6"};
+    border-left: ${(props) => props.$border && "1px solid #eceae6"};
+    border-right: ${(props) => props.$border && "1px solid #eceae6"};
     padding: 0 35px;
   }
 `;
@@ -136,7 +136,7 @@ export const SearchContainer = styled.div`
     padding: 0 35px;
     border-left: 1px solid var(--color-gray-9);
     border-right: 1px solid var(--color-gray-9);
-    
+
     input {
       padding-bottom: 8px;
     }
@@ -147,7 +147,7 @@ export const LogoContainer = styled.div`
   display: flex;
   align-content: center;
   height: 100%;
-  
+
   @media only screen and (min-width: 992px) {
     border-right: 1px solid var(--color-gray-9);
     padding: 0 80px;

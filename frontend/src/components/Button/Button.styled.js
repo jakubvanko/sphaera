@@ -17,7 +17,7 @@ export const ButtonPrimary = styled(ButtonBase)`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+
   :disabled {
     opacity: 0.5;
   }

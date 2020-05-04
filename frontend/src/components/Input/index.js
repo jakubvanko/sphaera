@@ -1,2 +1,2 @@
-export {InputInteractive} from "./Input.styled";
-export {InputField, LabeledInput} from "./Input";
+export { InputInteractive } from "./Input.styled";
+export { InputField, LabeledInput } from "./Input";

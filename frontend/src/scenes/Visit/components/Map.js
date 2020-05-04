@@ -3,21 +3,41 @@ import styled from "styled-components";
 import GoogleMapReact from "google-map-react";
 import Icon from "../../../components/Icon/Icon";
 
-const styles = [{
+const styles = [
+  {
     featureType: "administrative.land_parcel",
     elementType: "labels",
-    stylers: [{visibility: "off"}]
-}, {featureType: "poi", elementType: "labels.text", stylers: [{visibility: "off"}]}, {
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text",
+    stylers: [{ visibility: "off" }],
+  },
+  {
     featureType: "poi.business",
-    stylers: [{visibility: "off"}]
-}, {featureType: "poi.park", elementType: "labels.icon", stylers: [{visibility: "off"}]}, {
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.icon",
+    stylers: [{ visibility: "off" }],
+  },
+  {
     featureType: "road",
     elementType: "labels.icon",
-    stylers: [{visibility: "off"}]
-}, {featureType: "road.local", elementType: "labels", stylers: [{visibility: "off"}]}, {
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "road.local",
+    elementType: "labels",
+    stylers: [{ visibility: "off" }],
+  },
+  {
     featureType: "transit",
-    stylers: [{visibility: "off"}]
-}];
+    stylers: [{ visibility: "off" }],
+  },
+];
 
 const Container = styled.div`
   width: 100%;
@@ -36,24 +56,25 @@ const MarkerHeader = styled.h6`
 `;
 
 const Map = () => (
-    <Container>
-        <GoogleMapReact
-            bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_KEY}}
-            defaultCenter={[47.797279, 13.046036]}
-            defaultZoom={15} options={{
-            panControl: true,
-            mapTypeControl: true,
-            scrollwheel: true,
-            styles,
-        }} distanceToMouse={()=>{}}
-        >
-            <MarkerContainer lat={47.798279}
-                             lng={13.044036}>
-                <MarkerHeader>Sphaera</MarkerHeader>
-                <Icon name={"location"}/>
-            </MarkerContainer>
-        </GoogleMapReact>
-    </Container>
+  <Container>
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
+      defaultCenter={[47.797279, 13.046036]}
+      defaultZoom={15}
+      options={{
+        panControl: true,
+        mapTypeControl: true,
+        scrollwheel: true,
+        styles,
+      }}
+      distanceToMouse={() => {}}
+    >
+      <MarkerContainer lat={47.798279} lng={13.044036}>
+        <MarkerHeader>Sphaera</MarkerHeader>
+        <Icon name={"location"} />
+      </MarkerContainer>
+    </GoogleMapReact>
+  </Container>
 );
 
 export default Map;
