@@ -22,6 +22,9 @@ const initialState = {
   registerPending: false,
   registerError: undefined,
   registerSuccess: undefined,
+  resetPasswordPending: false,
+  resetPasswordError: undefined,
+  resetPasswordSuccess: undefined,
 };
 
 const user = (state = initialState, action) => {
@@ -87,6 +90,20 @@ const user = (state = initialState, action) => {
         ...state,
         registerPending: false,
         registerError: action.payload,
+      };
+    case USER.RESET_PASSWORD_REQUEST:
+      return { ...state, resetPasswordPending: true };
+    case USER.RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        resetPasswordPending: false,
+        resetPasswordSuccess: true,
+      };
+    case USER.RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        resetPasswordPending: false,
+        resetPasswordError: action.payload,
       };
     default:
       return state;

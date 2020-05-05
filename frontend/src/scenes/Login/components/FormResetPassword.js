@@ -1,13 +1,21 @@
 import { Form as FormikForm } from "formik";
 import React from "react";
+import { connect } from "react-redux";
 import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
-import { FormikBase, Form } from "../../../components/FormBase";
-import { InputField } from "../../../components/Input/Input";
+import { FormikBase, Form, FormStatus } from "../../../components/FormBase";
+import { InputField } from "../../../components/Input";
 import { AdditionalText } from "../Login.styled";
+import { resetPasswordRequest } from "../../../redux/actionCreators/user";
 
-const FormResetPassword = ({ onFormChange }) => (
+const FormResetPassword = ({
+  onFormChange,
+  resetPasswordRequest,
+  resetPasswordPending,
+  resetPasswordSuccess,
+  resetPasswordError,
+}) => (
   <FormikBase
     header={"Reset Password"}
     emptyValues={["email"]}
@@ -16,16 +24,27 @@ const FormResetPassword = ({ onFormChange }) => (
         .email("Please enter a valid email address")
         .required("Please enter the required field"),
     })}
-    onSubmit={(values, { setSubmitting }) => {
-      // TODO: CALL AN API
+    onSubmit={(values, { resetForm }) => {
+      resetPasswordRequest(values.email);
+      resetForm();
     }}
   >
-    {({ isSubmitting, ...props }) => (
+    {({ ...props }) => (
       <Form as={FormikForm}>
         <InputField label={"Email address"} name={"email"} {...props} />
-        <ButtonPrimaryLoader isLoading={isSubmitting}>
+        <ButtonPrimaryLoader isLoading={resetPasswordPending}>
           Reset password
         </ButtonPrimaryLoader>
+        <FormStatus
+          success={resetPasswordSuccess}
+          error={resetPasswordError}
+          successMessage={
+            "Password reset link was sent to the specified email."
+          }
+          errorMessage={
+            "An error occurred while resetting password. Please try again later."
+          }
+        />
         <AdditionalText onClick={onFormChange}>
           Log in with your password instead.
         </AdditionalText>
@@ -34,4 +53,11 @@ const FormResetPassword = ({ onFormChange }) => (
   </FormikBase>
 );
 
-export default FormResetPassword;
+export default connect(
+  ({ user }) => ({
+    resetPasswordPending: user.resetPasswordPending,
+    resetPasswordSuccess: user.resetPasswordSuccess,
+    resetPasswordError: user.resetPasswordError,
+  }),
+  { resetPasswordRequest }
+)(FormResetPassword);

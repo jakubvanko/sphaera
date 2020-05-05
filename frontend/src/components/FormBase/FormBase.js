@@ -3,7 +3,7 @@ import { ContainerBordered } from "../Container";
 import { Formik, validateYupSchema, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 
-import { FormHeader, Form } from "./FormBase.styled";
+import { FormHeader, Form, FormStatusText } from "./FormBase.styled";
 
 const Base = ({ header, children }) => (
   <ContainerBordered>
@@ -52,7 +52,18 @@ export const FormikBase = ({
         }}
         validateOnChange={validationRan}
         validateOnBlur={true}
-      ></Formik>
+      />
     </Base>
   );
 };
+
+export const FormStatus = ({
+  success,
+  error,
+  successMessage,
+  errorMessage,
+}) => (
+  <FormStatusText $type={success ? "success" : error ? "error" : "none"}>
+    {success ? successMessage : error ? errorMessage : undefined}
+  </FormStatusText>
+);

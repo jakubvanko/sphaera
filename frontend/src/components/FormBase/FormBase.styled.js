@@ -38,3 +38,14 @@ export const FormHeader = styled.h4`
     padding: 30px 40px;
   }
 `;
+
+export const FormStatusText = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  color: ${({ $type }) =>
+    $type === "success"
+      ? "var(--color-green)"
+      : $type === "error"
+      ? " var(--color-red)"
+      : "black"};
+`;

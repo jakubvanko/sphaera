@@ -112,6 +112,20 @@ function* registerRequest({ payload }) {
   }
 }
 
+function* resetPasswordRequest({ payload }) {
+  try {
+    yield call(userApi.resetPassword, payload.email);
+    yield put({
+      type: USER.RESET_PASSWORD_SUCCESS,
+    });
+  } catch (e) {
+    yield put({
+      type: USER.RESET_PASSWORD_FAILURE,
+      payload: e,
+    });
+  }
+}
+
 function* userSaga() {
   yield all([
     takeLatest(USER.LOGIN_REQUEST, loginRequest),
@@ -119,6 +133,7 @@ function* userSaga() {
     takeEvery(USER.PATCH_REQUEST, patchRequest),
     takeEvery(USER.DELETE_REQUEST, deleteRequest),
     takeLatest(USER.REGISTER_REQUEST, registerRequest),
+    takeLatest(USER.RESET_PASSWORD_REQUEST, resetPasswordRequest),
   ]);
 }
 

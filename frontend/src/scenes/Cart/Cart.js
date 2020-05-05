@@ -65,12 +65,12 @@ const Cart = ({ items, removeItem }) => {
           <ContainerSection>
             <TextBasic>Tickets ({items.length}x)</TextBasic>
             <TextBasic $align={"right"}>${totalPrice.toFixed(2)}</TextBasic>
-            <TextBasic>Tax (20%)</TextBasic>
-            <TextBasic $align={"right"}>${tax.toFixed(2)}</TextBasic>
+            <TextBasic>Tax (0%)</TextBasic>
+            <TextBasic $align={"right"}>${(0.0).toFixed(2)}</TextBasic>
           </ContainerSection>
           <ContainerSection>
             <TextBasic>Amount due</TextBasic>
-            <HeadingMedium>${(totalPrice + tax).toFixed(2)}</HeadingMedium>
+            <HeadingMedium>${(totalPrice + 0).toFixed(2)}</HeadingMedium>
             <BuyButton>Buy</BuyButton>
           </ContainerSection>
         </ContainerBordered>

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
 import { FormikBase, Form } from "../../../components/FormBase";
-import { InputField } from "../../../components/Input/Input";
+import { InputField } from "../../../components/Input";
 
 const FormUpdatePassword = () => (
   <FormikBase
@@ -19,8 +19,8 @@ const FormUpdatePassword = () => (
         .matches(new RegExp(values.password), "Passwords must match")
         .required("Please enter the required field"),
     })}
-    onSubmit={(values, { setSubmitting }) => {
-      // TODO: CALL AN API
+    onSubmit={(values, { resetForm }) => {
+      resetForm();
     }}
   >
     {({ isSubmitting, ...props }) => (
