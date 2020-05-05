@@ -2,8 +2,8 @@ import React from "react";
 
 const ArrowRight = ({ width = 20 }) => (
   <svg
-    xmlns={"http://www.w3.org/2000/svg"}
-    viewBox={"0 0 492.004 492.004"}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 492.004 492.004"
     width={width}
   >
     <path

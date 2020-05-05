@@ -1,15 +1,15 @@
 import React from "react";
 
-import { Icon } from "../../components/Icon";
-import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 import {
-  AdditionalContainer,
   Container,
-  CopyrightText,
   IconContainer,
   LinksContainer,
   SmallLink,
+  AdditionalContainer,
+  CopyrightText,
 } from "./Footer.styled";
+import { Icon } from "../../components/Icon";
+import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 
 const LINKS = [
   "Career",

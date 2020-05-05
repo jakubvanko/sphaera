@@ -2,27 +2,27 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import test3 from "../Tickets/assets/test3.jpg";
+import test2 from "../Tickets/assets/test2.jpg";
+import placeholder from "./assets/placeholder.jpg";
 import { TextIcon } from "../../components/Icon";
 import { ItemImage } from "../../components/ItemImage";
 import { HeadingMain } from "../../components/TextType";
 import { Ticket } from "../../components/Ticket";
-import { logout } from "../../redux/actionCreators/user";
-import { URL_ADMIN } from "../../scripts/constants/urls";
-import test2 from "../Tickets/assets/test2.jpg";
-import test3 from "../Tickets/assets/test3.jpg";
-import placeholder from "./assets/placeholder.jpg";
 import {
-  AccountData,
   Container,
   HeadingContainer,
   Item,
   ItemContainer,
   ItemHeader,
+  AccountData,
+  SmallTextLabel,
   LogoutText,
   MainTextContainer,
   SmallText,
-  SmallTextLabel,
 } from "./Profile.styled";
+import { logout } from "../../redux/actionCreators/user";
+import { URL_ADMIN } from "../../scripts/constants/urls";
 
 const TICKETS = [
   {
@@ -46,9 +46,12 @@ const TICKETS = [
 const Profile = ({ user, logout }) => {
   const [isEditing, setEditing] = useState(false);
 
-  const userName = `${
-    user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)
-  } ${user.lastName.charAt(0).toUpperCase()}${user.firstName.slice(1)}`;
+  const userName =
+    user.firstName.charAt(0).toUpperCase() +
+    user.firstName.slice(1) +
+    " " +
+    user.lastName.charAt(0).toUpperCase() +
+    user.firstName.slice(1);
 
   return (
     <Container>

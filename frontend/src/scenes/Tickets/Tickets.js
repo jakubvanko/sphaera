@@ -2,22 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { URL_EVENT } from "../../scripts/constants/urls";
+import hero from "./assets/hero.jpg";
 import useFullScroll from "../../scripts/hooks/useFullScroll";
 import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
-import hero from "./assets/hero.jpg";
 import {
+  Container,
+  EventContainer,
+  ArtistText,
+  DateText,
+  TextContainer,
   AdditionalItemContainer,
   AdditionalText,
   AdditionalTextContainer,
-  ArtistText,
-  Container,
-  DateText,
-  EventContainer,
-  Filter,
   MainText,
-  TextContainer,
+  Filter,
 } from "./Tickets.styled";
+import { URL_EVENT } from "../../scripts/constants/urls";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);

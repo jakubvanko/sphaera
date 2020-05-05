@@ -1,7 +1,7 @@
-import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest, takeEvery } from "redux-saga/effects";
 
-import { userApi } from "../../scripts/api";
 import { USER } from "../actionTypes";
+import { userApi } from "../../scripts/api";
 
 function* loginRequest({ payload }) {
   try {

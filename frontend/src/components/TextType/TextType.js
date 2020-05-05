@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TextLabel, TextLabeledContainer } from "./TextType.styled";
+import { TextLabeledContainer, TextLabel } from "./TextType.styled";
 
 export const TextLabeled = ({ label, ...props }) => (
   <TextLabeledContainer>

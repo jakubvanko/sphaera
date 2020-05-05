@@ -1,11 +1,12 @@
 import React from "react";
 
 import { Hero } from "../../components/Hero";
-import { HeadingMain, TextBasic } from "../../components/TextType";
-import hero from "./assets/hero.jpg";
 import ColorfulBlocks from "./components/ColorfulBlocks";
 import Map from "./components/Map";
+import { TextBasic, HeadingMain } from "../../components/TextType";
 import { Container, ContentContainer, SectionContainer } from "./Visit.styled";
+
+import hero from "./assets/hero.jpg";
 
 const Visit = () => (
   <Container>

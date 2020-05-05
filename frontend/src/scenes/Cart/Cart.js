@@ -5,20 +5,20 @@ import { ButtonSecondary } from "../../components/Button";
 import { ContainerBordered } from "../../components/Container";
 import { ItemImage } from "../../components/ItemImage";
 import {
+  TextBasic,
   HeadingMain,
   HeadingMedium,
-  TextBasic,
 } from "../../components/TextType";
 import { Ticket } from "../../components/Ticket";
-import { removeItem } from "../../redux/actionCreators/cart";
 import {
-  BuyButton,
   Container,
-  ContainerSection,
   HeadingContainer,
   ItemContainer,
+  BuyButton,
   PolicyInformationContainer,
+  ContainerSection,
 } from "./Cart.styled";
+import { removeItem } from "../../redux/actionCreators/cart";
 
 const Cart = ({ items, removeItem }) => {
   const totalPrice = items.reduce(

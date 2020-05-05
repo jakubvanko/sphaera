@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
-import { Form, FormikBase } from "../../../components/FormBase";
+import { FormikBase, Form } from "../../../components/FormBase";
 import { InputField } from "../../../components/Input/Input";
 import { AdditionalText } from "../Login.styled";
 

@@ -1,11 +1,11 @@
 import React from "react";
 
 import {
-  AdditionalText,
   Container,
   GraphicContent,
-  MainText,
   TextContainer,
+  MainText,
+  AdditionalText,
 } from "./Hero.styled";
 
 const Hero = ({
@@ -22,7 +22,7 @@ const Hero = ({
     <GraphicContent as={as} src={src} {...props}>
       {as === "video" ? (
         <>
-          <source src={src} type={"video/mp4"} />
+          <source src={src} type="video/mp4" />
           Your browser does not support the video tag. Please consider upgrading
           to a more modern browser.
         </>

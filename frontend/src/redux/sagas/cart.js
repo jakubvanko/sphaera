@@ -1,7 +1,7 @@
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, put, call, takeLatest } from "redux-saga/effects";
 
+import { CART, USER, EVENT } from "../actionTypes";
 import { eventApi } from "../../scripts/api";
-import { CART, EVENT, USER } from "../actionTypes";
 
 function* buyRequest({ payload }) {
   try {

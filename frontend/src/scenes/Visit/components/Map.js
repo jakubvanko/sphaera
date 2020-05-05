@@ -1,7 +1,6 @@
-import GoogleMapReact from "google-map-react";
 import React from "react";
 import styled from "styled-components";
-
+import GoogleMapReact from "google-map-react";
 import Icon from "../../../components/Icon/Icon";
 
 const styles = [

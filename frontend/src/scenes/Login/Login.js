@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
+import { Container } from "./Login.styled";
 import FormLogin from "./components/FormLogin";
 import FormRegister from "./components/FormRegister";
 import FormRegisterPlaceholder from "./components/FormRegisterPlaceholder";
 import FormResetPassword from "./components/FormResetPassword";
-import { Container } from "./Login.styled";
 
 const Login = () => {
   const [isLoginForm, setLoginForm] = useState(true);

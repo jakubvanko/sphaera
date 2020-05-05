@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { ClockLoader } from "react-spinners";
 
-import { ButtonPrimary } from "../../components/Button";
-import { ItemImage } from "../../components/ItemImage";
-import { SeatSelection } from "../../components/SeatSelection";
-import { TextLabeled } from "../../components/TextType";
-import { addItem } from "../../redux/actionCreators/cart";
-import { AREA_LAYOUT, AREA_VIEWBOX } from "../../scripts/constants/areaLayout";
-import DropdownNumber from "./components/DropdownNumber";
-import HoverBox from "./components/HoverBox";
 import {
-  ArtistHeading,
   Container,
+  SeatSelectionContainer,
   DataContainer,
   MenuContainer,
-  SeatSelectionContainer,
+  ArtistHeading,
   TextContainer,
 } from "./Event.styled";
+import { SeatSelection } from "../../components/SeatSelection";
+import { ButtonPrimary } from "../../components/Button";
+import { ItemImage } from "../../components/ItemImage";
+import { TextLabeled } from "../../components/TextType";
+import DropdownNumber from "./components/DropdownNumber";
+import HoverBox from "./components/HoverBox";
+import { addItem } from "../../redux/actionCreators/cart";
+import { AREA_LAYOUT, AREA_VIEWBOX } from "../../scripts/constants/areaLayout";
 
 const Event = ({ event, addItem }) => {
   const [currentArea, setCurrentArea] = useState();

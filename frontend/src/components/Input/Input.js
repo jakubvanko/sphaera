@@ -2,10 +2,10 @@ import { ErrorMessage, Field } from "formik";
 import React, { useState } from "react";
 
 import {
-  ErrorText,
   InputContainer,
-  InputInteractive,
   Label,
+  ErrorText,
+  InputInteractive,
 } from "./Input.styled";
 
 export const LabeledInput = ({

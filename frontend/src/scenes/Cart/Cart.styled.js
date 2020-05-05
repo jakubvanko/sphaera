@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
+import shapes from "./assets/shapes.png";
 import { ButtonPrimary } from "../../components/Button";
 import { ContainerSpaceBetween } from "../../components/Container";
-import shapes from "./assets/shapes.png";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));

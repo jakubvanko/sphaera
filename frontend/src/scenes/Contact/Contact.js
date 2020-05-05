@@ -1,19 +1,19 @@
 import React from "react";
 
-import { Hero } from "../../components/Hero";
-import { Icon } from "../../components/Icon";
+import hero from "./assets/hero.jpg";
 import bookings from "./assets/bookings.jpg";
 import business from "./assets/business.jpg";
 import costume from "./assets/costume.jpg";
-import hero from "./assets/hero.jpg";
 import pr from "./assets/pr.jpg";
+import { Hero } from "../../components/Hero";
+import { Icon } from "../../components/Icon";
 import {
-  ContactName,
   ContentContainer,
-  FlipCardBackContainer,
-  FlipCardFrontContainer,
   FlipCardsContainer,
+  FlipCardFrontContainer,
   IconContainer,
+  FlipCardBackContainer,
+  ContactName,
   StyledFlipCard,
 } from "./Contact.styled";
 
@@ -119,7 +119,7 @@ const Contact = () => (
         </StyledFlipCard>
       ))}
     </FlipCardsContainer>
-    <ContentContainer />
+    <ContentContainer></ContentContainer>
   </div>
 );
 

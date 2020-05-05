@@ -1,9 +1,9 @@
 import { all, fork, put } from "redux-saga/effects";
 
-import { EVENT, USER } from "../actionTypes";
-import cartSaga from "./cart";
-import eventSaga from "./event";
 import userSaga from "./user";
+import eventSaga from "./event";
+import cartSaga from "./cart";
+import { EVENT, USER } from "../actionTypes";
 
 function* setupSaga() {
   // will run exactly once on startup
