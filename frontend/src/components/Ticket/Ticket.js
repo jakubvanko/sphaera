@@ -13,7 +13,7 @@ import {
 export const Ticket = ({
   artist,
   date,
-  seat,
+  area,
   price,
   qrValue,
   bottomIconText,
@@ -36,7 +36,7 @@ export const Ticket = ({
       </TextBig>
       <Code value={qrValue} size={64} renderAs={"svg"} />
       <TextLabeled label={"Venue"}>SPHAERA</TextLabeled>
-      <TextLabeled label={"Area"}>{seat}</TextLabeled>
+      <TextLabeled label={"Area"}>{area}</TextLabeled>
     </InformationContainer>
     <ContainerSpaceBetween>
       <TextIcon

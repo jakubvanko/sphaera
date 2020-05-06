@@ -5,8 +5,8 @@ import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
 import { FormikBase } from "../../../components/FormBase";
-import { InputField } from "../../../components/Input/Input";
-import { SeatSelection } from "../../../components/SeatSelection";
+import { InputField } from "../../../components/Input";
+import { AreaSelection } from "../../../components/AreaSelection";
 import { TextBig } from "../../../components/TextType";
 import {
   MultiColumnForm,
@@ -22,8 +22,8 @@ import {
 import { createRequest } from "../../../redux/actionCreators/event";
 
 const area_values = {};
-AREA_DEFAULTS.forEach(({ name, defaultSeats, defaultPrice }) => {
-  area_values["input_seats_" + name] = defaultSeats;
+AREA_DEFAULTS.forEach(({ name, defaultCapacity, defaultPrice }) => {
+  area_values["input_capacity_" + name] = defaultCapacity;
   area_values["input_price_" + name] = defaultPrice;
 });
 
@@ -64,7 +64,7 @@ const FormAddEvent = ({ createPending, createRequest }) => {
           areas.push({
             name: areaName,
             price: value,
-            capacity: values["input_seats_" + areaName],
+            capacity: values["input_capacity_" + areaName],
           });
         }
         createRequest(artist, date, file, areas);
@@ -99,7 +99,7 @@ const FormAddEvent = ({ createPending, createRequest }) => {
                 <InputField
                   type={"number"}
                   label={"Places in area " + name}
-                  name={"input_seats_" + name}
+                  name={"input_capacity_" + name}
                   labelActive={true}
                   {...props}
                 />
@@ -112,10 +112,10 @@ const FormAddEvent = ({ createPending, createRequest }) => {
                 />
               </AreaInputGroup>
             ))}
-            <SeatSelection
+            <AreaSelection
               layout={AREA_LAYOUT}
               viewbox={AREA_VIEWBOX}
-              onSeatSelected={(name) => setCurrentlyDisplayed(name)}
+              onAreaSelected={(name) => setCurrentlyDisplayed(name)}
             />
           </AreaInputContainer>
           <ButtonPrimaryLoader isLoading={createPending}>

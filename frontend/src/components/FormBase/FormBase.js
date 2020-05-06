@@ -62,8 +62,12 @@ export const FormStatus = ({
   error,
   successMessage,
   errorMessage,
+  ...props
 }) => (
-  <FormStatusText $type={success ? "success" : error ? "error" : "none"}>
+  <FormStatusText
+    $type={success ? "success" : error ? "error" : "none"}
+    {...props}
+  >
     {success ? successMessage : error ? errorMessage : undefined}
   </FormStatusText>
 );

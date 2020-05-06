@@ -20,7 +20,7 @@ const cart = (state = initialState, action) => {
         function (value) {
           if (this.amountLeft === 0) return true;
           if (value._id !== action.payload._id) return true;
-          if (value.seat !== action.payload.seat) return true;
+          if (value.area !== action.payload.area) return true;
           this.amountLeft = 0;
           return false;
         },

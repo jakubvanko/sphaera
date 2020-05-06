@@ -1,14 +1,14 @@
 import React from "react";
 
-import { G, Text } from "./SeatSelection.styled";
+import { G, Text } from "./AreaSelection.styled";
 
-const SeatSelection = ({
+const AreaSelection = ({
   layout,
   disabled = {},
   viewbox,
-  onSeatSelected,
-  onSeatOver,
-  onSeatOut,
+  onAreaSelected,
+  onAreaOver,
+  onAreaOut,
 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox={viewbox} width={"100%"}>
     {layout.map(
@@ -28,17 +28,17 @@ const SeatSelection = ({
           onClick={() =>
             selectable &&
             !disabled[name] &&
-            onSeatSelected &&
-            onSeatSelected(name, fill)
+            onAreaSelected &&
+            onAreaSelected(name, fill)
           }
           onMouseOver={() =>
             selectable &&
             !disabled[name] &&
-            onSeatOver &&
-            onSeatOver(name, fill)
+            onAreaOver &&
+            onAreaOver(name, fill)
           }
           onMouseOut={() =>
-            selectable && !disabled[name] && onSeatOut && onSeatOut(name, fill)
+            selectable && !disabled[name] && onAreaOut && onAreaOut(name, fill)
           }
           $selectable={selectable && !disabled[name]}
           $disabled={disabled[name]}
@@ -58,4 +58,4 @@ const SeatSelection = ({
   </svg>
 );
 
-export default SeatSelection;
+export default AreaSelection;

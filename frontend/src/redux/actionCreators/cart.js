@@ -1,10 +1,10 @@
 import { CART } from "../actionTypes";
 
-export const addItem = (event, seat, price) => ({
+export const addItem = (event, area, price) => ({
   type: CART.ADD_ITEM,
   payload: {
     ...event,
-    seat,
+    area,
     price,
   },
   meta: {
@@ -12,10 +12,18 @@ export const addItem = (event, seat, price) => ({
   },
 });
 
-export const removeItem = (event, seat) => ({
+export const removeItem = (event, area) => ({
   type: CART.REMOVE_ITEM,
   payload: {
     ...event,
-    seat,
+    area,
+  },
+});
+
+export const buyRequest = (event, area) => ({
+  type: CART.BUY_REQUEST,
+  payload: {
+    event,
+    area,
   },
 });

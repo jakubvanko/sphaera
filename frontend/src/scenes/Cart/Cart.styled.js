@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import shapes from "./assets/shapes.png";
-import { ButtonPrimary } from "../../components/Button";
+import { ButtonPrimaryLoader } from "../../components/Button";
 import { ContainerSpaceBetween } from "../../components/Container";
 
 export const Container = styled.div`
@@ -58,7 +58,7 @@ export const ContainerSection = styled(ContainerSpaceBetween)`
   }
 `;
 
-export const BuyButton = styled(ButtonPrimary)`
+export const BuyButton = styled(ButtonPrimaryLoader)`
   grid-column: 1 / -1;
 `;
 

@@ -5,8 +5,9 @@ import { eventApi } from "../../scripts/api";
 
 function* buyRequest({ payload }) {
   try {
-    const { event, area } = payload;
-    yield call(eventApi.buyTicket, event, area);
+    for (const item of payload) {
+      yield call(eventApi.buyTicket, item._id, item.area);
+    }
     yield all([
       put({
         type: CART.BUY_SUCCESS,
@@ -18,10 +19,7 @@ function* buyRequest({ payload }) {
         },
       }),
       put({
-        type: EVENT.GET_REQUEST,
-        payload: {
-          _id: event,
-        },
+        type: EVENT.GET_ALL_REQUEST,
       }),
     ]);
   } catch (e) {

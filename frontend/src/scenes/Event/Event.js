@@ -5,14 +5,15 @@ import { animateScroll } from "react-scroll";
 
 import {
   Container,
-  SeatSelectionContainer,
+  AreaSelectionContainer,
   DataContainer,
   MenuContainer,
   ArtistHeading,
   TextContainer,
   StyledItemImage,
+  StyledFormStatus,
 } from "./Event.styled";
-import { SeatSelection } from "../../components/SeatSelection";
+import { AreaSelection } from "../../components/AreaSelection";
 import { ButtonPrimary } from "../../components/Button";
 import { TextLabeled } from "../../components/TextType";
 import DropdownNumber from "./components/DropdownNumber";
@@ -30,6 +31,7 @@ const Event = ({ event, addItem }) => {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const [ticketAmountSelected, setTicketAmountSelected] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   if (!event)
     return (
@@ -65,25 +67,26 @@ const Event = ({ event, addItem }) => {
           currentHoveredAreaObject.capacity - currentHoveredAreaObject.reserved
         }
       />
-      <SeatSelectionContainer>
-        <SeatSelection
+      <AreaSelectionContainer>
+        <AreaSelection
           layout={AREA_LAYOUT}
           viewbox={AREA_VIEWBOX}
           disabled={disabledAreas}
-          onSeatSelected={(name) => {
+          onAreaSelected={(name) => {
             setCurrentArea(name);
             if (width < 900) {
               animateScroll.scrollToBottom();
             }
+            setAddedToCart(false);
           }}
-          onSeatOver={(name, fill) => {
+          onAreaOver={(name, fill) => {
             setPopupDisplayed(true);
             setCurrentFill(fill);
             setCurrentHoveredArea(name);
           }}
-          onSeatOut={() => setPopupDisplayed(false)}
+          onAreaOut={() => setPopupDisplayed(false)}
         />
-      </SeatSelectionContainer>
+      </AreaSelectionContainer>
       <MenuContainer>
         <StyledItemImage $src={event.image} />
         <DataContainer>
@@ -115,10 +118,15 @@ const Event = ({ event, addItem }) => {
               for (let i = 0; i < ticketAmountSelected; i++) {
                 addItem(event, currentArea, currentAreaObject.price);
               }
+              setAddedToCart(true);
             }}
           >
             Add to cart
           </ButtonPrimary>
+          <StyledFormStatus
+            success={addedToCart}
+            successMessage={"Chosen tickets were added to cart"}
+          />
         </DataContainer>
       </MenuContainer>
     </Container>

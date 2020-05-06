@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ContainerBordered } from "../../components/Container";
 import { ItemImage } from "../../components/ItemImage";
+import { FormStatus } from "../../components/FormBase";
 
 export const Container = styled.div`
   min-height: calc(100vh - var(--nav-height));
@@ -17,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SeatSelectionContainer = styled.div`
+export const AreaSelectionContainer = styled.div`
   width: 90vw;
 
   @media screen and (min-width: 700px) {
@@ -139,6 +140,10 @@ export const TextContainer = styled.div`
   @media screen and (min-width: 1350px) {
     display: flex;
     justify-content: space-between;
-    padding: 0 50px 12px 10px;
+    padding: 0 50px 0 10px;
   }
+`;
+
+export const StyledFormStatus = styled(FormStatus)`
+  grid-column: 1 / span 3;
 `;

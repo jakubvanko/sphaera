@@ -5,28 +5,27 @@ import { ButtonSecondary } from "../../components/Button";
 import { ContainerBordered } from "../../components/Container";
 import { ItemImage } from "../../components/ItemImage";
 import {
-  TextBasic,
   HeadingMain,
   HeadingMedium,
+  TextBasic,
 } from "../../components/TextType";
 import { Ticket } from "../../components/Ticket";
 import {
+  BuyButton,
   Container,
+  ContainerSection,
   HeadingContainer,
   ItemContainer,
-  BuyButton,
   PolicyInformationContainer,
-  ContainerSection,
 } from "./Cart.styled";
-import { removeItem } from "../../redux/actionCreators/cart";
+import { buyRequest, removeItem } from "../../redux/actionCreators/cart";
 
-const Cart = ({ items, removeItem }) => {
+const Cart = ({ items, buyPending, removeItem, buyRequest }) => {
   const totalPrice = items.reduce(
     (previousValue, currentValue) =>
       parseFloat(currentValue.price) + parseFloat(previousValue),
     0
   );
-  const tax = totalPrice * 0.2;
 
   return (
     <Container>
@@ -34,18 +33,18 @@ const Cart = ({ items, removeItem }) => {
         <HeadingMain>Cart</HeadingMain>
       </HeadingContainer>
       <ItemContainer>
-        {items.map(({ image, artist, date, seat, _id, price }, index) => (
+        {items.map(({ image, artist, date, area, _id, price }, index) => (
           <React.Fragment key={_id + index}>
             <ItemImage $src={image} />
             <Ticket
               artist={artist}
               date={date}
               price={price}
-              seat={seat}
+              area={area}
               qrValue={_id}
               bottomIconText={"remove"}
               bottomIconName={"delete"}
-              onBottomIconClick={() => removeItem({ _id }, seat)}
+              onBottomIconClick={() => removeItem({ _id }, area)}
             />
           </React.Fragment>
         ))}
@@ -71,7 +70,14 @@ const Cart = ({ items, removeItem }) => {
           <ContainerSection>
             <TextBasic>Amount due</TextBasic>
             <HeadingMedium>${(totalPrice + 0).toFixed(2)}</HeadingMedium>
-            <BuyButton>Buy</BuyButton>
+            <BuyButton
+              isLoading={buyPending}
+              onClick={() => {
+                buyRequest(items);
+              }}
+            >
+              Buy
+            </BuyButton>
           </ContainerSection>
         </ContainerBordered>
       </ItemContainer>
@@ -79,6 +85,10 @@ const Cart = ({ items, removeItem }) => {
   );
 };
 
-export default connect(({ cart }) => ({ items: cart.items }), { removeItem })(
-  Cart
-);
+export default connect(
+  ({ cart }) => ({ items: cart.items, buyPending: cart.buyPending }),
+  {
+    removeItem,
+    buyRequest,
+  }
+)(Cart);
