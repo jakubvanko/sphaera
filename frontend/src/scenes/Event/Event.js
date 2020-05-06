@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { ClockLoader } from "react-spinners";
+import { animateScroll } from "react-scroll";
 
 import {
   Container,
@@ -9,17 +10,19 @@ import {
   MenuContainer,
   ArtistHeading,
   TextContainer,
+  StyledItemImage,
 } from "./Event.styled";
 import { SeatSelection } from "../../components/SeatSelection";
 import { ButtonPrimary } from "../../components/Button";
-import { ItemImage } from "../../components/ItemImage";
 import { TextLabeled } from "../../components/TextType";
 import DropdownNumber from "./components/DropdownNumber";
 import HoverBox from "./components/HoverBox";
 import { addItem } from "../../redux/actionCreators/cart";
 import { AREA_LAYOUT, AREA_VIEWBOX } from "../../scripts/constants/areaLayout";
+import useWindowDimensions from "../../scripts/hooks/useWindowsDimensions";
 
 const Event = ({ event, addItem }) => {
+  const [width] = useWindowDimensions();
   const [currentArea, setCurrentArea] = useState();
   const [currentHoveredArea, setCurrentHoveredArea] = useState();
   const [isPopupDisplayed, setPopupDisplayed] = useState(false);
@@ -67,7 +70,12 @@ const Event = ({ event, addItem }) => {
           layout={AREA_LAYOUT}
           viewbox={AREA_VIEWBOX}
           disabled={disabledAreas}
-          onSeatSelected={(name) => setCurrentArea(name)}
+          onSeatSelected={(name) => {
+            setCurrentArea(name);
+            if (width < 900) {
+              animateScroll.scrollToBottom();
+            }
+          }}
           onSeatOver={(name, fill) => {
             setPopupDisplayed(true);
             setCurrentFill(fill);
@@ -77,7 +85,7 @@ const Event = ({ event, addItem }) => {
         />
       </SeatSelectionContainer>
       <MenuContainer>
-        <ItemImage $src={event.image} />
+        <StyledItemImage $src={event.image} />
         <DataContainer>
           <ArtistHeading>{event.artist}</ArtistHeading>
           <TextContainer>
