@@ -57,8 +57,8 @@ const Profile = ({ user, logout }) => {
     <Container>
       <HeadingContainer>
         <HeadingMain>My Account</HeadingMain>
-        <LogoutText onClick={logout}>Log out</LogoutText>
         {user.admin && <Link to={URL_ADMIN}>Admin</Link>}
+        <LogoutText onClick={logout}>Log out</LogoutText>
       </HeadingContainer>
       <ItemContainer>
         <MainTextContainer>

@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { ButtonPrimaryLoader } from "../../../components/Button";
 import { FormikBase, Form } from "../../../components/FormBase";
-import { InputField } from "../../../components/Input/Input";
+import { InputField } from "../../../components/Input";
 import { AdditionalText } from "../Login.styled";
 import { loginRequest } from "../../../redux/actionCreators/user";
 
