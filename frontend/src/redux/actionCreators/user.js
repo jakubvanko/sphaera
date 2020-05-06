@@ -26,3 +26,7 @@ export const resetPasswordRequest = (email) => ({
     email,
   },
 });
+
+export const resetResults = () => ({
+  type: USER.RESET_RESULTS,
+});

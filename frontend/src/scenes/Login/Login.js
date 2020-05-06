@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -7,8 +7,9 @@ import FormLogin from "./components/FormLogin";
 import FormRegister from "./components/FormRegister";
 import FormRegisterPlaceholder from "./components/FormRegisterPlaceholder";
 import FormResetPassword from "./components/FormResetPassword";
+import { resetResults } from "../../redux/actionCreators/user";
 
-const Login = ({ user }) => {
+const Login = ({ user, resetResults }) => {
   const [isLoginForm, setLoginForm] = useState(true);
   const [isRegisterPlaceholderForm, setRegisterPlaceholderForm] = useState(
     true
@@ -20,6 +21,10 @@ const Login = ({ user }) => {
   if (user._id) {
     history.replace(from);
   }
+
+  useEffect(() => {
+    resetResults();
+  }, []);
 
   return (
     <Container>
@@ -39,4 +44,6 @@ const Login = ({ user }) => {
   );
 };
 
-export default connect(({ user }) => ({ user: user.current }))(Login);
+export default connect(({ user }) => ({ user: user.current }), {
+  resetResults,
+})(Login);

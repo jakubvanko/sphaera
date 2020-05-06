@@ -105,6 +105,12 @@ const user = (state = initialState, action) => {
         resetPasswordPending: false,
         resetPasswordError: action.payload,
       };
+    case USER.RESET_RESULTS:
+      return {
+        ...initialState,
+        current: state.current,
+        users: state.users,
+      };
     default:
       return state;
   }
