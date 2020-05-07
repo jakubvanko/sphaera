@@ -19,6 +19,7 @@ import Orphonic from "./components/Orphonic";
 import Pen from "./components/Pen";
 import Prerecorded from "./components/Prerecorded";
 import Print from "./components/Print";
+import Save from "./components/Save";
 import Search from "./components/Search";
 import Sonata from "./components/Sonata";
 import Ticket from "./components/Ticket";
@@ -54,6 +55,7 @@ const ICON_MAP = {
   pen: Pen,
   prerecorded: Prerecorded,
   print: Print,
+  save: Save,
   search: Search,
   sonata: Sonata,
   ticket: Ticket,

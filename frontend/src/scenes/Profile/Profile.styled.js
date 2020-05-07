@@ -101,8 +101,8 @@ export const AccountData = styled(ItemSectionBase)`
   }
 `;
 
-export const SmallTextLabel = styled.div`
-  color: var(--color-gray-5);
-  font-size: 0.85em;
-  padding-bottom: 5px;
+export const Form = styled(ItemSectionBase)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
 `;
