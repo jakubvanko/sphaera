@@ -41,6 +41,7 @@ export const FormHeader = styled.h4`
 
 export const FormStatusText = styled.div`
   font-size: 16px;
+  display: ${(props) => props.$type === "none" && "none"};
   font-weight: 400;
   color: ${({ $type }) =>
     $type === "success"

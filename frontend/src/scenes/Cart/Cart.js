@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -19,16 +19,34 @@ import {
   ItemContainer,
   PolicyInformationContainer,
 } from "./Cart.styled";
-import { buyRequest, removeItem } from "../../redux/actionCreators/cart";
+import {
+  buyRequest,
+  removeItem,
+  resetResults,
+} from "../../redux/actionCreators/cart";
 import { URL_CART, URL_LOGIN } from "../../scripts/constants/urls";
+import { FormStatus } from "../../components/FormBase";
 
-const Cart = ({ items, buyPending, user, removeItem, buyRequest }) => {
+const Cart = ({
+  items,
+  buyPending,
+  buyError,
+  buySuccess,
+  user,
+  removeItem,
+  buyRequest,
+  resetResults,
+}) => {
   const totalPrice = items.reduce(
     (previousValue, currentValue) =>
       parseFloat(currentValue.price) + parseFloat(previousValue),
     0
   );
   const history = useHistory();
+
+  useEffect(() => {
+    resetResults();
+  }, []);
 
   return (
     <Container>
@@ -88,6 +106,12 @@ const Cart = ({ items, buyPending, user, removeItem, buyRequest }) => {
                 ? "Not enough funds"
                 : "Buy"}
             </BuyButton>
+            <FormStatus
+              success={buySuccess}
+              successMessage={"Tickets bought successfully"}
+              error={buyError}
+              errorMessage={"An error occurred while buying tickets."}
+            />
           </ContainerSection>
         </ContainerBordered>
       </ItemContainer>
@@ -99,10 +123,13 @@ export default connect(
   ({ cart, user }) => ({
     items: cart.items,
     buyPending: cart.buyPending,
+    buyError: cart.buyError,
+    buySuccess: cart.buySuccess,
     user: user.current,
   }),
   {
     removeItem,
     buyRequest,
+    resetResults,
   }
 )(Cart);

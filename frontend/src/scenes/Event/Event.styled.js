@@ -145,5 +145,5 @@ export const TextContainer = styled.div`
 `;
 
 export const StyledFormStatus = styled(FormStatus)`
-  grid-column: 1 / span 3;
+  grid-column: 1 / -1;
 `;

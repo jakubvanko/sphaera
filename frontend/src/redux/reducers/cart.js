@@ -8,6 +8,7 @@ const initialState = {
 };
 
 const cart = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case CART.ADD_ITEM: {
       const items = [...state.items];
@@ -34,6 +35,8 @@ const cart = (state = initialState, action) => {
       return { ...initialState, buySuccess: true };
     case CART.BUY_FAILURE:
       return { ...state, buyPending: false, buyError: action.payload };
+    case CART.RESET_RESULTS:
+      return { ...initialState, items: state.items };
     default:
       return state;
   }

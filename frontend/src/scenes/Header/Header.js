@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 
 import { Icon } from "../../components/Icon";
 import { LabeledInput } from "../../components/Input";
@@ -44,7 +44,7 @@ const Header = ({ user }) => {
       </LogoContainer>
       <SearchContainer>
         <LabeledInput label={"Search for..."} name={"search"} />
-        <Icon name={"search"} width={30} />
+        <Icon as={RouterLink} to={URL_TICKETS} name={"search"} width={30} />
       </SearchContainer>
       <List $mobileActive={isMobileActive}>
         <CloseButton

@@ -5,6 +5,7 @@ import { eventApi } from "../../scripts/api";
 
 function* buyRequest({ payload }) {
   try {
+    console.log(payload);
     for (const item of payload) {
       yield call(eventApi.buyTicket, item._id, item.area);
     }

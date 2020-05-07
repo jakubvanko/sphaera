@@ -20,10 +20,11 @@ export const removeItem = (event, area) => ({
   },
 });
 
-export const buyRequest = (event, area) => ({
+export const buyRequest = (items) => ({
   type: CART.BUY_REQUEST,
-  payload: {
-    event,
-    area,
-  },
+  payload: items,
+});
+
+export const resetResults = () => ({
+  type: CART.RESET_RESULTS,
 });
