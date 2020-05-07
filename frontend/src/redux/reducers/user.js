@@ -28,6 +28,7 @@ const initialState = {
 };
 
 const user = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case USER.LOGIN_REQUEST:
       return { ...state, loginPending: true };

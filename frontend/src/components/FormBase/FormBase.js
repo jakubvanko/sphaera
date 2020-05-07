@@ -18,8 +18,7 @@ export const FormBase = ({ header, children }) => (
   </Base>
 );
 
-export const FormikBase = ({
-  header,
+export const BetterFormik = ({
   schema,
   validate,
   initialValues = {},
@@ -32,30 +31,34 @@ export const FormikBase = ({
   }
 
   return (
-    <Base header={header}>
-      <Formik
-        {...props}
-        initialValues={initialValues}
-        validate={(values) => {
-          setValidationRan(true);
-          let errors = {};
-          if (schema) {
-            const validationSchema = Yup.object().shape(schema(values));
-            try {
-              validateYupSchema(values, validationSchema, true);
-            } catch (err) {
-              errors = { ...yupToFormErrors(err) };
-            }
+    <Formik
+      {...props}
+      initialValues={initialValues}
+      validate={(values) => {
+        setValidationRan(true);
+        let errors = {};
+        if (schema) {
+          const validationSchema = Yup.object().shape(schema(values));
+          try {
+            validateYupSchema(values, validationSchema, true);
+          } catch (err) {
+            errors = { ...yupToFormErrors(err) };
           }
-          if (validate) errors = { ...errors, ...validate(values) };
-          return errors;
-        }}
-        validateOnChange={validationRan}
-        validateOnBlur={true}
-      />
-    </Base>
+        }
+        if (validate) errors = { ...errors, ...validate(values) };
+        return errors;
+      }}
+      validateOnChange={validationRan}
+      validateOnBlur={true}
+    />
   );
 };
+
+export const FormikBase = ({ header, ...props }) => (
+  <Base header={header}>
+    <BetterFormik {...props} />
+  </Base>
+);
 
 export const FormStatus = ({
   success,

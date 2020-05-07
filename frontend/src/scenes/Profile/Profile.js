@@ -1,7 +1,8 @@
-import { Formik, Form as FormikForm } from "formik";
+import { Form as FormikForm } from "formik";
 import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
 
 import placeholder from "./assets/placeholder.jpg";
 import { TextIcon } from "../../components/Icon";
@@ -22,8 +23,10 @@ import {
 } from "./Profile.styled";
 import { logout } from "../../redux/actionCreators/user";
 import { getTicketRequest } from "../../redux/actionCreators/event";
+import { patchCurrentRequest } from "../../redux/actionCreators/user";
 import { URL_ADMIN } from "../../scripts/constants/urls";
 import { InputField } from "../../components/Input";
+import { BetterFormik } from "../../components/FormBase/FormBase";
 
 const Profile = ({
   user,
@@ -31,6 +34,7 @@ const Profile = ({
   getTicketPending,
   logout,
   getTicketRequest,
+  patchCurrentRequest,
 }) => {
   const [isEditing, setEditing] = useState(false);
   const [sentTicket, setSentTicket] = useState();
@@ -66,7 +70,6 @@ const Profile = ({
               text={isEditing ? "save" : "edit"}
               onClick={() => {
                 if (isEditing) {
-                  console.log(formRef.current);
                   formRef.current.handleSubmit();
                 }
                 setEditing(!isEditing);
@@ -86,18 +89,37 @@ const Profile = ({
                 <TextLabeled label={"Password"}>**Encrypted**</TextLabeled>
               </AccountData>
             ) : (
-              <Formik
+              <BetterFormik
                 innerRef={formRef}
                 initialValues={{
                   firstName: user.firstName,
                   lastName: user.lastName,
                   email: user.email,
-                  password: "",
-                  confirmPassword: "",
                 }}
-                onSubmit={(values, { resetForm }) => {
+                emptyValues={["password", "confirmPassword"]}
+                schema={(values) => ({
+                  firstName: Yup.string()
+                    .max(40, "Please enter a valid name")
+                    .required("Please enter the required field"),
+                  lastName: Yup.string()
+                    .max(40, "Please enter a valid name")
+                    .required("Please enter the required field"),
+                  email: Yup.string()
+                    .email("Please enter a valid email address")
+                    .required("Please enter the required field"),
+                  password: Yup.string()
+                    .min(6, "Password must consist of at least 6 characters")
+                    .max(40, "Password must consist of at most 40 characters"),
+                  confirmPassword: Yup.string()
+                    .matches(
+                      new RegExp(values.password),
+                      "Passwords must match"
+                    )
+                    .required(values.password !== ""),
+                })}
+                onSubmit={(values) => {
                   const { firstName, lastName, email, password } = values;
-                  console.log("HANDLED SUBMIT");
+                  patchCurrentRequest({ firstName, lastName, email, password });
                 }}
               >
                 {({ ...props }) => (
@@ -134,7 +156,7 @@ const Profile = ({
                     />
                   </Form>
                 )}
-              </Formik>
+              </BetterFormik>
             )}
           </>
         </Item>
@@ -170,12 +192,12 @@ const Profile = ({
     </Container>
   );
 };
-// TODO: ON BOTTOM ICON CLICK
+
 export default connect(
   ({ user, event }) => ({
     user: user.current,
     events: event.events,
     getTicketPending: event.getTicketPending,
   }),
-  { logout, getTicketRequest }
+  { logout, getTicketRequest, patchCurrentRequest }
 )(Profile);

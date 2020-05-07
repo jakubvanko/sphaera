@@ -35,3 +35,24 @@ export const tokenLogin = (token) => ({
   type: USER.TOKEN_LOGIN_REQUEST,
   payload: token,
 });
+
+export const patchCurrentRequest = ({
+  firstName,
+  lastName,
+  email,
+  password,
+}) => {
+  const payload = {};
+  if (firstName) payload.firstName = firstName;
+  if (lastName) payload.lastName = lastName;
+  if (email) payload.email = email;
+  if (password) payload.password = password;
+
+  return {
+    type: USER.PATCH_REQUEST,
+    payload,
+    meta: {
+      current: true,
+    },
+  };
+};

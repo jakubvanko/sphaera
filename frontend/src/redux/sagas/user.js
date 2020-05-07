@@ -82,7 +82,6 @@ function* getRequest({ payload, meta }) {
 }
 
 function* patchRequest({ payload, meta }) {
-  // TODO: RESET PASSWORD ?
   try {
     const user =
       meta.current === true
