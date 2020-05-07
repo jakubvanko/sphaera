@@ -47,3 +47,9 @@ export const TextBig = styled.span`
   font-weight: 600;
   font-size: 1.3rem;
 `;
+
+export const LinkBasic = styled.a`
+  color: var(--color-gray-2);
+  text-decoration: underline;
+  cursor: pointer;
+`;

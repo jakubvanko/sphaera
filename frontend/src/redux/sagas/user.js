@@ -44,6 +44,11 @@ function* getRequest({ payload, meta }) {
       }),
     ]);
   } catch (e) {
+    if (meta.current === true && e.response.status === 401) {
+      yield put({
+        type: USER.LOGOUT,
+      });
+    }
     yield put({
       type: USER.GET_FAILURE,
       payload: e,

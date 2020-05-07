@@ -93,3 +93,13 @@ export const PolicyInformationContainer = styled.div`
     justify-content: space-between;
   } 
 `;
+
+export const EmptyTextContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (min-width: 550px) {
+    padding: 10vh 0;
+  }
+`;
