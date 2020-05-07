@@ -95,9 +95,12 @@ export const PolicyInformationContainer = styled.div`
 `;
 
 export const EmptyTextContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-row-gap: 50px;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   @media only screen and (min-width: 550px) {
     padding: 10vh 0;

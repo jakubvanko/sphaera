@@ -58,6 +58,12 @@ const Cart = ({
       </HeadingContainer>
       {items.length === 0 ? (
         <EmptyTextContainer>
+          <FormStatus
+            success={buySuccess}
+            successMessage={"Tickets bought successfully"}
+            error={buyError}
+            errorMessage={"An error occurred while buying tickets."}
+          />
           <TextBig>
             Your cart is empty. Feel free to{" "}
             <LinkBasic as={Link} to={URL_TICKETS}>
