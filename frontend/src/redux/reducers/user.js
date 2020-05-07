@@ -16,6 +16,7 @@ const initialState = {
   getPending: false,
   getError: undefined,
   patchPending: false,
+  patchSuccess: undefined,
   patchError: undefined,
   deletePending: false,
   deleteError: undefined,
@@ -62,7 +63,7 @@ const user = (state = initialState, action) => {
     case USER.PATCH_REQUEST:
       return { ...state, patchPending: true };
     case USER.PATCH_SUCCESS:
-      return { ...state, patchPending: false };
+      return { ...state, patchPending: false, patchSuccess: true };
     case USER.PATCH_FAILURE:
       return { ...state, patchPending: false, patchError: action.payload };
     case USER.DELETE_REQUEST:

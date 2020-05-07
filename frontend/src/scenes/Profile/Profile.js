@@ -26,17 +26,21 @@ import { getTicketRequest } from "../../redux/actionCreators/event";
 import { patchCurrentRequest } from "../../redux/actionCreators/user";
 import { URL_ADMIN } from "../../scripts/constants/urls";
 import { InputField } from "../../components/Input";
-import { BetterFormik } from "../../components/FormBase/FormBase";
+import { BetterFormik, FormStatus } from "../../components/FormBase/FormBase";
 
 const Profile = ({
   user,
   events,
+  patchPending,
+  patchSuccess,
+  patchError,
   getTicketPending,
   logout,
   getTicketRequest,
   patchCurrentRequest,
 }) => {
   const [isEditing, setEditing] = useState(false);
+  const [dataUpdateSuccess, setDataUpdateSuccess] = useState(undefined);
   const [sentTicket, setSentTicket] = useState();
   const formRef = useRef();
 
@@ -45,7 +49,7 @@ const Profile = ({
     user.firstName.slice(1) +
     " " +
     user.lastName.charAt(0).toUpperCase() +
-    user.firstName.slice(1);
+    user.lastName.slice(1);
 
   return (
     <Container>
@@ -67,7 +71,7 @@ const Profile = ({
             Account Details
             <TextIcon
               name={isEditing ? "save" : "pen"}
-              text={isEditing ? "save" : "edit"}
+              text={isEditing ? (patchPending ? "saving..." : "save") : "edit"}
               onClick={() => {
                 if (isEditing) {
                   formRef.current.handleSubmit();
@@ -87,6 +91,12 @@ const Profile = ({
                   ${user.funds.toFixed(2)}
                 </TextLabeled>
                 <TextLabeled label={"Password"}>**Encrypted**</TextLabeled>
+                <FormStatus
+                  success={dataUpdateSuccess === true && patchSuccess}
+                  successMessage={"Data updated successfully"}
+                  error={patchError}
+                  errorMessage={"Failed to update data"}
+                />
               </AccountData>
             ) : (
               <BetterFormik
@@ -119,7 +129,22 @@ const Profile = ({
                 })}
                 onSubmit={(values) => {
                   const { firstName, lastName, email, password } = values;
-                  patchCurrentRequest({ firstName, lastName, email, password });
+                  if (
+                    firstName !== user.firstName ||
+                    lastName !== user.lastName ||
+                    email !== user.email ||
+                    password !== ""
+                  ) {
+                    setDataUpdateSuccess(true);
+                    patchCurrentRequest({
+                      firstName,
+                      lastName,
+                      email,
+                      password,
+                    });
+                  } else {
+                    setDataUpdateSuccess(false);
+                  }
                 }}
               >
                 {({ ...props }) => (
@@ -196,6 +221,9 @@ const Profile = ({
 export default connect(
   ({ user, event }) => ({
     user: user.current,
+    patchPending: user.patchPending,
+    patchSuccess: user.patchSuccess,
+    patchError: user.patchError,
     events: event.events,
     getTicketPending: event.getTicketPending,
   }),
