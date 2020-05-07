@@ -32,7 +32,7 @@ const userSchema = mongoose.Schema({
     },
     funds: {
         type: Number,
-        default: 0
+        default: 500
     },
     tickets: [{
         type: mongoose.Schema.Types.ObjectId,
