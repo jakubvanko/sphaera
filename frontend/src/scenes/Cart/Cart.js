@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { ButtonSecondary } from "../../components/Button";
 import { ContainerBordered } from "../../components/Container";
@@ -19,13 +20,15 @@ import {
   PolicyInformationContainer,
 } from "./Cart.styled";
 import { buyRequest, removeItem } from "../../redux/actionCreators/cart";
+import { URL_CART, URL_LOGIN } from "../../scripts/constants/urls";
 
-const Cart = ({ items, buyPending, removeItem, buyRequest }) => {
+const Cart = ({ items, buyPending, user, removeItem, buyRequest }) => {
   const totalPrice = items.reduce(
     (previousValue, currentValue) =>
       parseFloat(currentValue.price) + parseFloat(previousValue),
     0
   );
+  const history = useHistory();
 
   return (
     <Container>
@@ -71,12 +74,19 @@ const Cart = ({ items, buyPending, removeItem, buyRequest }) => {
             <TextBasic>Amount due</TextBasic>
             <HeadingMedium>${(totalPrice + 0).toFixed(2)}</HeadingMedium>
             <BuyButton
+              disabled={user._id && user.funds < totalPrice}
               isLoading={buyPending}
               onClick={() => {
-                buyRequest(items);
+                if (!user._id)
+                  return history.push(URL_LOGIN, { from: URL_CART });
+                else if (user.funds >= totalPrice) buyRequest(items);
               }}
             >
-              Buy
+              {!user._id
+                ? "Please log in"
+                : user.funds < totalPrice
+                ? "Not enough funds"
+                : "Buy"}
             </BuyButton>
           </ContainerSection>
         </ContainerBordered>
@@ -86,7 +96,11 @@ const Cart = ({ items, buyPending, removeItem, buyRequest }) => {
 };
 
 export default connect(
-  ({ cart }) => ({ items: cart.items, buyPending: cart.buyPending }),
+  ({ cart, user }) => ({
+    items: cart.items,
+    buyPending: cart.buyPending,
+    user: user.current,
+  }),
   {
     removeItem,
     buyRequest,
