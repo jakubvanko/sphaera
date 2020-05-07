@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import test3 from "../Tickets/assets/test3.jpg";
-import test2 from "../Tickets/assets/test2.jpg";
 import placeholder from "./assets/placeholder.jpg";
 import { TextIcon } from "../../components/Icon";
 import { ItemImage } from "../../components/ItemImage";
@@ -22,29 +20,18 @@ import {
   SmallText,
 } from "./Profile.styled";
 import { logout } from "../../redux/actionCreators/user";
+import { getTicketRequest } from "../../redux/actionCreators/event";
 import { URL_ADMIN } from "../../scripts/constants/urls";
 
-const TICKETS = [
-  {
-    artist: "Marcus & Martinus",
-    date: new Date("December 17, 2020 12:25:41"),
-    image: test3,
-    area: "1",
-    price: "22.48",
-    _id: "4f48as4f9a4fas9f8asfasfevent55",
-  },
-  {
-    artist: "Nickelback",
-    date: new Date("December 17, 2020 12:25:41"),
-    image: test2,
-    area: "1",
-    price: "215.01",
-    _id: "4f4iohwnfnaiosfjpasfjsfevent55",
-  },
-];
-
-const Profile = ({ user, logout }) => {
+const Profile = ({
+  user,
+  events,
+  getTicketPending,
+  logout,
+  getTicketRequest,
+}) => {
   const [isEditing, setEditing] = useState(false);
+  const [sentTicket, setSentTicket] = useState();
 
   const userName =
     user.firstName.charAt(0).toUpperCase() +
@@ -95,25 +82,44 @@ const Profile = ({ user, logout }) => {
             </div>
           </AccountData>
         </Item>
-        {TICKETS.map(({ image, artist, date, area, _id, price }) => (
-          <React.Fragment key={_id}>
-            <ItemImage $src={image} />
-            <Ticket
-              artist={artist}
-              date={date}
-              price={price}
-              area={area}
-              qrValue={_id}
-              bottomIconName={"print"}
-              bottomIconText={"send to email"}
-            />
-          </React.Fragment>
-        ))}
+        {user.tickets.map(({ area, _id, event, price }) => {
+          const ticketEvent = events.find((value) => value._id === event);
+          if (ticketEvent === undefined) return null;
+          const { artist, date, image } = ticketEvent;
+
+          return (
+            <React.Fragment key={_id}>
+              <ItemImage $src={image} />
+              <Ticket
+                artist={artist}
+                date={date}
+                price={price}
+                area={area}
+                qrValue={_id}
+                bottomIconName={"print"}
+                bottomIconText={
+                  getTicketPending && sentTicket === _id
+                    ? "sending..."
+                    : "send to email"
+                }
+                onBottomIconClick={() => {
+                  setSentTicket(_id);
+                  getTicketRequest(_id);
+                }}
+              />
+            </React.Fragment>
+          );
+        })}
       </ItemContainer>
     </Container>
   );
 };
 // TODO: ON BOTTOM ICON CLICK
-export default connect(({ user }) => ({ user: user.current }), { logout })(
-  Profile
-);
+export default connect(
+  ({ user, event }) => ({
+    user: user.current,
+    events: event.events,
+    getTicketPending: event.getTicketPending,
+  }),
+  { logout, getTicketRequest }
+)(Profile);

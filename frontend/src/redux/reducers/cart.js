@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const cart = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case CART.ADD_ITEM: {
       const items = [...state.items];

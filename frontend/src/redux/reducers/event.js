@@ -12,6 +12,9 @@ const initialState = {
   deleteError: undefined,
   createPending: false,
   createError: undefined,
+  getTicketPending: false,
+  getTicketError: undefined,
+  getTicketSuccess: undefined,
 };
 
 const event = (state = initialState, action) => {
@@ -65,6 +68,16 @@ const event = (state = initialState, action) => {
       return { ...state, createPending: false };
     case EVENT.CREATE_FAILURE:
       return { ...state, createPending: false, createError: action.payload };
+    case EVENT.GET_TICKET_REQUEST:
+      return { ...state, getTicketPending: true };
+    case EVENT.GET_TICKET_SUCCESS:
+      return { ...state, getTicketPending: false, getTicketSuccess: true };
+    case EVENT.GET_TICKET_FAILURE:
+      return {
+        ...state,
+        getTicketPending: false,
+        getTicketError: action.payload,
+      };
     default:
       return state;
   }

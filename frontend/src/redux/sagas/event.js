@@ -102,6 +102,20 @@ function* createRequest({ payload }) {
   }
 }
 
+function* getTicketRequest({ payload }) {
+  try {
+    yield call(eventApi.getTicket, payload);
+    yield put({
+      type: EVENT.GET_TICKET_SUCCESS,
+    });
+  } catch (e) {
+    yield put({
+      type: EVENT.GET_TICKET_FAILURE,
+      payload: e,
+    });
+  }
+}
+
 function* eventSaga() {
   yield all([
     takeEvery(EVENT.GET_REQUEST, getRequest),
@@ -109,6 +123,7 @@ function* eventSaga() {
     takeEvery(EVENT.PATCH_REQUEST, patchRequest),
     takeEvery(EVENT.DELETE_REQUEST, deleteRequest),
     takeEvery(EVENT.CREATE_REQUEST, createRequest),
+    takeEvery(EVENT.GET_TICKET_REQUEST, getTicketRequest),
   ]);
 }
 

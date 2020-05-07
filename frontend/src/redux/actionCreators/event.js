@@ -9,3 +9,8 @@ export const createRequest = (artist, date, imageFile, areas) => ({
     areas,
   },
 });
+
+export const getTicketRequest = (_id) => ({
+  type: EVENT.GET_TICKET_REQUEST,
+  payload: _id,
+});

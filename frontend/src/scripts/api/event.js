@@ -55,5 +55,6 @@ export default {
   updateById,
   deleteById,
   buyTicket,
+  getTicket,
   create,
 };
