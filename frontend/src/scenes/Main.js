@@ -14,6 +14,7 @@ import {
   URL_CART,
   URL_ADMIN,
   URL_EVENT,
+  URL_RESET_PASSWORD,
 } from "../scripts/constants/urls";
 
 import Header from "./Header";
@@ -27,6 +28,7 @@ import Cart from "./Cart";
 import Profile from "./Profile";
 import Admin from "./Admin";
 import Event from "./Event/Event";
+import ResetPassword from "./ResetPassword";
 
 const Main = () => (
   <BrowserRouter>
@@ -45,6 +47,9 @@ const Main = () => (
       <RouteLogin path={URL_ADMIN}>
         <Admin />
       </RouteLogin>
+      <Route path={URL_RESET_PASSWORD + ":token"}>
+        <ResetPassword />
+      </Route>
     </Switch>
     <Footer />
   </BrowserRouter>

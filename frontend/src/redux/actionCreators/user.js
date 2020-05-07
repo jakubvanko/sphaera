@@ -30,3 +30,8 @@ export const resetPasswordRequest = (email) => ({
 export const resetResults = () => ({
   type: USER.RESET_RESULTS,
 });
+
+export const tokenLogin = (token) => ({
+  type: USER.TOKEN_LOGIN_REQUEST,
+  payload: token,
+});

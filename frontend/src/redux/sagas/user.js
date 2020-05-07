@@ -27,6 +27,31 @@ function* loginRequest({ payload }) {
   }
 }
 
+function* tokenLoginRequest({ payload }) {
+  try {
+    yield put({
+      type: USER.LOGOUT,
+    });
+    localStorage.setItem("token", payload);
+    yield all([
+      put({
+        type: USER.TOKEN_LOGIN_SUCCESS,
+      }),
+      put({
+        type: USER.GET_REQUEST,
+        meta: {
+          current: true,
+        },
+      }),
+    ]);
+  } catch (e) {
+    yield put({
+      type: USER.TOKEN_LOGIN_FAILURE,
+      payload: e,
+    });
+  }
+}
+
 function* getRequest({ payload, meta }) {
   try {
     const user =
@@ -139,6 +164,7 @@ function* userSaga() {
     takeEvery(USER.DELETE_REQUEST, deleteRequest),
     takeLatest(USER.REGISTER_REQUEST, registerRequest),
     takeLatest(USER.RESET_PASSWORD_REQUEST, resetPasswordRequest),
+    takeLatest(USER.TOKEN_LOGIN_REQUEST, tokenLoginRequest),
   ]);
 }
 
