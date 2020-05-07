@@ -103,6 +103,9 @@ export const AccountData = styled(ItemSectionBase)`
 
 export const Form = styled(ItemSectionBase)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-column-gap: 30px;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 500px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
