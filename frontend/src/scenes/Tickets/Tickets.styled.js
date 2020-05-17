@@ -39,13 +39,17 @@ export const Filter = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3vh 0;
+  padding: 10vh 0;
   transition: background-color 0.2s;
   display: flex;
   align-items: flex-end;
 
   :hover {
     background-color: transparent;
+  }
+
+  @media screen and (min-width: 400px) {
+    padding: 3vh 0;
   }
 `;
 

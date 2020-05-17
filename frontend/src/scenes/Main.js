@@ -29,9 +29,11 @@ import Profile from "./Profile";
 import Admin from "./Admin";
 import Event from "./Event/Event";
 import ResetPassword from "./ResetPassword";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 const Main = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Header />
     <Switch>
       <Route exact path={URL_HOME} component={Home} />

@@ -29,7 +29,7 @@ export const List = styled.ul`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 99;
   height: 100vh;
   width: ${(props) => (props.$mobileActive ? "200px" : 0)};
   overflow-x: hidden;
@@ -76,8 +76,11 @@ export const CloseButton = styled.button`
   :after {
     content: "\\2573";
   }
-  :hover:after {
-    content: "\\2501";
+
+  @media only screen and (hover: hover) {
+    :hover:after {
+      content: "\\2501";
+    }
   }
 
   @media only screen and (min-width: 992px) {

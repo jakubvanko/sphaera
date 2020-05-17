@@ -52,22 +52,34 @@ const Header = ({ user }) => {
           aria-label={"close navigation"}
         />
         <LinkContainer>
-          <Link to={URL_HOME}>Home</Link>
+          <Link to={URL_HOME} onClick={() => setMobileActive(false)}>
+            Home
+          </Link>
         </LinkContainer>
         <LinkContainer>
-          <Link to={URL_TICKETS}>Tickets</Link>
+          <Link to={URL_TICKETS} onClick={() => setMobileActive(false)}>
+            Tickets
+          </Link>
         </LinkContainer>
         <LinkContainer>
-          <Link to={URL_CONTACT}>Contact</Link>
+          <Link to={URL_CONTACT} onClick={() => setMobileActive(false)}>
+            Contact
+          </Link>
         </LinkContainer>
         <LinkContainer>
-          <Link to={URL_VISIT}>Visit Us</Link>
+          <Link to={URL_VISIT} onClick={() => setMobileActive(false)}>
+            Visit Us
+          </Link>
         </LinkContainer>
         <LinkContainer $display={width >= 992 && "none"}>
-          <Link to={accountLink}>{accountText}</Link>
+          <Link to={accountLink} onClick={() => setMobileActive(false)}>
+            {accountText}
+          </Link>
         </LinkContainer>
         <LinkContainer $display={width >= 992 && "none"}>
-          <Link to={URL_CART}>Cart</Link>
+          <Link to={URL_CART} onClick={() => setMobileActive(false)}>
+            Cart
+          </Link>
         </LinkContainer>
       </List>
       <IconLinkContainer $border as={RouterLink} to={accountLink}>

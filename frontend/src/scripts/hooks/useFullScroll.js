@@ -8,6 +8,7 @@ const useFullScroll = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
   const [incompleteScroll, setIncompleteScroll] = useState(0);
   const [isScrollingPaused, setScrollingPaused] = useState(false);
+  const [scrolledByWheel, setScrolledByWheel] = useState(false);
 
   // Register handlers for react-scroll events
   useEffect(() => {
@@ -43,6 +44,7 @@ const useFullScroll = () => {
       }
     };
     const handleScroll = (e) => {
+      setScrolledByWheel(true);
       e.preventDefault();
       if (isScrollingPaused) return;
       if (e.deltaY < 0) {
@@ -57,13 +59,15 @@ const useFullScroll = () => {
 
   // Hook for actually scrolling to the scroll position
   useEffect(() => {
-    animateScroll.scrollTo(currentPosition, {
-      ignoreCancelEvents: true,
-      smooth: "linear",
-      duration: (scrollDistanceInPx) =>
-        (Math.abs(scrollDistanceInPx) / windowHeight) * 750,
-    });
-  }, [windowHeight, currentPosition]);
+    if (scrolledByWheel) {
+      animateScroll.scrollTo(currentPosition, {
+        ignoreCancelEvents: true,
+        smooth: "linear",
+        duration: (scrollDistanceInPx) =>
+          (Math.abs(scrollDistanceInPx) / windowHeight) * 750,
+      });
+    }
+  }, [windowHeight, currentPosition, scrolledByWheel]);
 };
 
 export default useFullScroll;

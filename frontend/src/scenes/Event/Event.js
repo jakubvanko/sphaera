@@ -75,7 +75,7 @@ const Event = ({ event, addItem }) => {
           onAreaSelected={(name) => {
             setCurrentArea(name);
             if (width < 900) {
-              animateScroll.scrollToBottom();
+              animateScroll.scrollTo(100);
             }
             setAddedToCart(false);
           }}
