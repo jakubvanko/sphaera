@@ -37,7 +37,6 @@ Every software developer worth their salt should have a portfolio consisting of 
 - Support for any SVG seat layout
 - Interactive seat area selection
 
-![Seat Area](https://ctrlv.cz/shots/2019/06/08/JNxq.png)
 
 
 ## Used Technologies:
