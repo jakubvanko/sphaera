@@ -1,7 +1,6 @@
 import React from "react";
 
 import poster from "./assets/placeholder.jpg";
-import source from "./assets/home.mp4";
 import BackgroundChangingText from "./components/BackgroundChangingText";
 import { Hero } from "../../components/Hero";
 import { Icon } from "../../components/Icon";
@@ -16,14 +15,13 @@ import {
   MainText,
 } from "./Home.styled";
 
-const Home = () => {
-  const iconWidth = 150;
+const iconWidth = 150;
 
-  return (
+const Home = () => (
     <Container>
       <Hero
         as={"video"}
-        src={source}
+        src={"https://www.dropbox.com/s/5vlyxxpeo08om4e/home.mp4?raw=1"}
         autoPlay
         loop
         muted
@@ -58,7 +56,6 @@ const Home = () => {
         </MainText>
       </CorporateContainer>
     </Container>
-  );
-};
+);
 
 export default Home;
