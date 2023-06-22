@@ -12,4 +12,4 @@ mongoose.connect(process.env.DATABASE_URI, {
 
 const server = http.createServer(app);
 
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || 4001);

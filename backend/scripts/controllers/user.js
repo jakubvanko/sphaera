@@ -75,7 +75,7 @@ exports.loginUser = async (email, password) => {
         const {hash} = await generateHash(password, user.salt);
         if (hash === user.password) {
             return generateToken({_id: user._id}, process.env.TOKEN_SECRET, {
-                expiresIn: process.env.LOGIN_TOKEN_EXPIRATION
+                expiresIn: process.env.LOGIN_TOKEN_EXPIRATION || "1d"
             });
         }
     }
@@ -90,7 +90,7 @@ exports.resetPassword = async (email) => {
         .exec();
     if (user !== null && user !== undefined) {
         const token = await generateToken({_id: user._id}, process.env.TOKEN_SECRET, {
-            expiresIn: process.env.RESET_TOKEN_EXPIRATION
+            expiresIn: process.env.RESET_TOKEN_EXPIRATION || "1d"
         });
         const link = `https://sphaera.jakubvanko.com/reset-password/${token}`;
         await sendMail({

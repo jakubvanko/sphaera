@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://sphaera.jakubvanko.com/api/";
+axios.defaults.baseURL = "https://sphaera.onrender.com/api/";
 
 /*
     Request interceptor for login token authorization

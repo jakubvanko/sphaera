@@ -7,9 +7,9 @@ const hashAndSalt = async (password, salt) => {
     const usedSalt = salt === undefined ? crypto.randomBytes(16).toString("hex") : salt;
     const hash = (await createHash(password,
         usedSalt + process.env.HASH_PEPPER,
-        parseInt(process.env.HASH_ITERATIONS),
-        parseInt(process.env.HASH_LENGTH),
-        process.env.HASH_ALGORITHM)).toString("hex");
+        parseInt(process.env.HASH_ITERATIONS) || 128,
+        parseInt(process.env.HASH_LENGTH) || 128,
+        process.env.HASH_ALGORITHM || "sha512")).toString("hex");
     return {hash, salt: usedSalt};
 };
 

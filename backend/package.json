@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server.js",
-    "deploy": "npm run test && scp -r .env.example server.js package.json package-lock.json ./scripts ./uploads ./assets root@104.248.18.245:sphaera-backend"
+    "run": "node server.js"
   },
   "keywords": [],
   "author": "",
