@@ -58,7 +58,7 @@ const MarkerHeader = styled.h6`
 const Map = () => (
   <Container>
     <GoogleMapReact
-      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KEY }}
+      bootstrapURLKeys={{ key: "AIzaSyCVvrjflYSnmEZlwd2LVJbwVsnUMyDLEfk" }}
       defaultCenter={[47.797279, 13.046036]}
       defaultZoom={15}
       options={{
