@@ -140,9 +140,8 @@ https://sphaera.jakubvanko.com/api/...
 
 ## Deployment
 
-The project was deployed on a DigitalOcean droplet where it is being managed by Nginx.
-
-Frontend and backend both feature an auto-deployment Node.js script ("npm run deploy"). Newly included back-end node modules are not, however, automatically copied and need to be installed separately on the server ("npm install").
+The backend is deployed using Render.
+The frontend is deployed using Vercel (requires node 161).
 
 
 ## Conclusion
